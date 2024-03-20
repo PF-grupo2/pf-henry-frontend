@@ -2,7 +2,7 @@ import React from 'react'
 //import imagen from '/assets/foto7.jpg';
 // import imagen1 from '/assets/foto2.jpg';
 import imagen2 from '/assets/foto3.jpg';
-import Product from './Product';
+import Product from '../product/Product';
 import { NavLink } from 'react-router-dom';
 
 const Home = () => {
