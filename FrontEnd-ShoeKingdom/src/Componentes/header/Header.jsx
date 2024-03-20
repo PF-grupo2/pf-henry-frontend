@@ -1,9 +1,8 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Login from './buttons/Login';
-import Signup from './buttons/Signup';
-import CartBtn from './buttons/CartBtn';
-import Favorito from './buttons/Favorito';
+import Login from '../buttons/Login';
+import Signup from '../buttons/Signup';
+import CartBtn from '../buttons/CartBtn';
+import Favorito from '../buttons/Favorito';
 
 const Header = () => {
     return (
