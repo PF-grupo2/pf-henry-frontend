@@ -1,8 +1,13 @@
+#root{
+  max-width: 100%;
+  padding: 0px;
+  text-align: left;
+  align-items: left;
+}
 
 body {
   margin: 0;
-  padding: 0;
-  
+  padding: 0;  
 }
 
 code{
@@ -79,23 +84,23 @@ code{
 }
 
 .titulo{
-  font-size: 140px;
-  align-items: center;
+  font-size: 100px;
+  align-items:left;
   margin: 0;
   padding: 0;
 }
 .titulo2{
   font-size:170px;
-  text-align: center;
-  align-items: center;
+  text-align: left;
+  align-items: left;
   color: #fff;
   margin: 0;
   padding: 0;
 }
 
 .parrafo{
-  text-align: center;
-  align-items: center;
+  text-align: left;
+  align-items: left;
   font-size: 20px;
   color: #ffffff;
  
