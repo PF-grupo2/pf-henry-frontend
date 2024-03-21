@@ -12,12 +12,12 @@ const Header = () => {
                     <div className="w-100 d-flex justify-content-between">
                         <div>
                             <i className="fa fa-envelope mx-2"></i>
-                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="mailto:info@company.com">zapatillas@company.com</a>
+                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="mailto:info@company.com">ShoeKingdom@company.com</a>
                             <i className="fa fa-phone mx-2"></i>
-                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="tel:010-020-0340">010-020-0340</a>
+                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="tel:010-020-0340">+54 911 32234567</a>
                         </div>
                         <div>
-                            <a className="text-light mx-2" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                            <a className="text-light mx-2" href="https://www.facebook.com/" target="_blank" rel="sponsored"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                             <a className="text-light mx-2" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                         </div>
                     </div>
