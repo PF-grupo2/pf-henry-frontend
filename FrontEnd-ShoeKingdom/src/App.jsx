@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Header from './Componentes/header/Header'
@@ -11,6 +10,7 @@ import ProductDetail from './Componentes/detail/Detail'
 import Cart from './Componentes/cart/Cart'
 import Checkout from './Componentes/checkout/Checkout'
 import Favorito from './Componentes/favorites/Favorites'
+import Contact from './Componentes/contact/Contact'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +27,7 @@ function App() {
             <Route path="/checkout" element={<Checkout/>} />
             <Route path="/about" element={<About/>} />
             <Route path="*" element={<Home/>} />
+            <Route path="/contact" element={<Contact/>} />
       </Routes>
     <Footer/>
     </>

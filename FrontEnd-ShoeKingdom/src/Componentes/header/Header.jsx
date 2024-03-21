@@ -32,7 +32,7 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse mx-auto justify-content-between" id="navbarSupportedContent">
 
-                    <NavLink className="navbar-brand  fw-bold " to="/">Zapatillas</NavLink> 
+                    <NavLink className="navbar-brand  fw-bold " to="/">ShoeKingdom</NavLink> 
 
                         <ul className="navbar-nav mb-3 mb-lg-0 ">
                             <li className="nav-item">

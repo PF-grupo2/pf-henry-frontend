@@ -9,7 +9,7 @@ const Footer =() => {
             <div className="row">
 
                 <div className="col-md-4 pt-5">
-                    <h2 className="h2 text-light border-bottom pb-3 border-light logo">Zapatillas</h2>
+                    <h2 className="h2 text-light border-bottom pb-3 border-light">ShoeKingdom</h2>
                     <ul className="list-unstyled text-dark footer-link-list">
                         <li>
                             <i className="fas fa-map-marker-alt fa-fw text-dark "></i>
