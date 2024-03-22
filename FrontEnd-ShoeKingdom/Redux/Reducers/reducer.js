@@ -1,6 +1,12 @@
-const addItem = [];
+const addItem = [
+    {
+        name :"peter",
+        apellido: "nuñez"
+    }
+];
 
 const addItems = (state = addItem, action) => {
+    
     switch (action.type){
         case "ADDITEM" : return[
             ...state,
