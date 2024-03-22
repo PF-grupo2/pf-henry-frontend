@@ -4,7 +4,7 @@ import { delItem } from '../../../Redux/Actions/actions';
 import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
-    const state = useSelector((state) => state.addItem);
+    const state = useSelector((state) => state.items);
     const dispatch = useDispatch();
 
     const handleClose = (item) => {

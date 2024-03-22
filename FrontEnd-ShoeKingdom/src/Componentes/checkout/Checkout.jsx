@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Checkout = () => {
-    const state = useSelector((state) => state.assItem);
+    const state = useSelector((state) => state.items);
 
     let total = 0;
 
@@ -38,8 +38,8 @@ const Checkout = () => {
 
                     <form className='card p-2'>
                         <div className='input-group'>
-                            <input type='text' className='form-control' placeholder='Promo code' />
-                            <button type='submit' className='btn btn-secondary'>Canjear</button>
+                            <input type='text' className='form-control' placeholder='Código de descuento' />
+                            <button type='submit' className='btn btn-secondary'>Aplicar</button>
                         </div>
                     </form>
                 </div>
@@ -67,7 +67,7 @@ const Checkout = () => {
                                 <label htmlFor='username' className='form-label'>Nombre de usuario</label>
                                 <div className='input-group has-validation'>
                                     <span className='input-group-text'>@</span>
-                                    <input type='text' className='form-control' id='username' placeholder='Username' required='' />'
+                                    <input type='text' className='form-control' id='username' placeholder='Usuario' required='' />
                                     <div className='invalid-feedback'>
                                         Nombre de usuario
                                     </div>
@@ -75,8 +75,8 @@ const Checkout = () => {
                             </div>
 
                             <div className='col-12'>
-                                <label htmlFor='email' className='form-label'>Email <span className='text-muted'>(Optional)</span></label>
-                                <input type='email' className='form-control' id='email' placeholder='you@example.com' />
+                                <label htmlFor='email' className='form-label'>Email<span className='text-muted'></span></label>
+                                <input type='email' className='form-control' id='email' placeholder='tu@ejemplo.com' />
                                 <div className='invalid-feedback'>
                                     Ingrese una direccón de correo válido para actualizaciones de envío
                                 </div>
@@ -84,15 +84,15 @@ const Checkout = () => {
 
                             <div className='col-12'>
                                 <label htmlFor='address' className='form-label'>Dirección</label>
-                                <input type='text' className='form-control' id='address' placeholder='1234 Main St' required='' />
+                                <input type='text' className='form-control' id='address' placeholder='Calle y numeración' required='' />
                                 <div className='invalid-feedback'>
                                     Ingrese dirección del envío
                                 </div>
                             </div>
 
                             <div className='col-12'>
-                                <label htmlFor='address' className='form-label'>Dirección 2 <span className='text-muted'>(Optional)</span></label>
-                                <input type='text' className='form-control' id='address' placeholder='Apartment or suite' />
+                                <label htmlFor='address' className='form-label'>Dirección 2 <span className='text-muted'>(Opcional)</span></label>
+                                <input type='text' className='form-control' id='address' placeholder='Calle y numeración' />
                             </div>
 
                             <div className='col-md-5'>
@@ -112,13 +112,10 @@ const Checkout = () => {
                                     <option value=''>Seleccionar</option>
                                     <option>Buenos Aires</option>
                                 </select>
-                                <div className='invlalid-feedback'>
-                                    Ingrese una localidad
-                                </div>
                             </div>
 
                             <div className='col-md-3'>
-                                <label htmlFor='zip' className='form-label'>Zip</label>
+                                <label htmlFor='zip' className='form-label'>Código postal</label>
                                 <input type='text' className='form-control' id='zip' placeholder='' required='' />
                                 <div className='invalid-feedback'>
                                     Código postal
@@ -135,7 +132,7 @@ const Checkout = () => {
 
                         <div className='form-check'>
                             <input type='checkbox' className='form-check-input' id='save-info' />
-                            <label className='form-check-label' htmlFor='save-info'>Guarda esta información para tu próxima compra</label>
+                            <label className='form-check-label' htmlFor='save-info'>Guardar información para tu próxima compra</label>
                         </div>
 
                         <hr className='my-4' />
@@ -144,51 +141,8 @@ const Checkout = () => {
 
                         <div className='my-3'>
                             <div className='form-check'>
-                                <input id='credit' name='paymentMethod' type='radio' className='form-check-input' checked='' required='' />
-                                <label className='form-check-label' htmlFor='credit'>Crédito</label>
-                            </div>
-                            <div className='form-check'>
-                                <input id='debit' name='paymentMethod' type='radio' className='form-check-input' required='' />
-                                <label className='form-check-label' htmlFor='debit'>Debito</label>
-                            </div>
-                            <div className='form-check'>
                                 <input id='paypal' name='paymentMethod' type='radio' className='form-check-input' required='' />
-                                <label className='form-check-label' htmlFor='paypal'>Paypal</label>
-                            </div>
-                        </div>
-
-                        <div className='row-gy-3'>
-                            <div className='col-md-6'>
-                                <label htmlFor='cc-name' className='form-label'>Name on card</label>
-                                <input type='text' className='form-control' id='cc-name' placeholder='' required='' />
-                                <small className='text-muted'>Full name as display on card</small>
-                                <div className='invalid-feedback'>
-                                    Nombre del titular
-                                </div>
-                            </div>
-
-                            <div className='col-md-6'>
-                                <label htmlFor='cc-number' className='form-label'>Credit card number</label>
-                                <input type='text' className='form-control' id='cc-number' placeholder='' required='' />
-                                <div className='invalid-feedback'>
-                                    Número de tarjeta
-                                </div>
-                            </div>
-
-                            <div className='col-md-3'>
-                                <label htmlFor='cc-expiration' className='form-label'>Expiration</label>
-                                <input type='text' className='form-control' id='cc-expiration' placeholder='' required='' />
-                                <div className='invalid-feedback'>
-                                    Fecha de vencimiento
-                                </div>
-                            </div>
-
-                            <div className='col-md-3'>
-                                <label htmlFor='cc-cvv' className='form-label'>CVV</label>
-                                <input type='text' className='form-control' id='cc-cvv' placeholder='' required='' />
-                                <div className='invalid-feedback'>
-                                    Código de seguridad
-                                </div>
+                                <label className='form-check-label' htmlFor='paypal'>Mercado Pago</label>
                             </div>
                         </div>
 
