@@ -1,27 +1,30 @@
-const addItem = [
-    {
-        name :"peter",
-        apellido: "nuñez"
-    }
-];
+import { ADDITEM, 
+    DELITEM } from "../Actions/action-types";
 
-const addItems = (state = addItem, action) => {
+const initialState = {
+    items: []
+}
+
+const reducer = (state = initialState, action) => {
+
+    const { type, payload } = action
     
-    switch (action.type){
-        case "ADDITEM" : return[
-            ...state,
-            action.payload
-        ]
-        
+    switch (type) {
+        case ADDITEM: 
+            return {
+            items: payload
+        }
 
-        case "DELITEM":
+
+        case DELITEM:
             return state = state.filter((x) => {
-                return x.id !== action.payload.id
+                return x.id !== payload.id
             })
-        
 
-        default: return state;
-        
+
+        default: 
+        return {...state}
     }
 }
- export default addItems;
+
+export default reducer;
