@@ -1,0 +1,41 @@
+.product-detail-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-detail-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-detail-info {
+  margin-bottom: 20px;
+}
+
+.product-detail-info-item {
+  margin-bottom: 10px;
+}
+
+.product-detail-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.product-detail-images img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 10px;
+}
+
+.product-detail-home-btn {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  
+}
+.product-detail-home-btn button {
+  background-color: black;
+  color: white;
+}
