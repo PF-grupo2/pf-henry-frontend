@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
     const state = useSelector((state) => state.addItem);
+    console.log(state);
     const dispatch = useDispatch();
 
     const handleClose = (item) => {
