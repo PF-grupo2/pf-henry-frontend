@@ -17,7 +17,7 @@ const Contact = () => {
     <div className="container mb-5">
       <div className="row">
         <div className="col-12 text-center py-4 my-4">
-          <h1>¿Tienes alguna pregunta?</h1>
+          <h1 className='fw-bold mb-4 h2'>¿Tienes alguna pregunta?</h1>
         </div>
       </div>
       <div className="row">

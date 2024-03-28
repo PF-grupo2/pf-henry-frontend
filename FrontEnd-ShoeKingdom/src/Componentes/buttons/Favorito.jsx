@@ -7,7 +7,7 @@ const Favorito = () => {
      return (
          <>
          <NavLink to='/favorito' className="btn ms-2 p-1">
-             <span className='fa fa-heart me-1'></span>(0)
+             <span className='fa fa-heart me-1'></span>({0})
          </NavLink>
          
          </>

@@ -20,7 +20,6 @@ const reducer = (state = initialState, action) => {
             items: payload
         }
 
-
         case DELITEM:
             return state = state.filter((x) => {
                 return x.id !== payload.id

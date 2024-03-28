@@ -1,0 +1,32 @@
+/* Typography */
+body, ul, li, p, a, label, input, div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+  }
+  .h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px !important;
+    font-weight: 200 !important;
+    color: #1c4a98 !important;
+  }
+  .h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px !important;
+    font-weight: 300;
+  }
+  .h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px !important;
+  }
+
+  .h4{
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px !important;
+    font-weight: 150 !important;
+    color: #1c4a98 !important;
+  }
+
+  /* Accordion */
+.templatemo-accordion1 a { color: #000;}
+.templatemo-accordion1 a:hover { color: #0e56b5;}
