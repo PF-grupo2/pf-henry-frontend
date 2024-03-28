@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom";
-import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING } from "../../Redux/Actions/actions";
+import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING,DELITEM,GET_DETAIL,CLEAR_DETAIL } from "../../Redux/Actions/actions";
 
 
 
@@ -7,7 +7,9 @@ const initialState = {
     allZapatilla: [],
     zapatilla: [],
     filter: false,
-    loading: false
+    loading: false,
+    zapatillaDetail :{}
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -43,6 +45,20 @@ function rootReducer(state = initialState, action) {
                 zapatilla: action.payload,
                 filter: true
             }
+        case GET_DETAIL:
+            
+            return {
+             ...state,
+            zapatillaDetail: action.payload 
+            };
+
+
+        case CLEAR_DETAIL:
+            return {
+            ...state,
+            zapatillaDetail: {},
+      };    
+    
 
 
         default: return state;

@@ -1,5 +1,5 @@
 
-import { ADDITEM, DELITEM} from "./action-types";
+import { ADDITEM, DELITEM,GET_DETAIL,CLEAR_DETAIL} from "./action-types";
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
@@ -46,6 +46,28 @@ export const getfilter = (nombre) => {
       })
     }
   }
+
+  export function  getDetail (id) {
+    return async function (dispatch) {
+     try {
+       const zapatillaDetail = await axios.get(`http://localhost:3000/api/v1/products/detail/${id}`);
+       console.log(zapatillaDetail);
+       return dispatch({
+         type: GET_DETAIL,
+         payload: zapatillaDetail.data,
+       });
+     } catch (e) {
+       console.log(e, "Error al traer el detalle");
+     }
+   };
+ };
+
+ export const clearDetail = () => {
+    return {
+      type: CLEAR_DETAIL,
+    };
+  };
+ 
 
 
 
