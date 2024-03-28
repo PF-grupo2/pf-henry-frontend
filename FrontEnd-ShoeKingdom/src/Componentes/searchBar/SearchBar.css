@@ -1,0 +1,30 @@
+.searchBox {
+    background-color: rgba(239, 239, 239, 0.97);
+    border-radius: 5px;
+    border: 0.05rem solid #595559;
+    padding: 8px 60px 8px 10px;
+    text-decoration: none;
+}
+
+.searchButton {
+    padding: 8px 8px;
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    overflow: hidden;
+    transition: .5s;
+    border-radius: 5px;
+    border: 0.05rem solid #595559;
+}
+
+.searchButton:hover {
+    background-color: #deded8;
+    color: #f6f1f1;
+    border: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #bdbeba, 
+    0 0 15px #918a87,
+    0 0 15px #918a87,
+    0 0 20px #918a87,
+}

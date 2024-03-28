@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Header from './Componentes/header/Header'
-import Footer from './Componentes/footer/Footer'
+import Footer from './Componentes/header/Header'
+import NavBar from './Componentes/navBar/NavBar'
 import Home from './Componentes/home/Home'
 import About from './Componentes/about/About'
 import Product from './Componentes/product/Product'
@@ -17,19 +17,18 @@ function App() {
 
   return (
     <>
-      <Header/>
+      <NavBar />
       <Routes>
-            <Route path="/" element={<Home/>} />
             <Route path="/product" element={<Product/>} />
             <Route path="/product/:id" element={<ProductDetail/>} />
             <Route path="/cart" element={<Cart/>} />
             <Route path='/favorito' element={< Favorito/>}/>
             <Route path="/checkout" element={<Checkout/>} />
             <Route path="/about" element={<About/>} />
-            <Route path="*" element={<Home/>} />
+            <Route path="/home" element={<Home/>} />
             <Route path="/contact" element={<Contact/>} />
       </Routes>
-    <Footer/>
+      <Footer />
     </>
   )
 }
