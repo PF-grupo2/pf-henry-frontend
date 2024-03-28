@@ -7,24 +7,7 @@ import Favorito from '../buttons/Favorito';
 const Header = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-primary bg-gradient navbar-light d-none d-lg-block" id="templatemo_nav_top">
-                <div className="container-fluid text-light">
-                    <div className="w-100 d-flex justify-content-between">
-                        <div>
-                            <i className="fa fa-envelope mx-2"></i>
-                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="mailto:info@company.com">ShoeKingdom@company.com</a>
-                            <i className="fa fa-phone mx-2"></i>
-                            <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="tel:010-020-0340">+54 911 32234567</a>
-                        </div>
-                        <div>
-                            <a className="text-light mx-2" href="https://www.facebook.com/" target="_blank" rel="sponsored"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                            <a className="text-light mx-2" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <nav className="navbar navbar-expand-lg bg-light bg-gradiente d-flex align-items-center shadow">
+                <nav className="navbar navbar-expand-lg bg-light bg-gradiente d-flex align-items-center shadow">
                 <div className="container-fluid py-1 mx-auto justify-content-between">
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +15,7 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse mx-auto justify-content-between" id="navbarSupportedContent">
 
-                    <NavLink className="navbar-brand  fw-bold " to="/">ShoeKingdom</NavLink> 
+                    <NavLink className="navbar-brand  fw-bold " to="/"> <h1 className='h4'>ShoeKingdom</h1></NavLink> 
 
                         <ul className="navbar-nav mb-3 mb-lg-0 ">
                             <li className="nav-item">
@@ -48,6 +31,15 @@ const Header = () => {
                                 <NavLink className="nav-link" to="/contact">Contactanos</NavLink>
                             </li>
                         </ul>
+
+                        {/* <div class="d-flex">
+                                    <div class="input-group mb-3">
+                                         <i class="fa fa-search p-2" aria-hidden="true"></i>
+                                        <input type="text" class="form-control" placeholder="Buscar por nombre o marca" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+
+                                    </div>
+                        </div> */}
+
                         <div className='d-flex align-items-center justify-content-between'>
                             <Login />
                             <Signup />

@@ -1,0 +1,25 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 35px 1px 25px;
+    box-sizing: border-box;
+    background-color: rgba(82, 113, 255);
+}
+
+.image{
+    width: 100px;
+    height: 80px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.iconButton{
+    background: none;
+    border: none;
+}
+
+button:active{
+    outline: 0;
+    transform: translateY(3px);
+}

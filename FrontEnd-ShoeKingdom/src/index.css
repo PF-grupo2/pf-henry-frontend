@@ -36,15 +36,15 @@ code{
 .navbar-brand{
   letter-spacing: 2px;
 }
-
-.card{
-  transition: all 0.5s ease;
+/* 
+ .card{
+  transition: all 0.3s ease;
 }
 
 .card:hover{
   transform: scale(1.1);
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5)
-}
+}  */
 
 .carousel-control-prev1,
 .carousel-control-next {
@@ -113,16 +113,28 @@ code{
   padding: 0;
 }
 .fondo{
-  background-image:  url("../public/assets/img/slide2.png");
-  height: 80vh;
+   background-image:  url("../public/assets/img/slider3.jpg");
+  background-color: #2756a5;
+  height:100%;
   width: 100%;
 }
+ .fondo1{
+  background-image:  url("../public/assets/img/slider2.jpg");
+  height: 100%;
+  width: 100%;
+} 
+
+.fondo2{
+  background-image:  url("../public/assets/img/slider4.jpg");
+  height: 100%;
+  width: 100%;
+} 
 
 .fondo-slide1{
-  background-color: #eceaea;
-  height: 85vh;
+  background-color: #040404;
+  height: 60vh;
   width: 100%;
-}
+} 
 
 .footer{
   background-color: #1353db;
@@ -138,4 +150,41 @@ hr{
  margin-bottom: 30px;
  width: 40em;
  height: 5px;
+}
+
+.blanco{
+  color: #fff;
+}
+.blanco1{
+  color: #000000;
+}
+.negro{
+  color: #000000;
+}
+.azul{
+  color: #1d38cf;
+}
+.amarillo{
+  color: #f8ef47;
+}
+.verde{
+  color: #49df17;
+}
+.rojo{
+  color: #f00a0a;
+}
+.rosado{
+  color: #f016a7;
+}
+.gris{
+  color: #aaaaaa;
+}
+
+.colorsec{
+  background-color: #e0dcdc;
+}
+
+.izquierda{
+  background-color: #ecf2f9;
+  font-size: 10px !important;
 }

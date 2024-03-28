@@ -6,21 +6,21 @@ import Product from '../product/Product';
 import { NavLink } from 'react-router-dom';
 import DATA from '../../Data';
 
+
 const Home = () => {
   return (
     <>
       <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          <div className="carousel-item active fondo-slide1">
-            <div className="container ">
-              <div className="row p-5">
-                <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
+          <div className="carousel-item active  fondo1 fondo-slide1">
+            <div className="container-fluid ">
+              <div className="row ">
+                {/* <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
                   <img className="img-fluid" src="./assets/img/slide1.png" alt="" />
                 </div>
                 <div className="col-lg-6 mb-0 d-flex align-items-left">
                   <div>
                     <h1 className="titulo text-primary"><b> ShoeKingdom </b></h1>
-                    {/* <h3 className="h2">Encuentra las mejores zapatillas</h3> */}
                     <hr />
                     <p>
                       Tenemos una amplia y variedad de marcas y estilos de zapatillas
@@ -29,14 +29,14 @@ const Home = () => {
                     </p>
                     <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
-          <div className="carousel-item  fondo">
+          <div className="carousel-item  fondo fondo-slide1">
             <div className="container">
               <div className="row px-2">
-                <div className="mx-auto col-md-8 col-lg-6 ">
+                {/* <div className="mx-auto col-md-8 col-lg-6 ">
                 </div>
                 <div className="col-lg-5 mb-0 d-flex align-items-center px-5 order-lg-last">
                   <div>
@@ -48,13 +48,13 @@ const Home = () => {
                     <br/>
                     <NavLink className=" btn btn-primary px-3 py-2 d-block mx-auto " to="/product">Ver tienda</NavLink>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
-          <div class="carousel-item ">
+          <div class="carousel-item fondo-slide1 fondo2">
             <div class="container ">
-              <div class="row p-5">
+              {/* <div class="row p-5">
                 <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                   <img class="img-fluid" src="./assets/img/slide3.jpg" alt="" />
                 </div>
@@ -70,7 +70,7 @@ const Home = () => {
                     <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -83,60 +83,159 @@ const Home = () => {
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+
+
       <div>
       </div>
 
+
+      
       <section class="container py-5">
         <div class="row text-center pt-3">
           <div class="col-lg-6 m-auto">
-            <h1 class="h1 text-primary">Ofertas del mes</h1>
-            <hr />
+            <h1 className="fw-bold mb-4 h2">Ofertas del mes</h1>
+            
             <p>
-            ¡ShoeKingdom esta precios irresistibles este mes! Descubre una amplia
-               gama de estilos y colores en nuestra oferta especial. Desde deportivas hasta 
-               casuales, encuentra el par perfecto para cualquier ocasión. 
-               ¡No te pierdas esta oportunidad de renovar tu calzado con estilo
-                y calidad a un precio inigualable!
+              ¡No te pierdas esta oportunidad de renovar tu calzado con estilo
+              y calidad a un precio inigualable!
             </p>
           </div>
         </div>
-        <div class="row h-100">
+        <div class="row h-100 text-center py-3">
 
           <div className='class="col-12 col-md-4 p-2 mt-2'>
-            <div class="card h-100 p-3">
+            <div class="card h-100 p-3 mx-auto">
               <a href="#"><img src="./assets/img/show00004.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas de Gym</h5>
-              {/* <p class="text-center"><a class="btn btn-primary">Ver tienda</a></p> */}
-              <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
+              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
+              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
             </div>
           </div>
           <div className='class="col-12 col-md-4 p-2 mt-2'>
             <div class="card h-100 p-3">
-              <a href="#"><img src="./assets/products/show00005.png" class="rounded-circle img-fluid border" /></a>
+              <a href="#"><img src="./assets/img/show00008.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas para correr</h5>
-              {/* <p class="text-center"><a class="btn btn-primary">Ver tienda</a></p> */}
-              <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
+              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
+              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
             </div>
           </div>
           <div className='class="col-12 col-md-4 p-2 mt-2'>
             <div class="card h-100 p-3">
-              <a href="#"><img src="./assets/products/show00001.png" class="rounded-circle img-fluid border" /></a>
+              <a href="#"><img src="./assets/img/show00009.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas para senderismo</h5>
-              <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
+              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
+              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
             </div>
           </div>
 
         </div>
       </section>
-      <section class="bg-light">
+
+
+      <section class="bg-light py-5">
+        <div class="container my-4">
+          <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+              <h1 class="fw-bold mb-4 h2">Nuestras Marcas</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                Lorem ipsum dolor sit amet.
+              </p>
+            </div>
+            <div class="col-lg-9 m-auto tempaltemo-carousel">
+              <div class="row d-flex flex-row">
+
+                <div class="col-1 align-self-center">
+                  <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="prev">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="col">
+                  <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="templatemo-slide-brand" data-bs-ride="carousel">
+
+                    <div class="carousel-inner product-links-wap" role="listbox">
+
+
+                      <div class="carousel-item active">
+                        <div class="row">
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo" /></a>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="carousel-item">
+                        <div class="row">
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo" /></a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="carousel-item">
+                        <div class="row">
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo" /></a>
+                          </div>
+                          <div class="col-3 p-md-5">
+                            <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo" /></a>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-1 align-self-center">
+                  <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="next">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="colorsec">
         <div class="container py-5">
           <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-              <h1 class="h1 text-primary">Productos destacados</h1>
-              <hr />
+              <h1 class="fw-bold mb-4 h2">Productos destacados</h1>
+            
               <p>
-                Comodidad, estilo y durabilidad se fusionan en cada par. Desde tendencias urbanas hasta
-                rendimiento deportivo, encuentra el calzado perfecto que se adapta a tu estilo de vida.
+                 Zapatillas con altas puntuaciones de clientes: duraderas, cómodas,
+                  rendimiento superior para actividades deportivas y diarias.
               </p>
             </div>
           </div>
