@@ -11,7 +11,6 @@ import Cart from './Componentes/cart/Cart'
 import Checkout from './Componentes/checkout/Checkout'
 import Favorito from './Componentes/favorites/Favorites'
 import Contact from './Componentes/contact/Contact'
-import NavBar from './Componentes/navBar/NavBar'
 
 function App() {
   const [count, setCount] = useState(0)

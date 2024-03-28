@@ -4,6 +4,7 @@ nav{
     padding: 20px 25px 1px 20px;
     box-sizing:content-box;
     background-color: rgba(82, 113, 255);
+    align-items: center;
 }
 
 .navLink{
