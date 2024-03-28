@@ -1,12 +1,17 @@
 import Card from "../card/Card"
-
-const Cards = () =>{
+import './Cards.css';
+const Cards = ({allZapatillas}) =>{
     return(
         <>
-         <h1>todas las tarjetas</h1>
-         {/* {currentDogs.map((d) => (
-           <Card dogs={d}/>
-        ))} */}
+          {/* <h1>todas las tarjetas</h1> */}
+          {allZapatillas ? (
+        <div className="card-list  ">
+            {allZapatillas.map((zapatilla) =><Card zapatilla = {zapatilla} /> )   }
+        </div>
+
+          ): (
+            <span>no hay nada</span>
+          )}
         </>
        
     )

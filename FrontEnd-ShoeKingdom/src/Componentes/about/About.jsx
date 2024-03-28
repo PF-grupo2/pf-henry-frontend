@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom'
+import './About.css'
 const About = () => {
     return (
         <div>
-            <div className="container py-5 my-5">
-                <div className="row">
+            <div className="container-fluid ">
+                <div className="row p-5">
                     <div className="col-md-6">
-                        <h1 className="text-primary fw-bold mb-4">Acerca de Nosotros</h1>
+                        <h1 className=" fw-bold mb-4 h2">Acerca de Nosotros</h1>
                         <p className="lead mb-4">
-                            ShoeKingdom es una Zapatería especializada en zapatillas de alta calidad 
+                            ShoeKingdom es una Zapatería especializada en zapatillas de alta calidad
                             y estilo variado. Ofrecemos una amplia gama de marcas reconocidas
-                             y diseños exclusivos para satisfacer todos los gustos y necesidades. 
-                             Nuestro compromiso es brindar comodidad, durabilidad y moda en cada paso que des. ¡Encuentra tu par perfecto hoy mismo!
+                            y diseños exclusivos para satisfacer todos los gustos y necesidades.
+                            Nuestro compromiso es brindar comodidad, durabilidad y moda en cada paso que des. ¡Encuentra tu par perfecto hoy mismo!
                         </p>
                         <NavLink to="/contact" className="btn btn-outline-primary px-3">Contactanos</NavLink>
                     </div>
@@ -18,6 +19,93 @@ const About = () => {
                         <img src="/assets/about.jpg" alt="About Us" height="400px" width="600px" />
                     </div>
                 </div>
+
+                <section class="container-proyectos py-5" id="proyectos">
+                    <h1 class="text-center fw-bold mb-4 h2">Equipo Developer</h1>
+                    <div class="container">
+                        <div class="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="col-lg-12  justify-content-center">
+                                <p class="mb-5 parrafo  text-black text-center justify-content-center">El equipo que union conocimiento y tiempo para realizar este proyecto
+                                 tan enriquecedor para todos nosotros</p>
+                            </div>
+                        </div>
+                        <div class="row g-2 justify-content-center align-items-center portfolio-container wow fadeInUp align-items-center text-center" data-wow-delay="0.1s">
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>  
+                             <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 portfolio-item first">
+                                <div class="portfolio-img rounded overflow-hidden">
+                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div class="portfolio-btn align-items-center">
+                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                  
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     )

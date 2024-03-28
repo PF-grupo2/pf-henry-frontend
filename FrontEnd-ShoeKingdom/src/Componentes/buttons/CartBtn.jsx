@@ -3,7 +3,7 @@
  import { useSelector } from 'react-redux'
 
 const CartBtn = () => {
-     //const state = useSelector((state)=> state.addItem)
+     const state = useSelector((state)=> state.addItem)
      return (
          <>
          <NavLink to='/cart' className="btn ms-2 p-1">

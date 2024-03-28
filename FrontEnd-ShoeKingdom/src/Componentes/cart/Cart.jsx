@@ -37,6 +37,7 @@ const Cart = () => {
                     <div className='row'>
                         <h3>Tu carrito está vacío</h3>
                     </div>
+                    <NavLink  to="/product"><button className="btn btn-outline-primary">Volver a la Tienda</button></NavLink >
                 </div>
             </div>
         )
