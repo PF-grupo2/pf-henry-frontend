@@ -1,5 +1,6 @@
 
-import { ADDITEM, DELITEM,GET_DETAIL,CLEAR_DETAIL} from "./action-types";
+
+import { ADDITEM, DELITEM} from "./action-types";
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
@@ -12,6 +13,8 @@ export const GET_ZAPATILLAS = "GET_ZAPATILLAS";
 export const FILTER = "FILTER";
 export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME";
 export const LOADING = 'LOADING';
+export const CLEAR_DETAIL= 'CLEAR_DETAIL';
+export const GET_DETAIL = 'GET_DETAIL';
 
 
 
