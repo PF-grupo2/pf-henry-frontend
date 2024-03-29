@@ -1,6 +1,5 @@
 
-
-import { ADDITEM, DELITEM} from "./action-types";
+import { ADDITEM, DELITEM,GET_DETAIL,CLEAR_DETAIL} from "./action-types";
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
@@ -15,30 +14,6 @@ export const GET_PRODUCT_BY_NAME = "GET_PRODUCT_BY_NAME";
 export const LOADING = 'LOADING';
 export const CLEAR_DETAIL= 'CLEAR_DETAIL';
 export const GET_DETAIL = 'GET_DETAIL';
-export const GET_GENDER = 'GET_GENDER';
-export const GET_FILTERS_ARRAY = "GET_FILTERS_ARRAY"
-
-
-
-
-export const getGender = (nombre) => {
-  console.log("acción de categorías");
-  return async function(dispatch){
-  
-    const gender = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
-
-    // const filteredData = DATA.filter(item => item.brand === nombre);
-    console.log("lo que consigue",gender );
-    if(gender.length > 0){
-      return dispatch({
-        type: GET_GENDER,
-        payload: gender
-      });
-    } else {
-      console.log("No se encontraron objetos con ese nombre de marca.");
-    }
-    }
-  };
 
 
 
