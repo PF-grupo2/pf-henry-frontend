@@ -1,16 +1,25 @@
 nav{
     display: flex;
     justify-content: space-around;
-    padding: 25px 35px 1px 25px;
-    box-sizing: border-box;
+    padding: 20px 25px 1px 20px;
+    box-sizing:content-box;
     background-color: rgba(82, 113, 255);
     color: white;
     align-content:center;
+    align-items: center;
+}
+
+.navLink{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .image{
-    width: 100px;
-    height: 80px;
+    width: 140px;
+    height: 90px;
+    margin-top: -15px;
+    margin-bottom: 5px;
     background: none;
     border: none;
     cursor: pointer;

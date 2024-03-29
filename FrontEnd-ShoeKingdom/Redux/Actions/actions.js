@@ -141,7 +141,7 @@ export const addItem = (product) => {
         type : ADDITEM,
         payload : product
     }
-}
+};
 
 export const delItem = (product) => {
     return {
