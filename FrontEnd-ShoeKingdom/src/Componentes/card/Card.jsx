@@ -4,8 +4,32 @@ import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
 import './Card.css';
 
+// const cardItem = (item) =>{
 
-import React, { useEffect } from 'react';
+//     console.log("a card", item);
+    
+//     return (
+//             <div className="card my-3 py-2" key={item.id} style={{ width: "18rem" }}>
+//                 <div className='d-flex align-items-center justify-content-between'>
+//                 <span className='fa fa-shopping-cart me-1'></span>
+//                 <span className='fa fa-heart me-1'></span>
+//                 </div>
+                
+//                 <img src={item.images[0]} className="card-img-top imagen" alt={item.name} />
+//                 <div class="card-body text-center">
+//                     <h5 class="card-title">{item.name}</h5>
+//                     <p className="lead">${item.price}</p>
+//                     <NavLink to={`/product/${item.id}`} className="btn btn-outline-primary">Ver detalles</NavLink>
+//                 </div>
+//             </div>
+//         );
+  
+// }
+
+//export default cardItem
+
+
+import React from 'react';
 import './Card.css';
 
 
@@ -15,7 +39,7 @@ function Card({ zapatilla }) {
     return null; 
   }
 
-  const {id, name, price, description,stock, offer, scoreAvg, status, brand, images , gender} = zapatilla;
+  const {id, name, price, description,stock, offer, scoreAvg, status, brand, images } = zapatilla;
 
   // console.log("estoy en card", zapatilla)
 
@@ -30,8 +54,6 @@ function Card({ zapatilla }) {
                  </div>
             <img className='imagen' src={images[0]}  />
             <p>Nombre: {name} </p>
-            <p>Genero: {gender} </p>
-            
             <p>precio: {price} </p>
          
 
