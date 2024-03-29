@@ -5,8 +5,8 @@ import '/public/assets/js/ecommerce.js';
 import '/public/assets/css/ecommerce.css'
 import Filter from '../filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useState, useEffect } from 'react';
-import { getZapatilla } from '../../../Redux/Actions/actions';
+import React, { useState, useEffect, useRef } from 'react';
+import { getZapatilla, getFiltersArray } from '../../../Redux/Actions/actions';
 // import * as actions from '../../../Redux/Actions/categories';
 // const { getZapatilla } = actions;
 
@@ -19,6 +19,9 @@ const Product = () => {
     const  zapatilla = useSelector((state) => state.zapatilla);
     const  allZapatillas = useSelector((state) => state.allZapatilla);
 
+//    const brands = useRef()
+    const {filters2, setFilters2} = useState([])
+
     console.log("lo que llega de reducer al product", filter)
     console.log("lo que llega de reducer al product", zapatilla)
     console.log("lo que llega de reducer al product", allZapatillas)
@@ -27,7 +30,11 @@ const Product = () => {
         dispatch(getZapatilla());
       }, [dispatch]);
     
- 
+    const handleFilter = (e)=>{
+        const value = e.target.value;
+//        dispatch(getFiltersArray(value))
+        dispatch(getZapatilla(value))
+    }
     return (
         <div>
             <div className="container-fluid">
@@ -63,6 +70,22 @@ const Product = () => {
                     </div>
 
                 </div>
+            </div>
+            <div>
+                <form>
+                    <label>
+                        Brand
+                    </label>
+                    <select 
+                        onChange={handleFilter}
+                        ref={brands}
+                    >
+                        <optgroup>
+                            <option value="" selected>All</option>
+                            <option value="brand[]=Nike">Nike</option>
+                        </optgroup>
+                    </select>
+                </form>
             </div>
         </div>
     )

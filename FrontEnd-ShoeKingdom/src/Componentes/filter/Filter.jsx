@@ -3,17 +3,23 @@ import DATA from '../../Data';
 
 
 import {
-    getfilter
-  } from "../../../Redux/Actions/categories";
+    getfilter, getGender
+  } from "../../../Redux/Actions/actions";
 
 
 function Filter() {
     const dispatch = useDispatch();
 
-    const handlerFilterGenero = (value) => {
+    const  handlerFilterMarca = (value) => {
         console.log("Que seleciona", value)
          dispatch(getfilter(value));
       };
+    
+      const  handlerFilterGender = (value) => {
+        console.log("Que seleciona", value)
+         dispatch(getGender(value));
+      };
+
 
     return (
         <>
@@ -24,10 +30,10 @@ function Filter() {
                         <i className="fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                         <ul className="collapse show list-unstyled pl-3">
-                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Todos")}>Todos</a></li>
-                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Hombre")}>Hombre</a></li>
-                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Mujer")}>Mujer</a></li>
-                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Otros")}>Unixes</a></li>
+                       
+                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGender("Hombre")}>Hombre</a></li>
+                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGender("Mujer")}>Mujer</a></li>
+                            <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGender("Unisex")}>Unixes</a></li>
                         </ul>
                 </li>
                 <li className="pb-3">
@@ -35,18 +41,6 @@ function Filter() {
                         Estilo
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-                    {/* <ul id="collapseTwo" className="collapse list-unstyled pl-3">
-                        <li><a className="text-decoration-none" href="#">Basquet</a></li>
-                        <li><a className="text-decoration-none" href="#">Futbol</a></li>
-                        <li><a className="text-decoration-none" href="#">Hockey</a></li>
-                        <li><a className="text-decoration-none" href="#">Motorsport</a></li>
-                        <li><a className="text-decoration-none" href="#">Natacion</a></li>
-                        <li><a className="text-decoration-none" href="#">Outdoor</a></li>
-                        <li><a className="text-decoration-none" href="#">Running</a></li>
-                        <li><a className="text-decoration-none" href="#">Tenis</a></li>
-                        <li><a className="text-decoration-none" href="#">Training</a></li>
-                    </ul> */}
-
                     <ul id="collapseTwo" className="collapse list-unstyled pl-3">
                         <li>
                             <input type="checkbox" id="basquet" />
@@ -92,18 +86,18 @@ function Filter() {
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul className="collapse show list-unstyled pl-3">
-                        {/* <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("todas")}>Todas</a></li> */}
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Nike")}>Nike</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Adidas")}>Adidas</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Puma")}>Puma</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Reebok")}>Reebok</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Asics")}>Asics</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Merrell")}>Merrell</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("New balance")}>New balance</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Under Armour")}>Under Armour</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Mizuno")}>Mizuno</a></li>                    
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("brooks")}>brooks</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Timberland")}>Timberland</a></li>
+                     
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Nike")}>Nike</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Adidas")}>Adidas</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Puma")}>Puma</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Reebok")}>Reebok</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Asics")}>Asics</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Merrell")}>Merrell</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("New balance")}>New balance</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Under Armour")}>Under Armour</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Mizuno")}>Mizuno</a></li>                    
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("brooks")}>brooks</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Timberland")}>Timberland</a></li>
                      </ul>    
                 </li>
                 <li className="pb-3">
@@ -111,13 +105,7 @@ function Filter() {
                         Talla
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-                    {/* <ul id="collapseFour" className="collapse list-unstyled pl-3">
-                        <li><a className="text-decoration-none" href="#">40-41</a></li>
-                        <li><a className="text-decoration-none" href="#">41-42</a></li>
-                        <li><a className="text-decoration-none" href="#">42-43</a></li>
-                        <li><a className="text-decoration-none" href="#">43-44</a></li>
-                        <li><a className="text-decoration-none" href="#">44-45</a></li>
-                    </ul> */}
+               
                     <ul id="collapseFour" className="collapse list-unstyled pl-3">
 
                     <li>

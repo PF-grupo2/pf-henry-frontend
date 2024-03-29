@@ -4,6 +4,8 @@ nav{
     padding: 25px 35px 1px 25px;
     box-sizing: border-box;
     background-color: rgba(82, 113, 255);
+    color: white;
+    align-content:center;
 }
 
 .image{
