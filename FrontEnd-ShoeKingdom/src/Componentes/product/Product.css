@@ -1,0 +1,12 @@
+.custom-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .custom-select {
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
