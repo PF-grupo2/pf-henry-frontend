@@ -107,24 +107,25 @@ const Home = () => {
             <div class="card h-100 p-3 mx-auto">
               <a href="#"><img src="./assets/img/show00004.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas de Gym</h5>
-              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
-              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
+           
+              <p class="text-center"><NavLink className=" btn btn-outline-primary " to="/product">Ver tienda</NavLink></p>
+          
             </div>
           </div>
           <div className='class="col-12 col-md-4 p-2 mt-2'>
             <div class="card h-100 p-3">
               <a href="#"><img src="./assets/img/show00008.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas para correr</h5>
-              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
-              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
+              <p class="text-center"><NavLink className=" btn btn-outline-primary " to="/product">Ver tienda</NavLink></p>
+       
             </div>
           </div>
           <div className='class="col-12 col-md-4 p-2 mt-2'>
             <div class="card h-100 p-3">
               <a href="#"><img src="./assets/img/show00009.png" class="rounded-circle img-fluid border" /></a>
               <h5 class="text-center mt-3 mb-3">Zapatillas para senderismo</h5>
-              <p class="text-center"><a class="btn btn-outline-primary">Ver tienda</a></p>
-              {/* <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink> */}
+              <p class="text-center"><NavLink className=" btn btn-outline-primary " to="/product">Ver tienda</NavLink></p>
+        
             </div>
           </div>
 

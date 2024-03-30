@@ -86,18 +86,18 @@ function Filter() {
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
                     <ul className="collapse show list-unstyled pl-3">
-                     
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Nike")}>Nike</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Adidas")}>Adidas</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Puma")}>Puma</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Reebok")}>Reebok</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Asics")}>Asics</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Merrell")}>Merrell</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("New balance")}>New balance</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Under Armour")}>Under Armour</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Mizuno")}>Mizuno</a></li>                    
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("brooks")}>brooks</a></li>
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterMarca("Timberland")}>Timberland</a></li>
+                        {/* <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("todas")}>Todas</a></li> */}
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Nike")}>Nike</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Adidas")}>Adidas</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Puma")}>Puma</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Reebok")}>Reebok</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Asics")}>Asics</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Merrell")}>Merrell</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("New balance")}>New balance</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Under Armour")}>Under Armour</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Mizuno")}>Mizuno</a></li>                    
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Brooks")}>Brooks</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Timberland")}>Timberland</a></li>
                      </ul>    
                 </li>
                 <li className="pb-3">

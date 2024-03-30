@@ -73,90 +73,145 @@ const Product = () => {
     return (
         <div>
             <div className="container-fluid">
-                <div class="row">
+                <div class="row  justify-content-center align-items-center">
 
                     {/* <div class="col-lg-3 izquierda py-5 px-5">
                         <h2 class="h3 pb-4">Categorias</h2>
                         <Filter/>
                         </div> */}
+                 
 
-                    <div>
-                        <form>
-                            <label>
-                                Brand
-                            </label>
-                            <select
-                                onChange={handleFilter}
-                                ref={brands}
-                                 multiple
-                            >
-                                <optgroup>
-                                    <option value="" selected>All</option>
-                                    <option value="brand[]=Nike">Nike</option>
-                                    <option value="brand[]=Puma">Puma</option>
-                                </optgroup>
-                            </select>
-                            <label>
-                                Size
-                            </label>
+                    <div class="col-lg-12 filtros">
+                        <div className='row ' >
+                            <div className='col custom-select'>
+                                <label className='custom-label'>
+                                    Marca
+                                </label>
+                                <select
+                                    onChange={handleFilter}
+                                    ref={brands}
+                                //  multiple
+                                >
+                                    <optgroup>
+                                        <option value="" selected>All</option>
+                                        <option value="brand[]=Nike">Nike</option>
+                                        <option value="brand[]=Puma">Puma</option>
+                                        <option value="brand[]=Adidas">Adidas</option>
+                                        <option value="brand[]=Reebok">Reebok</option>
+                                        <option value="brand[]=Asics">Asics</option>
+                                        <option value="brand[]=Merrell">Merrell</option>
+                                        <option value="brand[]=New balance">New balance</option>
+                                        <option value="brand[]=Under Armour">Under Armour</option>
+                                        <option value="brand[]=Mizuno">Mizuno</option>
+                                        <option value="brand[]=Brooks">Brooks</option>
+                                        <option value="brand[]=Skechers">Skechers</option>
+                                        <option value="brand[]=Columbia">Columbia</option>
+                                        <option value="brand[]=Hoka One One">Hoka One One</option>
+                                        <option value="brand[]=Keen">Keen</option>
+                                        <option value="brand[]=Under Armour">Under Armour</option>
+                                    </optgroup>
+                                </select>
 
-                            <select
-                                onChange={handleFilter}
-                                ref={sizes}
-                                multiple
-                            >
-                                <optgroup>
-                                    <option value="" selected>All</option>
-                                    <option value="size[]=40">40</option>
-                                    <option value="size[]=42">42</option>
-                                </optgroup>
-                            </select>
-                            <label>
-                                Gender
-                            </label>
-                            <select
-                                onChange={handleFilter}
-                                ref={genders}
-                                multiple
-                            >
-                                <optgroup>
-                                    <option value="" selected>All</option>
-                                    <option value="gender[]=Hombre">masculino</option>
-                                    <option value="gender[]=Mujer">femenino</option>
-                                </optgroup>
-                            </select>
-                            <label>
-                                Style
-                            </label>
-                            <select
-                                onChange={handleFilter}
-                                ref={styles}
-                                multiple
-                            >
-                                <optgroup>
-                                    <option value="" selected>All</option>
-                                    <option value="style[]=Outdoor">outdoor</option>
-                                    <option value="style[]=Tenis">tenis</option>
-                                </optgroup>
-                            </select>
-                            <label>
-                                Color
-                            </label>
-                            <select
-                                onChange={handleFilter}
-                                ref={colors}
-                                multiple
-                            >
-                                <optgroup>
-                                    <option value="" selected>All</option>
-                                    <option value="color[]=Blanco">Blanco</option>
-                                    <option value="color[]=Negro">Negro</option>
-                                </optgroup>
-                            </select>
-                        </form>
+                            </div>
+
+                            <div className='col custom-select '>
+                                <label className='custom-label'>
+                                    Talla
+                                </label>
+
+                                <select
+                                    onChange={handleFilter}
+                                    ref={sizes}
+                                // multiple
+                                >
+                                    <optgroup>
+                                        <option value="" selected>All</option>
+                                        <option value="size[]=37">37</option>
+                                        <option value="size[]=38">38</option>
+                                        <option value="size[]=39">39</option>
+                                        <option value="size[]=40">40</option>
+                                        <option value="size[]=41">41</option>
+                                        <option value="size[]=42">42</option>
+                                        <option value="size[]=43">43</option>
+                                        <option value="size[]=44">44</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div className='col custom-select'>
+
+                                <label className='custom-label'>
+                                    Genero
+                                </label>
+                                <select
+                                    onChange={handleFilter}
+                                    ref={genders}
+                                // multiple
+                                >
+                                    <optgroup>
+                                        <option value="" selected>All</option>
+                                        <option value="gender[]=Hombre">Masculino</option>
+                                        <option value="gender[]=Mujer">Femenino</option>
+                                        <option value="gender[]=Unisex">Unisex</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+
+                            <div className='col custom-select'>
+                                <label className='custom-label'>
+                                    Estilo
+                                </label>
+                                <select
+                                    onChange={handleFilter}
+                                    ref={styles}
+                                // multiple
+                                >
+                                    <optgroup>
+                                        <option value="" selected>All</option>
+                                        <option value="style[]=Outdoor">outdoor</option>
+                                        <option value="style[]=Tenis">tenis</option>
+                                        <option value="style[]=Basquet">Basquet</option>
+                                        <option value="style[]=Futbol">Futbol</option>
+                                        <option value="style[]=Hockey">Hockey</option>
+                                        <option value="style[]=Motosport">Motosport</option>
+                                        <option value="style[]=Natacion">Natacion</option>
+                                        <option value="style[]=Running">Running</option>
+                                        <option value="style[]=Tenis">Tenis</option>
+                                        <option value="style[]=Training">Training</option>
+                                    </optgroup>
+                                </select>
+
+                            </div>
+
+                            <div className='col custom-select'>
+                                <label className='custom-label'>
+                                    Color
+                                </label>
+                                <select
+                                    onChange={handleFilter}
+                                    ref={colors}
+                                // multiple
+                                >
+                                    <optgroup>
+                                        <option value="" selected>All</option>
+                                        <option value="color[]=Blanco">Blanco</option>
+                                        <option value="color[]=Negro">Negro</option>
+                                        <option value="color[]=Azul">Azul</option>
+                                        <option value="color[]=Amarillo">Amarillo</option>
+                                        <option value="color[]=Gris">Gris</option>
+                                        <option value="color[]=Verde">Verde</option>
+                                        <option value="color[]=Rojo">Rojo</option>
+                                        <option value="color[]=Rosado">Rosado</option>
+                                        <option value="color[]=Violeta">Violeta</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <div class="col-lg-12 justify-content-center align-items-center align-items-center">
+                    <div class="col-lg-12 justify-content-center align-items-center">
 
                         <div class="row">
                             <div class="col-md-6">
@@ -204,9 +259,8 @@ const Product = () => {
                 </form>
             </div>
 
+
         </div>
-
-
     )
 }
 

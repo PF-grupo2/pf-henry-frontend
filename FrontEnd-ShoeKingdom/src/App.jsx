@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       {/* <Header/> */}
-      <NavBar/>
+      <Header/>
       <Routes>
             <Route path="/product" element={<Product/>} />
             <Route path="/product/:id" element={<ProductDetail/>} />
