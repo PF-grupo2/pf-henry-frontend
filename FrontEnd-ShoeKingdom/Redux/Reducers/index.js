@@ -1,5 +1,6 @@
 import { Form } from "react-router-dom";
-import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING, GET_DETAIL, CLEAR_DETAIL } from "../../Redux/Actions/actions";
+import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING, GET_DETAIL, CLEAR_DETAIL, GET_GENDER, GET_FILTERS_ARRAY } from "../../Redux/Actions/actions";
+
 
 
 
