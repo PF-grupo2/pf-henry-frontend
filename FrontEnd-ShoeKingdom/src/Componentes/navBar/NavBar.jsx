@@ -1,33 +1,32 @@
-// const NavBar = () =>{
-//     <div>esto es NavBar</div>
-// }
-
-// export default NavBar
-
 import './NavBar.css';
+import { NavLink } from 'react-router-dom';
 import SearchBar from '../searchBar/SearchBar';
 import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
 import Login from '../buttons/Login';
 import Signup from '../buttons/Signup';
-import Logo from '../../../public/assets/Logo.png';
+import Logo from '../images/Logo.png';
+import { useDispatch } from 'react-redux';
+//import { getAllProducts } from '../../../Redux/Actions/actions';
 
+const NavBar = () => {
+    // const dispatch = useDispatch();
+    // const handleClick = (event) => {
+    //     dispatch(getAllProducts());
+    // };
 
-
-const NavBar = () =>{
     return (
         <nav className='nav'>
-             <img className='image' src={Logo}/>
-             <h12>Inicio</h12>
-             <br></br>
-             <h12>Acerca</h12>
-             <br></br>
-             <h12>Contáctanos</h12>
+            <img className='image' src={Logo} />{/*onClick={handleClick} */}
+            <NavLink className='navLink' to='/'>Inicio</NavLink>
+            <NavLink className='navLink' to='/about'>Acerca</NavLink>
+            <NavLink className='navLink' to='/product'>Tienda</NavLink>
+            <NavLink className='navLink' to='/contact'>Contactanos</NavLink>
             <SearchBar />
             <Login />
             <Signup />
             <Favorito />
-            <CartBtn/>
+            <CartBtn />
         </nav>
     )
 }

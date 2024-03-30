@@ -52,6 +52,23 @@ const Product = () => {
         const formatFilters = formatBrands + "&" + formatSizes + "&" + formatGenders + "&" + formatStyles + "&" + formatColors
 
         dispatch(getZapatilla(formatFilters))
+
+//    const brands = useRef()
+    const {filters2, setFilters2} = useState([])
+
+    console.log("lo que llega de reducer al product", filter)
+    console.log("lo que llega de reducer al product", zapatilla)
+    console.log("lo que llega de reducer al product", allZapatillas)
+
+    useEffect(() => {
+        dispatch(getZapatilla());
+      }, [dispatch]);
+    
+    const handleFilter = (e)=>{
+        const value = e.target.value;
+//        dispatch(getFiltersArray(value))
+        dispatch(getZapatilla(value))
+
     }
     return (
         <div>
@@ -224,6 +241,25 @@ const Product = () => {
 
                 </div>
             </div>
+
+            <div>
+                <form>
+                    <label>
+                        Brand
+                    </label>
+                    <select 
+                        onChange={handleFilter}
+                        ref={brands}
+                    >
+                        <optgroup>
+                            <option value="" selected>All</option>
+                            <option value="brand[]=Nike">Nike</option>
+                        </optgroup>
+                    </select>
+                </form>
+            </div>
+
+
         </div>
     )
 }
