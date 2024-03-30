@@ -21,8 +21,8 @@ const SearchBar = () => {
     return (
         <form onSubmit={(event) => handleSubmit(event)}>
             <div>
-                <input className='searchBox' type='text' placeholder='Buscar por nombre o marca' value={name} onChange={(event) => handleChange(event)} />
-                <button className='searchButton' type='submit'>Buscar</button>
+                <input className='searchBox ' type='text' placeholder='Nombre o Marca' value={name} onChange={(event) => handleChange(event)} />
+                <button className='searchButton ' type='submit'><i class="fa fa-search" aria-hidden="true"></i></button>
             </div>
         </form>
     )

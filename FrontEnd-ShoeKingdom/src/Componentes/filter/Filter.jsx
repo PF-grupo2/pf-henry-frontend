@@ -102,7 +102,7 @@ function Filter() {
                         <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("New balance")}>New balance</a></li>
                         <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Under Armour")}>Under Armour</a></li>
                         <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Mizuno")}>Mizuno</a></li>                    
-                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("brooks")}>brooks</a></li>
+                        <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Brooks")}>Brooks</a></li>
                         <li><a className="text-decoration-none" href="#" onClick={() => handlerFilterGenero("Timberland")}>Timberland</a></li>
                      </ul>    
                 </li>

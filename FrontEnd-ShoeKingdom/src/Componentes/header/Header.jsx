@@ -3,6 +3,7 @@ import Login from '../buttons/Login';
 import Signup from '../buttons/Signup';
 import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
+import SearchBar from '../searchBar/SearchBar';
 
 const Header = () => {
     return (
@@ -41,6 +42,7 @@ const Header = () => {
                         </div> */}
 
                         <div className='d-flex align-items-center justify-content-between'>
+                           <SearchBar />
                             <Login />
                             <Signup />
                             <Favorito />

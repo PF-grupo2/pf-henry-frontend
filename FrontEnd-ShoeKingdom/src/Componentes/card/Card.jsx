@@ -39,7 +39,7 @@ function Card({ zapatilla }) {
     return null; 
   }
 
-  const {id, name, price, description,stock, offer, scoreAvg, status, brand, images } = zapatilla;
+  const {id, name, price, description,stock, offer, scoreAvg, status, brand, images,  style, gender} = zapatilla;
 
   // console.log("estoy en card", zapatilla)
 
@@ -54,6 +54,9 @@ function Card({ zapatilla }) {
                  </div>
             <img className='imagen' src={images[0]}  />
             <p>Nombre: {name} </p>
+            <p>Estilo: {style} </p>
+            <p>Genero: {gender} </p>
+            <p>Marca: {brand} </p>
             <p>precio: {price} </p>
          
 
