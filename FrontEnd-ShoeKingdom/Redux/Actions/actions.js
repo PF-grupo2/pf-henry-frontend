@@ -25,9 +25,7 @@ export const getGender = (nombre) => {
   return async function(dispatch){
   
     const gender = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
-
     // const filteredData = DATA.filter(item => item.brand === nombre);
-    console.log("lo que consigue",gender );
     if(gender.length > 0){
       return dispatch({
         type: GET_GENDER,
@@ -60,10 +58,10 @@ export const getfilter = (nombre) => {
     }
   };
 
-  export const getZapatilla = (filters) => {
+  export const getZapatilla = (filters, page=1) => {
     return async function (dispatch) {
-      let productData = await (await axios("http://localhost:3000/api/v1/products/listProducts/all/1/filters?")).data
-      if(filters) productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?`+filters)).data
+      let productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/9/${page}/filters?`)).data
+      if(filters) productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
 
       // const productData = DATA;
       console.log("estoy en action producto",productData.products);
@@ -110,11 +108,13 @@ export const getfilter = (nombre) => {
             //  const { data } = await axios(${URL_SEARCHBAR}?name=${name});
             // DATA.filter(item => item.name === name);
             
-            const {data} =await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?search=${name}`);
+            // const {data} =await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?search=${name}`);
+
+  
            
-            console.log("elvalor de data en action", data)
+            console.log("elvalor de data en action", name)
             dispatch({ type: GET_PRODUCT_BY_NAME,
-                       payload: data.products})
+                       payload:name})
         } catch (error) {
             console.log('No se encontraron resultados');
             dispatch({ type: GET_PRODUCT_BY_NAME, payload: [] })

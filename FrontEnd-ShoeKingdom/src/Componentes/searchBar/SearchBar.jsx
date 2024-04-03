@@ -1,9 +1,11 @@
 import './SearchBar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProductByName } from '../../../Redux/Actions/actions';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
+    const navigate= useNavigate()
     const dispatch = useDispatch();
     const [name, setName] = useState("");
 
@@ -11,12 +13,14 @@ const SearchBar = () => {
         setName(event.target.value);
     }
 
+    //useEffect(handleSubmit, [name.length])
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (name.length) {
+        //if (name.length) {
             dispatch(getProductByName(name))
             setName("")
-        }
+            navigate('/product')
+       // }
     }
     return (
         <form onSubmit={(event) => handleSubmit(event)}>
