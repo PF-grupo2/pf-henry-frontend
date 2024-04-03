@@ -7,10 +7,8 @@ import Filter from '../filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
 import { getZapatilla, getFiltersArray } from '../../../Redux/Actions/actions';
-import Pagination from '../pagination/Pagination';
 import { getProductByName } from '../../../Redux/Actions/actions';
 
-import './Product.css'
 
 
 const Product = () => {
@@ -267,12 +265,6 @@ const Product = () => {
                             next
                         </button>
                     </div>
-
-                    {/* <Pagination
-                        totalPages={5} // Reemplaza '5' con el número total de páginas
-                        currentPage={1} // Reemplaza '1' con la página actual
-                        onPageChange={handlePageChange}
-                    /> */}
 
                 </div>
             </div>
