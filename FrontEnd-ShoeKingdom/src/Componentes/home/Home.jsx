@@ -1,6 +1,4 @@
 import React from 'react'
-//import imagen from '/assets/foto7.jpg';
-// import imagen1 from '/assets/foto2.jpg';
 import imagen2 from '/assets/foto3.jpg';
 import Product from '../product/Product';
 import { NavLink } from 'react-router-dom';
@@ -13,23 +11,23 @@ const Home = () => {
       <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active  fondo1 fondo-slide1">
-            <div className="container-fluid ">
+            <div className="container-fluid  ">
               <div className="row ">
-                {/* <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
-                  <img className="img-fluid" src="./assets/img/slide1.png" alt="" />
+                 <div className="mx-auto col-md-8 col-lg-6 order-lg-last">
+                  {/* <img className="img-fluid" src="./assets/img/slide1.png" alt="" /> */}
                 </div>
-                <div className="col-lg-6 mb-0 d-flex align-items-left">
+                 <div className="col-lg-12 d-flex  justify-content-center  justify-content-center align-items-center">
                   <div>
-                    <h1 className="titulo text-primary"><b> ShoeKingdom </b></h1>
+                    {/* <h1 className="titulo text-primary"><b> ShoeKingdom </b></h1>
                     <hr />
                     <p>
                       Tenemos una amplia y variedad de marcas y estilos de zapatillas
                       para todas las ocasiones. Ya sea que busques zapatillas deportivas,
                       casuales o elegantes, tenemos lo que necesitas.
-                    </p>
-                    <NavLink className=" btn btn-primary px-3 py-2 " to="/product">Ver tienda</NavLink>
+                    </p>  */}
+                     {/* <NavLink className=" btn btn-primary" to="/product">Ver tienda</NavLink> */}
                   </div>
-                </div> */}
+                </div> 
               </div>
             </div>
           </div>

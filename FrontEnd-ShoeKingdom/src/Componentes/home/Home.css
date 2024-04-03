@@ -1,0 +1,7 @@
+.carrusel_boton{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    padding-top: 50px;
+}

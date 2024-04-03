@@ -6,6 +6,7 @@ import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING, GET_DETAIL, CLEAR
 
 const initialState = {
     allZapatilla: [],
+    allZapatillaBackup: [],
     zapatilla: [],
     filter: false,
     loading: false,
@@ -15,16 +16,34 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     console.log("ejecuta la funcion")
+   
     switch (action.type) {
         case GET_ZAPATILLAS:
 
-            console.log("reducer entro", action.payload.products)
-            return {
-                ...state,
-                allZapatilla: action.payload.products,
-                filter: false,
+            console.log("reducer entro", action.payload)
+            const todosfiltros = action.payload.products
+            if (todosfiltros.length === 0) {
+            console.log("no consiguio")
+            alert("no hay zapatillas con ese filtrado")
+                return{
+                    ...state,
+                 allZapatilla: action.payload.products, //se elimina .products del payload 31/3 20h
+                 filter: false,
+               }
+            }
+              {
 
-            };
+                return {
+                    ...state,
+                    allZapatilla: action.payload,
+                    filter: false,
+    
+                };
+
+
+            }
+        
+        
 
         case GET_FILTERS_ARRAY:
             console.log(payload);

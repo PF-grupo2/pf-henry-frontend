@@ -3,10 +3,9 @@ import {NavLink} from 'react-router-dom';
 import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
 import './Card.css';
-
-
 import React, { useEffect } from 'react';
-import './Card.css';
+
+
 
 
 function Card({ zapatilla }) {
@@ -15,10 +14,11 @@ function Card({ zapatilla }) {
     return null; 
   }
 
+
  const {id, name, price, description,stock, offer, scoreAvg, status, brand, images,  style, gender} = zapatilla;
 
 
-  // console.log("estoy en card", zapatilla)
+
 
   return (
     <>
@@ -31,10 +31,11 @@ function Card({ zapatilla }) {
                  </div>
             <img className='imagen' src={images[0]}  />
             <p>Nombre: {name} </p>
-            <p>Estilo: {style} </p>
+            {/* <p>Estilo: {style} </p>
             <p>Genero: {gender} </p>
-            <p>Marca: {brand} </p>
+            <p>Marca: {brand} </p> */}
             <p>precio: {price} </p>
+            {/* <p>Talle:{size}</p> */}
          
 
             {/* <NavLink to={`/product/${id}`}><button className='boton1'><i className="fa-solid fa-eye"></i></button></NavLink> */}

@@ -7,8 +7,8 @@ import Filter from '../filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
 import { getZapatilla, getFiltersArray } from '../../../Redux/Actions/actions';
-// import * as actions from '../../../Redux/Actions/categories';
-// const { getZapatilla } = actions;
+import Pagination from '../pagination/Pagination';
+import { getProductByName } from '../../../Redux/Actions/actions';
 
 import './Product.css'
 
@@ -19,21 +19,28 @@ const Product = () => {
     const zapatilla = useSelector((state) => state.zapatilla);
     const allZapatillas = useSelector((state) => state.allZapatilla);
 
+    const [page, setPage] = useState(1)
+
     const brands = useRef()
     const sizes = useRef()
     const genders = useRef()
     const styles = useRef()
     const colors = useRef()
 
-    // console.log("lo que llega de reducer al product", filter)
-    // console.log("lo que llega de reducer al product", zapatilla)
-    // console.log("lo que llega de reducer al product", allZapatillas)
+    //console.log("lo que llega de reducer al product", filter)
+    console.log("zapatilla", zapatilla)
+    console.log("lo que llega de reducer al product", allZapatillas)
 
     useEffect(() => {
         dispatch(getZapatilla());
-    }, [dispatch]);
+    }, []);
+    useEffect(() => {
+        handleFilter();
+    }, [dispatch, page, zapatilla]);
 
-    const handleFilter = (e) => {
+
+
+    const handleFilter = () => {
         const selectedBrands = Array.from(brands.current.selectedOptions, option => option.value)
         const formatBrands = selectedBrands.join("&")
 
@@ -49,8 +56,39 @@ const Product = () => {
         const selectedColors = Array.from(colors.current.selectedOptions, option => option.value)
         const formatColors = selectedColors.join("&")
 
-        const formatFilters = formatBrands + "&" + formatSizes + "&" + formatGenders + "&" + formatStyles + "&" + formatColors
+        let formatFilters
 
+        formatFilters = formatBrands + "&" + formatSizes + "&" + formatGenders + "&" + formatStyles + "&" + formatColors
+        if (zapatilla.length > 0) formatFilters += `&search=${zapatilla}`
+
+        dispatch(getZapatilla(formatFilters, page));
+    }
+
+    const resetFilters = () => {
+        brands.current.selectedIndex = 0;
+        sizes.current.selectedIndex = 0;
+        genders.current.selectedIndex = 0;
+        colors.current.selectedIndex = 0;
+        styles.current.selectedIndex = 0;
+        setPage(1);
+        dispatch(getProductByName(""))
+        handleFilter();
+    }
+
+
+    useEffect(() => {
+        if (allZapatillas.length === 0) resetFilters();
+    }, [allZapatillas.products]);
+
+
+
+    const handlePageChangeNext = () => {
+        setPage(page + 1);
+        // handleFilter();
+    }
+    const handlePageChangeBack = () => {
+        setPage(page - 1);
+        // handleFilter();
         dispatch(getZapatilla(formatFilters))
 
 //    const brands = useRef()
@@ -69,7 +107,9 @@ const Product = () => {
 //        dispatch(getFiltersArray(value))
         dispatch(getZapatilla(value))
 
+
     }
+
     return (
         <div>
             <div className="container-fluid">
@@ -79,11 +119,11 @@ const Product = () => {
                         <h2 class="h3 pb-4">Categorias</h2>
                         <Filter/>
                         </div> */}
-                 
+
 
                     <div class="col-lg-12 filtros">
                         <div className='row ' >
-                            <div className='col custom-select'>
+                            <div className='col-lg-3 custom-select'>
                                 <label className='custom-label'>
                                     Marca
                                 </label>
@@ -100,7 +140,7 @@ const Product = () => {
                                         <option value="brand[]=Reebok">Reebok</option>
                                         <option value="brand[]=Asics">Asics</option>
                                         <option value="brand[]=Merrell">Merrell</option>
-                                        <option value="brand[]=New balance">New balance</option>
+                                        <option value="brand[]=New Balance">New balance</option>
                                         <option value="brand[]=Under Armour">Under Armour</option>
                                         <option value="brand[]=Mizuno">Mizuno</option>
                                         <option value="brand[]=Brooks">Brooks</option>
@@ -114,7 +154,7 @@ const Product = () => {
 
                             </div>
 
-                            <div className='col custom-select '>
+                            <div className='col-lg-2  custom-select '>
                                 <label className='custom-label'>
                                     Talla
                                 </label>
@@ -138,7 +178,7 @@ const Product = () => {
                                 </select>
                             </div>
 
-                            <div className='col custom-select'>
+                            <div className='col-lg-2  custom-select'>
 
                                 <label className='custom-label'>
                                     Genero
@@ -158,7 +198,7 @@ const Product = () => {
                             </div>
 
 
-                            <div className='col custom-select'>
+                            <div className='col-lg-2  custom-select'>
                                 <label className='custom-label'>
                                     Estilo
                                 </label>
@@ -184,7 +224,7 @@ const Product = () => {
 
                             </div>
 
-                            <div className='col custom-select'>
+                            <div className='col-lg-2  custom-select'>
                                 <label className='custom-label'>
                                     Color
                                 </label>
@@ -207,8 +247,17 @@ const Product = () => {
                                     </optgroup>
                                 </select>
                             </div>
+                            <div className='col-lg-1 custom-select'>
+                                <button onClick={resetFilters}>
+                                    Reset
+                                </button>
+                            </div>
+
 
                         </div>
+
+
+
                     </div>
 
                     <div class="col-lg-12 justify-content-center align-items-center">
@@ -219,25 +268,31 @@ const Product = () => {
 
                                 </ul>
                             </div>
-                            {/* <div class="col-md-6 pb-4 py-5">
-                                <div class="d-flex">
-                                    <div class="input-group mb-3">
-                                         <i class="fa fa-search p-3" aria-hidden="true"></i>
-                                        <input type="text" class="form-control" placeholder="Buscar por nombre o marca" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-
-                                    </div>
-                                </div>
-                            </div> */}
                         </div>
                         <div className="row justify-content-around">
-                            < Cards allZapatillas={filter ? zapatilla : allZapatillas} />
+                            < Cards allZapatillas={allZapatillas.products} />
                         </div>
 
                     </div>
+                    <div className='pagination justify-content-center align-items-center py-3'>
+                        <button onClick={handlePageChangeBack} disabled={page === 1 || allZapatillas.totalPages === 1}>
+                            back
+                        </button>
 
-                    <div class="container mt-5">
+                        <span>
+                            Page: {allZapatillas.currentPage} of {allZapatillas.totalPages}
+                        </span>
 
+                        <button onClick={handlePageChangeNext} disabled={allZapatillas.currentPage === allZapatillas.totalPages || allZapatillas.totalPages === 1} >
+                            next
+                        </button>
                     </div>
+
+                    {/* <Pagination
+                        totalPages={5} // Reemplaza '5' con el número total de páginas
+                        currentPage={1} // Reemplaza '1' con la página actual
+                        onPageChange={handlePageChange}
+                    /> */}
 
                 </div>
             </div>
