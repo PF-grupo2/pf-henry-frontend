@@ -3,9 +3,7 @@ import {NavLink} from 'react-router-dom';
 import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
 import './Card.css';
-import React, { useEffect } from 'react';
-
-
+import React from 'react';
 
 
 function Card({ zapatilla }) {
@@ -14,10 +12,7 @@ function Card({ zapatilla }) {
     return null; 
   }
 
-
- const {id, name, price, description,stock, offer, scoreAvg, status, brand, images,  style, gender} = zapatilla;
-
-
+  const {id, name, price, brand, images,  style, gender, size} = zapatilla;
 
 
   return (

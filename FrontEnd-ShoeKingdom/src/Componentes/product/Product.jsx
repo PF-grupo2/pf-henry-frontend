@@ -7,7 +7,6 @@ import Filter from '../filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
 import { getZapatilla, getFiltersArray } from '../../../Redux/Actions/actions';
-import Pagination from '../pagination/Pagination';
 import { getProductByName } from '../../../Redux/Actions/actions';
 
 import './Product.css'
@@ -81,7 +80,6 @@ const Product = () => {
     }, [allZapatillas.products]);
 
 
-
     const handlePageChangeNext = () => {
         setPage(page + 1);
         // handleFilter();
@@ -89,25 +87,6 @@ const Product = () => {
     const handlePageChangeBack = () => {
         setPage(page - 1);
         // handleFilter();
-        dispatch(getZapatilla(formatFilters))
-
-//    const brands = useRef()
-    const {filters2, setFilters2} = useState([])
-
-    console.log("lo que llega de reducer al product", filter)
-    console.log("lo que llega de reducer al product", zapatilla)
-    console.log("lo que llega de reducer al product", allZapatillas)
-
-    useEffect(() => {
-        dispatch(getZapatilla());
-      }, [dispatch]);
-    
-    const handleFilter = (e)=>{
-        const value = e.target.value;
-//        dispatch(getFiltersArray(value))
-        dispatch(getZapatilla(value))
-
-
     }
 
     return (
@@ -288,33 +267,9 @@ const Product = () => {
                         </button>
                     </div>
 
-                    {/* <Pagination
-                        totalPages={5} // Reemplaza '5' con el número total de páginas
-                        currentPage={1} // Reemplaza '1' con la página actual
-                        onPageChange={handlePageChange}
-                    /> */}
 
                 </div>
             </div>
-
-            <div>
-                <form>
-                    <label>
-                        Brand
-                    </label>
-                    <select 
-                        onChange={handleFilter}
-                        ref={brands}
-                    >
-                        <optgroup>
-                            <option value="" selected>All</option>
-                            <option value="brand[]=Nike">Nike</option>
-                        </optgroup>
-                    </select>
-                </form>
-            </div>
-
-
         </div>
     )
 }

@@ -1,5 +1,5 @@
 
-import { ADDITEM, DELITEM,GET_DETAIL,CLEAR_DETAIL} from "./action-types";
+import { ADDITEM, DELITEM} from "./action-types";
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
