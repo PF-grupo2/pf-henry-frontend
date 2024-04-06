@@ -16,7 +16,8 @@ const Product = () => {
     const dispatch = useDispatch();
     const filter = useSelector((state) => state.filter);
     const zapatilla = useSelector((state) => state.zapatilla);
-    const allZapatillas = useSelector((state) => state.allZapatilla);
+    const allZapatillas = useSelector((state) => state.allZapatillas);
+
 
     const [page, setPage] = useState(1)
 
@@ -27,7 +28,7 @@ const Product = () => {
     const colors = useRef()
 
     //console.log("lo que llega de reducer al product", filter)
-    console.log("zapatilla", zapatilla)
+    // console.log("zapatilla", zapatilla)
     console.log("lo que llega de reducer al product", allZapatillas)
 
     useEffect(() => {
@@ -58,7 +59,8 @@ const Product = () => {
         let formatFilters
 
         formatFilters = formatBrands + "&" + formatSizes + "&" + formatGenders + "&" + formatStyles + "&" + formatColors
-        if (zapatilla.length > 0) formatFilters += `&search=${zapatilla}`
+        // if (zapatilla.length > 0) formatFilters += `&search=${zapatilla}`
+        if (zapatilla && zapatilla.length > 0) formatFilters += `&search=${zapatilla}`;
 
         dispatch(getZapatilla(formatFilters, page));
     }
@@ -74,10 +76,9 @@ const Product = () => {
         handleFilter();
     }
 
-
     useEffect(() => {
-        if (allZapatillas.length === 0) resetFilters();
-    }, [allZapatillas.products]);
+        if (allZapatillas && allZapatillas.length === 0) resetFilters();
+    }, [allZapatillas && allZapatillas.products]);
 
 
     const handlePageChangeNext = () => {
@@ -249,7 +250,8 @@ const Product = () => {
                             </div>
                         </div>
                         <div className="row justify-content-around">
-                            < Cards allZapatillas={allZapatillas.products} />
+                            {/* < Cards allZapatillas={allZapatillas.products} /> */}
+                            < Cards allZapatillas={allZapatillas && allZapatillas.products} />
                         </div>
 
                     </div>
@@ -259,10 +261,15 @@ const Product = () => {
                         </button>
 
                         <span>
-                            Page: {allZapatillas.currentPage} of {allZapatillas.totalPages}
+                            {/* Page: {allZapatillas && allZapatillas.currentPage} of {allZapatillas && allZapatillas.totalPages} */}
+                            Page: {allZapatillas?.currentPage} of {allZapatillas?.totalPages}
+
                         </span>
 
-                        <button onClick={handlePageChangeNext} disabled={allZapatillas.currentPage === allZapatillas.totalPages || allZapatillas.totalPages === 1} >
+                        <button
+                            onClick={handlePageChangeNext}
+                            disabled={!allZapatillas || allZapatillas.currentPage === allZapatillas.totalPages || allZapatillas.totalPages === 1}
+                        >
                             next
                         </button>
                     </div>
