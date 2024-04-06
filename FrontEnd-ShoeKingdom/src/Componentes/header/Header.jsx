@@ -33,14 +33,6 @@ const Header = () => {
                             </li>
                         </ul>
 
-                        {/* <div class="d-flex">
-                                    <div class="input-group mb-3">
-                                         <i class="fa fa-search p-2" aria-hidden="true"></i>
-                                        <input type="text" class="form-control" placeholder="Buscar por nombre o marca" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-
-                                    </div>
-                        </div> */}
-
                         <div className='d-flex align-items-center justify-content-between'>
                            <SearchBar />
                             <Login />
