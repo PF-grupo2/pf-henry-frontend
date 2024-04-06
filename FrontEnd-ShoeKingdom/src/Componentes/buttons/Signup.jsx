@@ -10,9 +10,10 @@ const Signup = () => {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Mi perfil</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        
                         <div className="modal-body">
                             <button className='btn btn-primary w-100 mb-4'>
                                <span className='fa fa-google me-2' > Sign up  with Google  </span>
