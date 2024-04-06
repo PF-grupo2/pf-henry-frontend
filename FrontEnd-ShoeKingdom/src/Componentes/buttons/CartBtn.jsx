@@ -4,10 +4,11 @@
 
 const CartBtn = () => {
      const state = useSelector((state)=> state.addItem)
+     console.log("lo que llega en el stado del carrito",state  )
      return (
          <>
-         <NavLink to='#' className="btn ms-2 p-1">
-             <span className='fa fa-shopping-cart me-1'></span>({0})
+         <NavLink to='/cart' className="btn ms-2 p-1">
+             <span className='fa fa-shopping-cart me-1'></span>({state.length})
          </NavLink>
         
          </>

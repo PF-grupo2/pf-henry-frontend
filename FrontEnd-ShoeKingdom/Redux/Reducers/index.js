@@ -1,58 +1,57 @@
 import { Form } from "react-router-dom";
-import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING, GET_DETAIL, CLEAR_DETAIL, GET_GENDER, GET_FILTERS_ARRAY } from "../../Redux/Actions/actions";
-
+import { GET_ZAPATILLAS, FILTER, GET_PRODUCT_BY_NAME, LOADING, GET_DETAIL, CLEAR_DETAIL, GET_GENDER, GET_FILTERS_ARRAY, ADDITEM, DELITEM } from "../../Redux/Actions/actions";
 
 
 const initialState = {
-    allZapatilla: [],
+    allZapatillas: [],
     allZapatillaBackup: [],
     zapatilla: [],
     filter: false,
     loading: false,
-    zapatillaDetail :{},
-    filters : []
+    zapatillaDetail: {},
+    filters: [],
+    items: [],
+    addItem : [],
 };
 
 function rootReducer(state = initialState, action) {
-    console.log("ejecuta la funcion")
-   
+    // console.log("ejecuta la funcion reducer")
+
+
     switch (action.type) {
         case GET_ZAPATILLAS:
 
             console.log("reducer entro", action.payload)
             const todosfiltros = action.payload.products
             if (todosfiltros.length === 0) {
-            console.log("no consiguio")
-            alert("no hay zapatillas con ese filtrado")
-                return{
-                    ...state,
-                 allZapatilla: action.payload.products, //se elimina .products del payload 31/3 20h
-                 filter: false,
-               }
-            }
-              {
-
+             
+                alert("no hay zapatillas con ese filtrado")
                 return {
                     ...state,
-                    allZapatilla: action.payload,
+                    allZapatillas: action.payload, //se elimina .products del payload 31/3 20h
                     filter: false,
-    
-                };
-
-
+                }
             }
-        
-        
+            else
+            {
+                console.log("en el else de reducer", action.payload )
+                return {
+                    ...state,
+                    allZapatillas: action.payload,
+                    filter: false,
+
+                };
+            }
 
         case GET_FILTERS_ARRAY:
-            console.log(payload);
-            return{
+            // console.log(payload);
+            return {
                 ...state,
                 payload
             }
 
         case FILTER:
-            console.log("reducer entro", action.payload)
+            // console.log("reducer entro", action.payload)
             return {
                 ...state,
                 zapatilla: action.payload,
@@ -60,17 +59,17 @@ function rootReducer(state = initialState, action) {
 
             };
 
-            case GET_GENDER:
-                console.log("reducer entro", action.payload)
-                return {
-    
-                    ...state,
-                    zapatilla: action.payload,
-                    filter: true
-    
-                };
+        case GET_GENDER:
+            // console.log("reducer entro", action.payload)
+            return {
+
+                ...state,
+                zapatilla: action.payload,
+                filter: true
+
+            };
         case GET_PRODUCT_BY_NAME:
-            console.log("estoy en reducer", action.payload)
+            // console.log("estoy en reducer", action.payload)
             return {
                 ...state,
                 loading: false,
@@ -78,20 +77,30 @@ function rootReducer(state = initialState, action) {
                 filter: true
             }
         case GET_DETAIL:
-            
+
             return {
-             ...state,
-            zapatillaDetail: action.payload 
+                ...state,
+                zapatillaDetail: action.payload
             };
 
 
         case CLEAR_DETAIL:
             return {
-            ...state,
-            zapatillaDetail: {},
-      };    
-    
+                ...state,
+                zapatillaDetail: {},
+            };
 
+        case ADDITEM:
+            return {
+                // addItem: action.payload
+                addItem: [...state.addItem, action.payload]
+            }
+
+        case DELITEM:
+            return  {
+                ...state,
+                addItem: state.addItem.filter(item => item.id !== action.payload.id)
+            }
 
         default: return state;
 

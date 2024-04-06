@@ -1,5 +1,4 @@
 
-import { ADDITEM, DELITEM} from "./action-types";
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
@@ -15,13 +14,16 @@ export const LOADING = 'LOADING';
 export const CLEAR_DETAIL= 'CLEAR_DETAIL';
 export const GET_DETAIL = 'GET_DETAIL';
 export const GET_GENDER = 'GET_GENDER';
-export const GET_FILTERS_ARRAY = "GET_FILTERS_ARRAY"
+export const GET_FILTERS_ARRAY = "GET_FILTERS_ARRAY";
+export const ADDITEM = 'ADDITEM';
+export const DELITEM = 'DELITEM';
+
 
 
 
 
 export const getGender = (nombre) => {
-  console.log("acción de categorías");
+  // console.log("acción de categorías");
   return async function(dispatch){
   
     const gender = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
@@ -40,13 +42,13 @@ export const getGender = (nombre) => {
 
 
 export const getfilter = (nombre) => {
-  console.log("acción de categorías");
+  // console.log("acción de categorías");
   return async function(dispatch){
   
     const filteredData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?brand[]=${nombre}`)).data.products;
 
     // const filteredData = DATA.filter(item => item.brand === nombre);
-    console.log("lo que consigue",filteredData );
+    // console.log("lo que consigue",filteredData );
     if(filteredData.length > 0){
       return dispatch({
         type: FILTER,
@@ -64,7 +66,7 @@ export const getfilter = (nombre) => {
       if(filters) productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
 
       // const productData = DATA;
-      console.log("estoy en action producto",productData.products);
+      // console.log("estoy en action producto",productData.products);
       return dispatch({
         type: "GET_ZAPATILLAS",
         payload: productData
@@ -83,7 +85,7 @@ export const getfilter = (nombre) => {
     return async function (dispatch) {
      try {
        const zapatillaDetail = await axios.get(`http://localhost:3000/api/v1/products/detail/${id}`);
-       console.log(zapatillaDetail);
+      //  console.log(zapatillaDetail);
        return dispatch({
          type: GET_DETAIL,
          payload: zapatillaDetail.data,
@@ -101,7 +103,7 @@ export const getfilter = (nombre) => {
   };
  
   export const getProductByName = (name) => {
-    console.log('estoy en el action search',name)
+    // console.log('estoy en el action search',name)
     return async(dispatch) => {
         dispatch ({ type: LOADING });
         try {
@@ -112,11 +114,11 @@ export const getfilter = (nombre) => {
 
   
            
-            console.log("elvalor de data en action", name)
+            // console.log("elvalor de data en action", name)
             dispatch({ type: GET_PRODUCT_BY_NAME,
                        payload:name})
         } catch (error) {
-            console.log('No se encontraron resultados');
+            // console.log('No se encontraron resultados');
             dispatch({ type: GET_PRODUCT_BY_NAME, payload: [] })
         }
     }
@@ -124,17 +126,21 @@ export const getfilter = (nombre) => {
 
 
 
-export const addItem = (product) => {
+export const addItem = (zapatillas) => {
+  console.log("entro en addItem", zapatillas)
     return {
+      
+      //const {data} =await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?search=${name}`);
+
         type : ADDITEM,
-        payload : product
+        payload : zapatillas
     }
 };
 
-export const delItem = (product) => {
+export const delItem = (zapatillas) => {
     return {
         type : DELITEM,
-        payload : product
+        payload : zapatillas
     }
 }
 
