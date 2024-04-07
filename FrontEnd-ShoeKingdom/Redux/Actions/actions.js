@@ -1,4 +1,3 @@
-
 const URL_SEARCHBAR = 'http://localhost:3001/api/v1/products/search';
 
 
@@ -17,10 +16,18 @@ export const GET_GENDER = 'GET_GENDER';
 export const GET_FILTERS_ARRAY = "GET_FILTERS_ARRAY";
 export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
+export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
 
-
-
-
+/// UPDATE CANTIDAD DE ITEMS AGREGADOS AL CARRITO //////
+export const updateItemQuantity = (itemId, newQuantity) => {
+  return {
+      type: 'UPDATE_ITEM_QUANTITY',
+      payload: {
+          itemId,
+          newQuantity
+      }
+  };
+};
 
 export const getGender = (nombre) => {
   // console.log("acción de categorías");
@@ -143,5 +150,3 @@ export const delItem = (zapatillas) => {
         payload : zapatillas
     }
 }
-
-
