@@ -1,29 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { delItem } from '../../../Redux/Actions/actions';
+import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
 import { NavLink } from 'react-router-dom';
-import Cards from '../cards/Cards'
+import Cards from '../cards/Cards';
+import Swal from 'sweetalert2'; // Importar SweetAlert2
 
 const Cart = () => {
+    const cartItems = useSelector((state) => state.addItem);
+    const dispatch = useDispatch();
 
+    const [itemQuantities, setItemQuantities] = useState({});
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está logueado
 
-    const state = useSelector((state)=> state.addItem)
-    console.log("que trae", state);
-    const dispatch = useDispatch()
+    useEffect(() => {
+        // Simular el inicio de sesión del usuario
+        // Aquí deberías implementar tu lógica real para verificar si el usuario está logueado o no
+        setIsLoggedIn(false); // Cambiar a `true` si el usuario está logueado
+    }, []);
+
+    useEffect(() => {
+        const newQuantities = {};
+        cartItems.forEach(item => {
+            newQuantities[item.id] = item.quantity;
+        });
+        setItemQuantities(newQuantities);
+    }, [cartItems]);
+
+    useEffect(() => {
+        const newTotalPrice = cartItems.reduce((total, item) => {
+            const quantity = itemQuantities[item.id] || 0;
+            return total + (quantity * item.price);
+        }, 0);
+        setTotalPrice(newTotalPrice);
+    }, [cartItems, itemQuantities]);
 
     const handleClose = (item) => {
-        dispatch(delItem(item))
-    }
-    
-    const handleUser= (e) =>{
-        dispatch(verificar_usuarios(e))
-    }
+        dispatch(delItem(item));
+    };
 
+    const handleIncreaseQuantity = (itemId) => {
+        const currentQuantity = itemQuantities[itemId] || 0;
+        const updatedQuantity = currentQuantity + 1;
+        setItemQuantities({ ...itemQuantities, [itemId]: updatedQuantity });
+        dispatch(updateItemQuantity(itemId, updatedQuantity));
+    };
 
+    const handleDecreaseQuantity = (itemId) => {
+        const currentQuantity = itemQuantities[itemId] || 0;
+        if (currentQuantity > 1) {
+            const updatedQuantity = currentQuantity - 1;
+            setItemQuantities({ ...itemQuantities, [itemId]: updatedQuantity });
+            dispatch(updateItemQuantity(itemId, updatedQuantity));
+        }
+    };
 
-
-
-    const cartItems = (item) => {
+    const cartItemComponent = (item) => {
         return (
             <div className='px-4 my-5 bg-light rounded-3' key={item.id}>
                 <div className='container py-4'>
@@ -35,13 +67,16 @@ const Cart = () => {
                         <div className='col-md-4'>
                             <h3>{item.name}</h3>
                             <p className='lead fw-bold'>${item.price}</p>
+                            <div className='d-flex align-items-center'>
+                                <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-outline-primary me-2'>-</button>
+                                <span>{itemQuantities[item.id] || 0}</span>
+                                <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-outline-primary ms-2'>+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-               
-                {/* <NavLink to="/product"><button className="btn btn-outline-secondary">Volver a la Tienda</button></NavLink> */}
             </div>
-        )
+        );
     };
 
     const emptyCart = () => {
@@ -51,35 +86,43 @@ const Cart = () => {
                     <div className='row'>
                         <h3>Tu carrito está vacío</h3>
                     </div>
-                    <NavLink  to="/product/"><button className="btn btn-outline-primary">Volver a la Tienda</button></NavLink >
+                    <NavLink to='/product/'><button className='btn btn-outline-primary'>Volver a la Tienda</button></NavLink>
                 </div>
             </div>
-        )
+        );
     };
 
-    const button = () => {
+    const checkoutButton = () => {
+        const handleCheckout = () => {
+            // if (isLoggedIn) {
+            //     // Si el usuario está logueado, redirigir a la página de checkout
+                window.location.href = '/checkout';
+            // } else {
+            //     // Si el usuario no está logueado, mostrar alerta con SweetAlert2
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Oops...',
+            //         text: 'Debes iniciar sesión o registrarte para realizar el pago!'
+            //     });
+            // }
+        };  //<---- descomentar una vez esté listo el autenticacion de terceros
+
         return (
             <div className='container'>
                 <div className='row'>
-                    <NavLink to='/checkout' className='btn btn-outline-primary mb-5 w-25 mx-auto' onClick={(e) => handleUser(e)}>Realizar pago</NavLink>
+                    <h1>Total: ${totalPrice.toFixed(0)}</h1>
+                    <button onClick={handleCheckout} className='btn btn-outline-primary mb-5 w-25 mx-auto'>Realizar pago</button>
                 </div>
             </div>
-        )
+        );
     };
 
     return (
         <>
-        {state.length === 0 && emptyCart()}
-        {state.length !== 0 && state.map(cartItems)}
-        {state.length !== 0 && button()}
-
-{/* 
-    {Array.isArray(state) && state.length === 0 && emptyCart()}
-    {Array.isArray(state) && state.length !== 0 && state.map(cartItems)}
-    {Array.isArray(state) && state.length !== 0 && button()} */}
-
+            {cartItems.length === 0 ? emptyCart() : cartItems.map(cartItemComponent)}
+            {cartItems.length !== 0 && checkoutButton()}
         </>
-    )
+    );
 };
 
 export default Cart;

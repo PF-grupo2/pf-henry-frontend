@@ -1,7 +1,7 @@
 //carts constants
 export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
-
+export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
 // categories constants
 export const SET_CATEGORIES = 'SET_CATEGORIES'
 export const SELECT_CATEGORY = 'SELECT_CATEGORY'
@@ -21,4 +21,3 @@ export const GET_ZAPATILLAS = "GET_ZAPATILLAS"
 export const GET_PRODUCT_BY_NAME = 'GET_PRODUCT_BY_NAME';
 
 export const LOADING = 'LOADING';
-
