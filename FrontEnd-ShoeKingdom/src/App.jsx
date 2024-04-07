@@ -11,7 +11,6 @@ import Cart from './Componentes/cart/Cart'
 import Checkout from './Componentes/checkout/Checkout'
 import Favorito from './Componentes/favorites/Favorites'
 import Contact from './Componentes/contact/Contact'
-import User from './Componentes/user/User'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,7 +28,6 @@ function App() {
             <Route path="/about" element={<About/>} />
             <Route path="*" element={<Home/>} />
             <Route path="/contact" element={<Contact/>} />
-            <Route path='/profile' element={<User />} />
       </Routes>
     <Footer/>
     </>

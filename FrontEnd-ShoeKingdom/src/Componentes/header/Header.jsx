@@ -1,14 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import Login from '../buttons/Login';
-import Signup from '../buttons/Signup';
+import Profile from '../buttons/Profile';
 import CartBtn from '../buttons/CartBtn';
 import Favorito from '../buttons/Favorito';
 import SearchBar from '../searchBar/SearchBar';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
+
+    const { isAuthenticated } = useAuth0();
+
     return (
         <>
-                <nav className="navbar navbar-expand-lg bg-light bg-gradiente d-flex align-items-center shadow">
+            <nav className="navbar navbar-expand-lg bg-light bg-gradiente d-flex align-items-center shadow">
                 <div className="container-fluid py-1 mx-auto justify-content-between">
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +20,7 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse mx-auto justify-content-between" id="navbarSupportedContent">
 
-                    <NavLink className="navbar-brand  fw-bold " to="/"> <h1 className='h4'>ShoeKingdom</h1></NavLink> 
+                        <NavLink className="navbar-brand  fw-bold " to="/"> <h1 className='h4'>ShoeKingdom</h1></NavLink>
 
                         <ul className="navbar-nav mb-3 mb-lg-0 ">
                             <li className="nav-item">
@@ -34,9 +38,12 @@ const Header = () => {
                         </ul>
 
                         <div className='d-flex align-items-center justify-content-between'>
-                           <SearchBar />
-                            <Login />
-                            <Signup />
+                            <SearchBar />
+                            {isAuthenticated ? <div>
+                                <Profile />
+                            </div> : <div>
+                                <Login />
+                            </div>}
                             <Favorito />
                             <CartBtn />
 
