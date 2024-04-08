@@ -15,18 +15,18 @@ const Footer =() => {
                             <a className="navbar-sm-brand text-light text-decoration-none fs-6" href="tel:010-020-0340">+54 911 32234567</a>
                         </div>
                         <div>
-                            <a className="text-light mx-2" href="https://www.facebook.com/" target="_blank" rel="sponsored"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                            <a className="text-light mx-2" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a className="text-light mx-2" href="https://www.facebook.com/" target="_blank" rel="sponsored"><i className="fa fa-facebook-official" aria-hidden="true"></i></a>
+                            <a className="text-light mx-2" href="https://www.instagram.com/" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </nav>
 
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
+        <div className="w-100 bg-black py-3">
+            <div className="container">
+                <div className="row pt-2">
+                    <div className="col-12">
+                        <p className="text-left text-light">
                             Copyright &copy; 2024 Proyecto final Henry
                             | Elaborado por by <a rel="sponsored" href="#" target="_blank">Enzo, Cristian, Anadeska, julieta, Carlos, Nicolas, Raul y Mateo</a>
                         </p>

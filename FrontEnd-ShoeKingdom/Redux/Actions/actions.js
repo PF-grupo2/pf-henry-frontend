@@ -18,7 +18,6 @@ export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
 export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
 
-/// UPDATE CANTIDAD DE ITEMS AGREGADOS AL CARRITO //////
 export const updateItemQuantity = (itemId, newQuantity) => {
   return {
       type: 'UPDATE_ITEM_QUANTITY',
@@ -30,10 +29,10 @@ export const updateItemQuantity = (itemId, newQuantity) => {
 };
 
 export const getGender = (nombre) => {
-  // console.log("acción de categorías");
+ 
   return async function(dispatch){
   
-    const gender = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
+    const gender = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
     // const filteredData = DATA.filter(item => item.brand === nombre);
     if(gender.length > 0){
       return dispatch({
@@ -49,13 +48,13 @@ export const getGender = (nombre) => {
 
 
 export const getfilter = (nombre) => {
-  // console.log("acción de categorías");
+ 
   return async function(dispatch){
   
-    const filteredData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?brand[]=${nombre}`)).data.products;
+    const filteredData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/all/1/filters?brand[]=${nombre}`)).data.products;
 
     // const filteredData = DATA.filter(item => item.brand === nombre);
-    // console.log("lo que consigue",filteredData );
+   
     if(filteredData.length > 0){
       return dispatch({
         type: FILTER,
@@ -69,11 +68,10 @@ export const getfilter = (nombre) => {
 
   export const getZapatilla = (filters, page=1) => {
     return async function (dispatch) {
-      let productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/9/${page}/filters?`)).data
-      if(filters) productData = await (await axios(`http://localhost:3000/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
+      let productData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/9/${page}/filters?`)).data
+      if(filters) productData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
 
       // const productData = DATA;
-      // console.log("estoy en action producto",productData.products);
       return dispatch({
         type: "GET_ZAPATILLAS",
         payload: productData
@@ -91,8 +89,8 @@ export const getfilter = (nombre) => {
   export function  getDetail (id) {
     return async function (dispatch) {
      try {
-       const zapatillaDetail = await axios.get(`http://localhost:3000/api/v1/products/detail/${id}`);
-      //  console.log(zapatillaDetail);
+       const zapatillaDetail = await axios.get(`https://pf-henry-backend.onrender.com/api/v1/products/detail/${id}`);
+    
        return dispatch({
          type: GET_DETAIL,
          payload: zapatillaDetail.data,
@@ -110,7 +108,7 @@ export const getfilter = (nombre) => {
   };
  
   export const getProductByName = (name) => {
-    // console.log('estoy en el action search',name)
+
     return async(dispatch) => {
         dispatch ({ type: LOADING });
         try {
@@ -125,7 +123,7 @@ export const getfilter = (nombre) => {
             dispatch({ type: GET_PRODUCT_BY_NAME,
                        payload:name})
         } catch (error) {
-            // console.log('No se encontraron resultados');
+          
             dispatch({ type: GET_PRODUCT_BY_NAME, payload: [] })
         }
     }
@@ -134,7 +132,7 @@ export const getfilter = (nombre) => {
 
 
 export const addItem = (zapatillas) => {
-  console.log("entro en addItem", zapatillas)
+  // console.log("entro en addItem", zapatillas)
     return {
       
       //const {data} =await axios(`http://localhost:3000/api/v1/products/listProducts/all/1/filters?search=${name}`);

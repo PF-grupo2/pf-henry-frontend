@@ -17,6 +17,13 @@ const Product = () => {
     const filter = useSelector((state) => state.filter);
     const zapatilla = useSelector((state) => state.zapatilla);
     const allZapatillas = useSelector((state) => state.allZapatillas);
+    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedBrand, setSelectedBrand] = useState("");
+    const [selectedGender, setSelectedGender] = useState("");
+    const [selectedStyle, setselectedStyle] = useState("");
+    const [ selectedColor, setselectedColor] = useState("");
+
+
 
 
     const [page, setPage] = useState(1)
@@ -93,27 +100,22 @@ const Product = () => {
     return (
         <div>
             <div className="container-fluid">
-                <div class="row  justify-content-center align-items-center">
+                <div className="row  justify-content-center align-items-center">
 
-                    {/* <div class="col-lg-3 izquierda py-5 px-5">
-                        <h2 class="h3 pb-4">Categorias</h2>
-                        <Filter/>
-                        </div> */}
-
-
-                    <div class="col-lg-12 filtros">
+                    <div className="col-lg-12 filtros">
                         <div className='row ' >
                             <div className='col-lg-3 custom-select'>
                                 <label className='custom-label'>
                                     Marca
                                 </label>
+
                                 <select
                                     onChange={handleFilter}
                                     ref={brands}
-                                //  multiple
+                                    value={selectedBrand} // Reemplaza selectedBrand con la variable que indica la opción seleccionada
                                 >
                                     <optgroup>
-                                        <option value="" selected>All</option>
+                                        <option value="">All</option>
                                         <option value="brand[]=Nike">Nike</option>
                                         <option value="brand[]=Puma">Puma</option>
                                         <option value="brand[]=Adidas">Adidas</option>
@@ -129,8 +131,10 @@ const Product = () => {
                                         <option value="brand[]=Hoka One One">Hoka One One</option>
                                         <option value="brand[]=Keen">Keen</option>
                                         <option value="brand[]=Under Armour">Under Armour</option>
+                                        {/* Otras opciones de marca */}
                                     </optgroup>
                                 </select>
+
 
                             </div>
 
@@ -138,14 +142,13 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Talla
                                 </label>
-
                                 <select
                                     onChange={handleFilter}
                                     ref={sizes}
-                                // multiple
+                                    value={selectedSize} // Reemplaza selectedSize con la variable que indica la opción seleccionada
                                 >
                                     <optgroup>
-                                        <option value="" selected>All</option>
+                                        <option value="">All</option>
                                         <option value="size[]=37">37</option>
                                         <option value="size[]=38">38</option>
                                         <option value="size[]=39">39</option>
@@ -163,13 +166,14 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Genero
                                 </label>
+
                                 <select
                                     onChange={handleFilter}
                                     ref={genders}
-                                // multiple
+                                    defaultValue={selectedGender} // Utiliza defaultValue en lugar de selected
                                 >
                                     <optgroup>
-                                        <option value="" selected>All</option>
+                                        <option value="">All</option>
                                         <option value="gender[]=Hombre">Masculino</option>
                                         <option value="gender[]=Mujer">Femenino</option>
                                         <option value="gender[]=Unisex">Unisex</option>
@@ -182,13 +186,33 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Estilo
                                 </label>
-                                <select
+                                {/* <select
                                     onChange={handleFilter}
                                     ref={styles}
                                 // multiple
                                 >
                                     <optgroup>
                                         <option value="" selected>All</option>
+                                        <option value="style[]=Outdoor">outdoor</option>
+                                        <option value="style[]=Tenis">tenis</option>
+                                        <option value="style[]=Basquet">Basquet</option>
+                                        <option value="style[]=Futbol">Futbol</option>
+                                        <option value="style[]=Hockey">Hockey</option>
+                                        <option value="style[]=Motosport">Motosport</option>
+                                        <option value="style[]=Natacion">Natacion</option>
+                                        <option value="style[]=Running">Running</option>
+                                        <option value="style[]=Tenis">Tenis</option>
+                                        <option value="style[]=Training">Training</option>
+                                    </optgroup>
+                                </select> */}
+
+                                <select
+                                    onChange={handleFilter}
+                                    ref={styles}
+                                    value={selectedStyle} // Reemplaza selectedStyle con la variable que indica la opción seleccionada
+                                >
+                                    <optgroup>
+                                        <option value="">All</option>
                                         <option value="style[]=Outdoor">outdoor</option>
                                         <option value="style[]=Tenis">tenis</option>
                                         <option value="style[]=Basquet">Basquet</option>
@@ -208,13 +232,32 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Color
                                 </label>
-                                <select
+                                {/* <select
                                     onChange={handleFilter}
                                     ref={colors}
                                 // multiple
                                 >
                                     <optgroup>
                                         <option value="" selected>All</option>
+                                        <option value="color[]=Blanco">Blanco</option>
+                                        <option value="color[]=Negro">Negro</option>
+                                        <option value="color[]=Azul">Azul</option>
+                                        <option value="color[]=Amarillo">Amarillo</option>
+                                        <option value="color[]=Gris">Gris</option>
+                                        <option value="color[]=Verde">Verde</option>
+                                        <option value="color[]=Rojo">Rojo</option>
+                                        <option value="color[]=Rosado">Rosado</option>
+                                        <option value="color[]=Violeta">Violeta</option>
+                                    </optgroup>
+                                </select> */}
+
+                                <select
+                                    onChange={handleFilter}
+                                    ref={colors}
+                                    value={selectedColor} // Reemplaza selectedColor con la variable que indica la opción seleccionada
+                                >
+                                    <optgroup>
+                                        <option value="">All</option>
                                         <option value="color[]=Blanco">Blanco</option>
                                         <option value="color[]=Negro">Negro</option>
                                         <option value="color[]=Azul">Azul</option>
@@ -240,11 +283,11 @@ const Product = () => {
 
                     </div>
 
-                    <div class="col-lg-12 justify-content-center align-items-center">
+                    <div className="col-lg-12 justify-content-center align-items-center">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-inline shop-top-menu pb-3 pt-1">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <ul className="list-inline shop-top-menu pb-3 pt-1">
 
                                 </ul>
                             </div>
