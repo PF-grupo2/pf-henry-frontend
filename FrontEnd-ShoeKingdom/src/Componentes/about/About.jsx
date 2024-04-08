@@ -20,85 +20,85 @@ const About = () => {
                     </div>
                 </div>
 
-                <section class="container-proyectos py-5" id="proyectos">
-                    <h1 class="text-center fw-bold mb-4 h2">Equipo Developer</h1>
-                    <div class="container">
-                        <div class="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="col-lg-12  justify-content-center">
-                                <p class="mb-5 parrafo  text-black text-center justify-content-center">El equipo que union conocimiento y tiempo para realizar este proyecto
+                <section className="container-proyectos py-5" id="proyectos">
+                    <h1 className="text-center fw-bold mb-4 h2">Equipo Developer</h1>
+                    <div className="container">
+                        <div className="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                            <div className="col-lg-12  justify-content-center">
+                                <p className="mb-5 parrafo  text-black text-center justify-content-center">El equipo que union conocimiento y tiempo para realizar este proyecto
                                  tan enriquecedor para todos nosotros</p>
                             </div>
                         </div>
-                        <div class="row g-2 justify-content-center align-items-center portfolio-container wow fadeInUp align-items-center text-center" data-wow-delay="0.1s">
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <div className="row g-2 justify-content-center align-items-center portfolio-container wow fadeInUp align-items-center text-center" data-wow-delay="0.1s">
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>  
-                             <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                             <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 portfolio-item first">
-                                <div class="portfolio-img rounded overflow-hidden">
-                                    <img class="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div class="portfolio-btn align-items-center">
-                                        <a class="btn btn-lg-square btn-outline-primary"  href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <div className="col-lg-1 col-md-12 portfolio-item first">
+                                <div className="portfolio-img rounded overflow-hidden">
+                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <div className="portfolio-btn align-items-center">
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>

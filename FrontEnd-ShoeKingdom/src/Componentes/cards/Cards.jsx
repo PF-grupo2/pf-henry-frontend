@@ -6,7 +6,7 @@ const Cards = ({allZapatillas}) =>{
           {/* <h1>todas las tarjetas</h1> */}
           {allZapatillas ? (
         <div className="card-list  ">
-            {allZapatillas.map((zapatilla) =><Card zapatilla = {zapatilla} /> )   }
+            {allZapatillas.map((zapatilla) =><Card key={zapatilla.id} zapatilla={zapatilla}  /> )   }
         </div>
 
           ): (
@@ -19,4 +19,5 @@ const Cards = ({allZapatillas}) =>{
 }
 
 export default Cards
+
 

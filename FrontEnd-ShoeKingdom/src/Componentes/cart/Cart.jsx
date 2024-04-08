@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
 import { NavLink } from 'react-router-dom';
 import Cards from '../cards/Cards';
+import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
+
+
 
 const Cart = () => {
     const cartItems = useSelector((state) => state.addItem);
@@ -13,6 +16,8 @@ const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está logueado
 
+
+    const { isAuthenticated } = useAuth0();
     useEffect(() => {
         // Simular el inicio de sesión del usuario
         // Aquí deberías implementar tu lógica real para verificar si el usuario está logueado o no
@@ -91,21 +96,20 @@ const Cart = () => {
             </div>
         );
     };
-
     const checkoutButton = () => {
         const handleCheckout = () => {
-            // if (isLoggedIn) {
-            //     // Si el usuario está logueado, redirigir a la página de checkout
+            if (isAuthenticated) {
+                // Si el usuario está logueado, redirigir a la página de checkout
                 window.location.href = '/checkout';
-            // } else {
-            //     // Si el usuario no está logueado, mostrar alerta con SweetAlert2
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Oops...',
-            //         text: 'Debes iniciar sesión o registrarte para realizar el pago!'
-            //     });
-            // }
-        };  //<---- descomentar una vez esté listo el autenticacion de terceros
+            } else {
+                // Si el usuario no está logueado, mostrar alerta con SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debes iniciar sesión o registrarte para realizar el pago!'
+                });
+            }
+        };
 
         return (
             <div className='container'>
