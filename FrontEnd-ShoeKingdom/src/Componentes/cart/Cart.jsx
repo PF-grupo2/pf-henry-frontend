@@ -1,7 +1,9 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate  } from 'react-router-dom';
 import Cards from '../cards/Cards';
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
@@ -9,6 +11,11 @@ import Swal from 'sweetalert2'; // Importar SweetAlert2
 
 
 const Cart = () => {
+    const Navigate = useNavigate()
+    // const navigateToCheckout = () => {
+    //     window.open('/checkout', '_blank', 'noopener');
+    // };
+
     const cartItems = useSelector((state) => state.addItem);
     const dispatch = useDispatch();
 
@@ -100,7 +107,8 @@ const Cart = () => {
         const handleCheckout = () => {
             if (isAuthenticated) {
                 // Si el usuario está logueado, redirigir a la página de checkout
-                window.location.href = '/checkout';
+                Navigate('/checkout');
+                // navigateToCheckout();
             } else {
                 // Si el usuario no está logueado, mostrar alerta con SweetAlert2
                 Swal.fire({
