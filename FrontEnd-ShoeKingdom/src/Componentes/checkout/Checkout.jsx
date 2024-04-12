@@ -212,7 +212,7 @@ function Cheackout() {
 
     //let total = 0
   const [preferenceId, setPreferenceId] = useState(null)
-  initMercadoPago("TEST-03c1d85e-513d-4cb3-bb26-9e64326ba53d",{
+  initMercadoPago("APP_USR-bc93b94f-5412-4709-80c6-606421b3f3c8",{
     locale: "es-AR",
   });
 
