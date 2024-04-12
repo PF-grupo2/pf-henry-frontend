@@ -1,6 +1,6 @@
 import './App.css'
 import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from './Componentes/header/Header'
 import Footer from './Componentes/footer/Footer'
 import Home from './Componentes/home/Home'
@@ -11,13 +11,17 @@ import Cart from './Componentes/cart/Cart'
 import Checkout from './Componentes/checkout/Checkout'
 import Favorito from './Componentes/favorites/Favorites'
 import Contact from './Componentes/contact/Contact'
+import Dashboard from './Componentes/dashboard/Dashboard'
+import User from './Componentes/page/User'
 
 function App() {
   const [count, setCount] = useState(0)
+  const location = useLocation();
+  const isAdminRoute = location.pathname.includes('/admin');
 
   return (
     <>
-      <Header/>
+      {!isAdminRoute && <Header/>}
       <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/product" element={<Product/>} />
@@ -28,8 +32,15 @@ function App() {
             <Route path="/about" element={<About/>} />
             <Route path="*" element={<Home/>} />
             <Route path="/contact" element={<Contact/>} />
+            
+            <Route path="/admin" element={<Dashboard/>}/>
+            <Route path="/admin/users" element={<Dashboard/>}/>
+            <Route path="/admin/products" element={<Dashboard/>}/>
+
+              
+               
       </Routes>
-    <Footer/>
+      {!isAdminRoute && <Footer/>}
     </>
   )
 }

@@ -1,0 +1,28 @@
+.ButtonCart{
+   appearance: none;
+   border: none;
+   background: none;
+   cursor: pointer;
+   /* background-color: rgb(236, 20, 164); */
+    padding: 2px 5px 2px 5px;
+  /* margin: 5px; */
+  
+}
+
+.ButtonCart:hover {
+    background-color:#1c4a98;
+    border-radius:5px; 
+    color: #f6f1f1;
+    border: 15px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .btn {
+
+        color:#1c4a98;
+        font-size: 12px; 
+        padding: 5px 10px;
+    }
+}

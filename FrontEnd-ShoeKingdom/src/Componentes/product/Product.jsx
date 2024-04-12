@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
 import { getZapatilla, getFiltersArray } from '../../../Redux/Actions/actions';
 import { getProductByName } from '../../../Redux/Actions/actions';
+import Dashboard from '../dashboard/Dashboard';
 
 import './Product.css'
 
@@ -101,7 +102,6 @@ const Product = () => {
         <div>
             <div className="container-fluid">
                 <div className="row  justify-content-center align-items-center">
-
                     <div className="col-lg-12 filtros">
                         <div className='row ' >
                             <div className='col-lg-3 custom-select'>
@@ -186,26 +186,6 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Estilo
                                 </label>
-                                {/* <select
-                                    onChange={handleFilter}
-                                    ref={styles}
-                                // multiple
-                                >
-                                    <optgroup>
-                                        <option value="" selected>All</option>
-                                        <option value="style[]=Outdoor">outdoor</option>
-                                        <option value="style[]=Tenis">tenis</option>
-                                        <option value="style[]=Basquet">Basquet</option>
-                                        <option value="style[]=Futbol">Futbol</option>
-                                        <option value="style[]=Hockey">Hockey</option>
-                                        <option value="style[]=Motosport">Motosport</option>
-                                        <option value="style[]=Natacion">Natacion</option>
-                                        <option value="style[]=Running">Running</option>
-                                        <option value="style[]=Tenis">Tenis</option>
-                                        <option value="style[]=Training">Training</option>
-                                    </optgroup>
-                                </select> */}
-
                                 <select
                                     onChange={handleFilter}
                                     ref={styles}
@@ -232,25 +212,7 @@ const Product = () => {
                                 <label className='custom-label'>
                                     Color
                                 </label>
-                                {/* <select
-                                    onChange={handleFilter}
-                                    ref={colors}
-                                // multiple
-                                >
-                                    <optgroup>
-                                        <option value="" selected>All</option>
-                                        <option value="color[]=Blanco">Blanco</option>
-                                        <option value="color[]=Negro">Negro</option>
-                                        <option value="color[]=Azul">Azul</option>
-                                        <option value="color[]=Amarillo">Amarillo</option>
-                                        <option value="color[]=Gris">Gris</option>
-                                        <option value="color[]=Verde">Verde</option>
-                                        <option value="color[]=Rojo">Rojo</option>
-                                        <option value="color[]=Rosado">Rosado</option>
-                                        <option value="color[]=Violeta">Violeta</option>
-                                    </optgroup>
-                                </select> */}
-
+                          
                                 <select
                                     onChange={handleFilter}
                                     ref={colors}

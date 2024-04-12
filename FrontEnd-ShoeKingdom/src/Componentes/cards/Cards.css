@@ -1,8 +1,18 @@
-.card-list{
+.card-list {
     width: 85vw;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:15px;
-     /* background-color: rgb(198, 108, 108); */
-}
+    grid-gap: 15px;
+  }
+  
+  @media (min-width: 576px) {
+    .card-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .card-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }

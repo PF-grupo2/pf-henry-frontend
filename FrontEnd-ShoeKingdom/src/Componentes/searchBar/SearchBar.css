@@ -2,25 +2,12 @@
     background-color: rgba(239, 239, 239, 0.97);
     border-radius: 5px;
     /* border: 0.05rem solid #595559; */
-    padding: 2px 5px 2px 5px;
+    /* padding: 2px 5px 2px 5px; */
     text-decoration: none;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 .searchButton {
-    /* padding: 5px 5px;
-
-    color: black;
-    font-size: 15px;
-    text-decoration: none;
-    text-transform: capitalize;
-    overflow: hidden;
-    transition: .5s;
-    border-radius: 5px; 
-    border: 0.05rem solid #595559; 
-    margin: 5px;
-     border-radius:10px; 
-   outline:none; */
    appearance: none;
    border: none;
    background: none;

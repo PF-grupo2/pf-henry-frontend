@@ -1,0 +1,26 @@
+/* .ftco-section{
+    background-color: brown;
+
+} */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dancing+Script:wght@400;500;600;700&family=Fascinate&family=Great+Vibes&family=Lobster&family=Oleo+Script:wght@400;700&family=Pacifico&family=Parisienne&family=Playball&family=Roboto:ital,wght@0,100;0,300;0,700;1,400;1,900&family=Smooch&family=The+Nautigal:wght@400;700&family=Titan+One&family=Yellowtail&display=swap');
+.shipping-banner {
+    background-color: #1c4a98; 
+    color: white;
+    padding: 0px 0px; 
+    margin: 0px;
+    text-align: center;
+  }
+
+  .logo1{
+    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Great Vibes', cursive;
+    font-size: 35px !important;
+    padding:0px!important;
+    display: flex;
+    margin:0!important;
+    color: #004AAD;
+   
+    justify-content: center;
+    align-items: center;
+
+  }
