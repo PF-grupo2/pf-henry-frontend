@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import './Contact.css'
 
 import validationSchema from '../utils/validations'
 
@@ -14,15 +15,16 @@ const Contact = () => {
   };
 
   return (
-    <div className="container mb-5">
+    <div>
+    <div className="container ">
       <div className="row">
-        <div className="col-12 text-center py-4 my-4">
+        <div className="col-12 text-center">
           <h1 className='fw-bold mb-4 h2'>¿Tienes alguna pregunta?</h1>
         </div>
       </div>
-      <div className="row">
-        <div className="col-md-5 d-flex justify-content-center">
-          <img src="/assets/contact.jpg" alt="Contact Us" height="400px" width="400px" />
+      <div className="row contact p-5">
+        <div className="col-12 col-md-6 d-flex justify-content-center">
+          <img className='contact-img' src="/assets/contact.jpg" alt="Contact Us" />
         </div>
         <div className="col-md-6">
           
@@ -59,6 +61,13 @@ const Contact = () => {
         </div>
       </div>
     </div>
+
+
+
+    </div>
+
+
+
   );
 };
 

@@ -87,7 +87,7 @@ const Cart = () => {
     const emptyCart = () => {
         return (
             <div className='px-4 my-5 bg-light rounded-3 py-5'>
-                <div className='container py-4'>
+                <div className='container py-4 emptyCart '>
                     <div className='row'>
                         <h3>Tu carrito está vacío</h3>
                     </div>

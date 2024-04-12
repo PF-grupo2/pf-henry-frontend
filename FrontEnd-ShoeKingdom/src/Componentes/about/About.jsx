@@ -3,9 +3,9 @@ import './About.css'
 const About = () => {
     return (
         <div>
-            <div className="container-fluid ">
-                <div className="row p-5">
-                    <div className="col-md-6">
+            <div className="container">
+                <div className="row p-5 about">
+                    <div className="col-12 col-md-6">
                         <h1 className=" fw-bold mb-4 h2">Acerca de Nosotros</h1>
                         <p className="lead mb-4">
                             ShoeKingdom es una Zapatería especializada en zapatillas de alta calidad
@@ -15,12 +15,12 @@ const About = () => {
                         </p>
                         <NavLink to="/contact" className="btn btn-outline-primary px-3">Contactanos</NavLink>
                     </div>
-                    <div className="col-md-6 d-flex justify-content-center">
-                        <img src="/assets/about.jpg" alt="About Us" height="400px" width="600px" />
+                    <div className=" col-12 col-md-6 d-flex justify-content-center">
+                        <img className="about-img"  src="/assets/about.jpg" alt="About Us"  />
                     </div>
                 </div>
 
-                <section className="container-proyectos py-5" id="proyectos">
+                <section className=" py-5" id="proyectos">
                     <h1 className="text-center fw-bold mb-4 h2">Equipo Developer</h1>
                     <div className="container">
                         <div className="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">

@@ -9,7 +9,7 @@ const Profile = () => {
 
     return (
         <div>
-            <button type="button" className="btn ms-2 p-1" data-bs-toggle="modal" data-bs-target="#signupModal">
+            <button type="button" className="ButtonCart" data-bs-toggle="modal" data-bs-target="#signupModal">
                 <span className='fa fa-user-circle-o me-1'></span>
             </button>
             <div className="modal fade" id="signupModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">

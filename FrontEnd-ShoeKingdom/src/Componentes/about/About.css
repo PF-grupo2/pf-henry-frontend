@@ -2,11 +2,16 @@
 section>.container-proyectos{
     margin-top: 50px;
 }
-.container-proyectos{
-    width: 100%;
-    margin: auto;
-    /* background-color: aliceblue; */
+
+.about{
+    background-color: rgb(244, 245, 245);
 }
+
+.about-img{
+    width: 100%;
+    height: 100%;
+}
+
 /*** Project Portfolio ***/
 .portfolio-img {
     position: relative;

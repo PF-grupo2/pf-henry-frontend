@@ -6,5 +6,3 @@ export const store = createStore(
       rootReducer,
       composeEnhancer(applyMiddleware(thunk))
   );
-
-
