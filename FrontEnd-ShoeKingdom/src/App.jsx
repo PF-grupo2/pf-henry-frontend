@@ -14,6 +14,8 @@ import Dashboard from "./Componentes/dashboard/Dashboard";
 import User from "./Componentes/page/User";
 import Products from "./Componentes/page/Products";
 import Users from "./Componentes/page/Users";
+import RegisterForm from "./Componentes/registerForm/RegisterForm";
+import LoginForm from "./Componentes/login/Login";
 
 function App() {
   const location = useLocation();
@@ -32,6 +34,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<RegisterForm/>} />
+        <Route path="/login" element={<LoginForm/>} />
 
         <Route path="/admin" element={<Dashboard />}>
           <Route index element={<User />} />

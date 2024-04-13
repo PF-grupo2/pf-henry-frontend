@@ -11,6 +11,7 @@ import {
   ADDITEM,
   DELITEM,
   UPDATE_ITEM_QUANTITY,
+  LOGIN_SUCCESS
 } from "../../Redux/Actions/actions";
 import { utilsStorage } from "../../src/Componentes/utils";
 
@@ -24,6 +25,7 @@ const initialState = {
   filters: [],
   items: [],
   addItem: [],
+  user: null
 };
 
 function rootReducer(state = initialState, action) {
@@ -49,12 +51,20 @@ function rootReducer(state = initialState, action) {
         };
       }
 
-    case GET_FILTERS_ARRAY:
+     case LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: action.payload
+      };
+    
+    
+       case GET_FILTERS_ARRAY:
       // console.log(payload);
       return {
         ...state,
-        payload,
+        payload: action.payload,
       };
+
 
     case FILTER:
       // console.log("reducer entro", action.payload)
