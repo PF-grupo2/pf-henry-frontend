@@ -14,7 +14,7 @@ function Sidebar() {
 
           <ul className="nav nav-pills flex-column mb-auto">
             <li className="nav-item">
-              <NavLink className=" nav-link  p-2" to="/admin">
+              <NavLink className=" nav-link p-2" to="/admin">
                 {" "}
                 <i className="fa fa-home" aria-hidden="true"></i> Home
               </NavLink>
