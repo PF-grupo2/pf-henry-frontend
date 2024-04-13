@@ -21,3 +21,4 @@ export const GET_ZAPATILLAS = "GET_ZAPATILLAS"
 export const GET_PRODUCT_BY_NAME = 'GET_PRODUCT_BY_NAME';
 
 export const LOADING = 'LOADING';
+export const LOGIN_SUCCESS="LOGIN_SUCCESS"

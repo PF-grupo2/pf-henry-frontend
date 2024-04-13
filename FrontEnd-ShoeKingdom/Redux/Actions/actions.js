@@ -17,6 +17,9 @@ export const GET_FILTERS_ARRAY = "GET_FILTERS_ARRAY";
 export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
 export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
+export const LOGIN_SUCCESS="LOGIN_SUCCESS"
+
+
 
 export const updateItemQuantity = (itemId, newQuantity) => {
   return {
@@ -130,6 +133,28 @@ export const getfilter = (nombre) => {
 };
 
 
+export const saveCart = async (cartItems) => {
+  try {
+    const response = await axios.post(`http://localhost:3000/api/v1/save`, {
+      //userId: userId,
+      cartItems: cartItems.map(item => ({
+        id: item.id,
+        quantity: item.quantity
+      }))
+    });
+    return response.data; // Podrías manejar la respuesta si es necesario
+  } catch (error) {
+    console.error("Error al guardar el carrito:", error);
+    throw error;
+  }
+};
+
+// En actions.js para succes user
+export const loginSuccess = (userData) => ({
+  type: 'LOGIN_SUCCESS',
+  payload: userData
+});
+
 
 export const addItem = (zapatillas) => {
   // console.log("entro en addItem", zapatillas)
@@ -141,6 +166,8 @@ export const addItem = (zapatillas) => {
         payload : zapatillas
     }
 };
+
+
 
 export const delItem = (zapatillas) => {
     return {
