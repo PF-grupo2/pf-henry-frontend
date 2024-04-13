@@ -20,7 +20,7 @@ function Sidebar() {
               </NavLink>
             </li>
             <li>
-              <NavLink className=" nav-link  p-2" to="/admin">
+              <NavLink className=" nav-link  p-2" to="/admin/users">
                 {" "}
                 <i className="fa fa-users" aria-hidden="true"></i> Usuarios
               </NavLink>

@@ -13,6 +13,7 @@ import Contact from "./Componentes/contact/Contact";
 import Dashboard from "./Componentes/dashboard/Dashboard";
 import User from "./Componentes/page/User";
 import Products from "./Componentes/page/Products";
+import Users from "./Componentes/page/Users";
 
 function App() {
   const location = useLocation();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/admin" element={<Dashboard />}>
           <Route index element={<User />} />
           <Route path="products" element={<Products />} />
+          <Route path="users" element={<Users />} />
         </Route>
       </Routes>
       {!isAdminRoute && <Footer />}
