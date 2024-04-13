@@ -1,5 +1,5 @@
-const Landing = () =>{
-    <div>esto es Landing</div>
-}
+const Landing = () => {
+  <div>esto es Landing</div>;
+};
 
-export default Landing
+export default Landing;
