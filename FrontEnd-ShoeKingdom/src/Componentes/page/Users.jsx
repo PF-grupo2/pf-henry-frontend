@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import EditUser from "./editUserForm";
 
 const PORT = 3000;
 const URL = `http://localhost:${PORT}/api/v1/users`;
@@ -11,6 +11,8 @@ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZjQzMGYzLTc3Nzgt
 function Users() {
 
     const [users, setUsers] = useState([]);
+    const [editorOpen, setEditorOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState();
 
     const fetchData = async()=> {
         try{
@@ -37,8 +39,15 @@ function Users() {
             console.error("Error changing user permisions:", error);
         }
     }
+    const handleOpenForm = (user)=>{
+        setEditorOpen(true);
+        setSelectedUser(user);
+    }
+    const handleCloseForm = ()=>{
+        setEditorOpen(false);
+    }
 
-    useEffect(()=>{fetchData()}, [])
+    useEffect(()=>{fetchData()}, []);
 
     return <div>
             {users.map(user => <div key={user.id}>
@@ -48,7 +57,14 @@ function Users() {
                 <span>ID: {user.id}</span>
                 <button onClick={()=> handleBan(user.id)}>{user.status===true?"banear":"desbanear"}</button>
                 <button onClick={()=> handleAdmin(user.id)}>{user.isAdmin===true?"quitar admin":"dar admin"}</button>
-                </div>)}
+                <button onClick={()=> handleOpenForm(user)}>editar</button>
+                </div>)
+            }
+            {editorOpen && <div>
+                    <button onClick={handleCloseForm}>X</button>
+                    <EditUser user={selectedUser} token={token} URL={URL}/>
+                </div>
+            }
         </div>
   }
 
