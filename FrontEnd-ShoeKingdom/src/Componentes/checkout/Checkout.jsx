@@ -240,7 +240,7 @@ function Cheackout() {
 const createPreference = async ()=>{
   console.log(orderData);
   try {
-    const response = await axios.post("http://localhost:3000/api/v1/mercadopago",{
+    const response = await axios.post("https://pf-henry-backend-agsr.onrender.com/mercadopago",{
       items: orderData
     })
     const {id} = response.data
