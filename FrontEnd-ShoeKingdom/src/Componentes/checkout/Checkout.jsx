@@ -212,7 +212,7 @@ function Cheackout() {
 
     //let total = 0
   const [preferenceId, setPreferenceId] = useState(null)
-  initMercadoPago("APP_USR-bc93b94f-5412-4709-80c6-606421b3f3c8",{
+  initMercadoPago("TEST-6f69cc86-29f8-4b46-b7f9-e7e3a12e3b1a",{
     locale: "es-AR",
   });
 
@@ -240,7 +240,7 @@ function Cheackout() {
 const createPreference = async ()=>{
   console.log(orderData);
   try {
-    const response = await axios.post("https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago",{
+    const response = await axios.post("http://localhost:3000/api/v1/mercadopago",{
       items: orderData
     })
     const {id} = response.data
