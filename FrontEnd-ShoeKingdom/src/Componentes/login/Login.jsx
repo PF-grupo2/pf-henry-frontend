@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'; // Importa useDispatch para disparar 
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { setToken } from '../../../Redux/Actions/actions'; // Importa la acción setToken
+import { utilsStorage } from '../utils';
 
-function LoginForm() {
+function LoginForm() { // <- sacamos {onLogin}
   const [formData, setFormData] = useState({
     mail: '',
     password: ''
@@ -37,10 +38,14 @@ function LoginForm() {
         const { user, token } = data;
 
         // Guardar el token en localStorage
-        localStorage.setItem('token', token);
+        
+        utilsStorage.saveDataStorage('token', token)
+
+        console.log('Token almacenado en localStorage:', token);
         
         // Guardar el token en el estado global de Redux
         dispatch(setToken(token));
+        
 
         console.log('Token almacenado en estado global de Redux:', token)
 
@@ -52,6 +57,8 @@ function LoginForm() {
           // isAdmin: user.isAdmin
         };
         console.log("esto es lo que llega al log", loggedInUser)
+        
+        utilsStorage.saveDataStorage("userSession", loggedInUser)
         // onLogin(loggedInUser);
 
         navigate('/');
