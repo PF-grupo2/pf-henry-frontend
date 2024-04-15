@@ -11,7 +11,8 @@ import {
   ADDITEM,
   DELITEM,
   UPDATE_ITEM_QUANTITY,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  SET_TOKEN
 } from "../../Redux/Actions/actions";
 import { utilsStorage } from "../../src/Componentes/utils";
 
@@ -25,7 +26,8 @@ const initialState = {
   filters: [],
   items: [],
   addItem: [],
-  user: null
+  user: null,
+  token: ''
 };
 
 function rootReducer(state = initialState, action) {
@@ -55,6 +57,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload
+      };
+
+
+      case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
       };
     
     

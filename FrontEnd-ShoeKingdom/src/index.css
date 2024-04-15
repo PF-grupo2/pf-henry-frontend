@@ -123,6 +123,17 @@ code{
   height: 100%;
   width: 100%;
 }
+
+.fondo_editar{
+  background-color: #2755a560;
+  border-radius: 6px;
+  color: rgb(3, 3, 3);
+  background-size: cover; /* Ajuste para cubrir todo el contenedor */
+  background-position: center; /* Ajuste para centrar la imagen */
+  height: 70%;
+  width: 100%;
+}
+
  .fondo1{
   background-image: linear-gradient(to top, rgba(3, 17, 22, 0.363) 0%, rgba(241, 231, 231, 0.368) 100%),url("../public/assets/img/slide-02.jpg");
   /* background-image:  url("../public/assets/img/slide-02.jpg"); */
@@ -235,18 +246,15 @@ hr{
   /* border-right: 1px solid $gray; */
   ul{
      list-style: none;
-     padding: 1rem 2rem;
+     padding: 0rem 0rem;
     li{
       margin-bottom: 1 rem;
-      a{
-        text-decoration: none;
-      }
+   
     }
     
   } 
-
-
 }
+
 
 .flex{
   display: flex;

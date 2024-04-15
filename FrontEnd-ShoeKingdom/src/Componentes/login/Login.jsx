@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate desde react-router-dom
-import Swal from 'sweetalert2'; // Importa SweetAlert2
+import { useDispatch } from 'react-redux'; // Importa useDispatch para disparar acciones de Redux
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { setToken } from '../../../Redux/Actions/actions'; // Importa la acción setToken
+import { utilsStorage } from '../utils';
 
-function LoginForm({ onLogin }) {
+function LoginForm() { // <- sacamos {onLogin}
   const [formData, setFormData] = useState({
     mail: '',
     password: ''
   });
 
-  const navigate = useNavigate(); // Obtiene la función de navegación
+  const dispatch = useDispatch(); // Obtiene la función dispatch
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,38 +32,57 @@ function LoginForm({ onLogin }) {
         },
         body: JSON.stringify(formData)
       });
+
       if (response.ok) {
         const data = await response.json();
         const { user, token } = data;
-  
-        // Guardar el token en el almacenamiento local
-        localStorage.setItem('token', token);
-  
-        // Mostrar Sweet Alert
+
+        // Guardar el token en localStorage
+        
+        utilsStorage.saveDataStorage('token', token)
+
+        console.log('Token almacenado en localStorage:', token);
+        
+        // Guardar el token en el estado global de Redux
+        dispatch(setToken(token));
+        
+
+        console.log('Token almacenado en estado global de Redux:', token)
+
+        const loggedInUser = {
+          id: user.id,
+          name: user.name,
+          email: user.mail,
+          phone: user.phone,
+          // isAdmin: user.isAdmin
+        };
+        console.log("esto es lo que llega al log", loggedInUser)
+        
+        utilsStorage.saveDataStorage("userSession", loggedInUser)
+        // onLogin(loggedInUser);
+
+        navigate('/');
+
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión exitoso',
           text: '¡Bienvenido de vuelta!'
         });
-  
-        // Construir el objeto de usuario con la información recibida del servidor
-        const User = {
-          id: user.id,
-          name: user.name,
-          email: user.mail,
-          phone: user.phone,
-        //   isAdmin: user.isAdmink
-        };
-  
-        // Llama a la función onLogin para pasar los datos del usuario al componente NavBar
-        onLogin(User);
-  
-        navigate('/');
       } else {
-        console.error('Error al iniciar sesión.');
+        const errorMessage = await response.json();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al iniciar sesión',
+          text: errorMessage.message || 'Por favor, inténtelo de nuevo más tarde.'
+        });
       }
     } catch (error) {
       console.error('Error de red:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de red',
+        text: 'Ocurrió un error de red. Por favor, inténtelo de nuevo más tarde.'
+      });
     }
   };
 
