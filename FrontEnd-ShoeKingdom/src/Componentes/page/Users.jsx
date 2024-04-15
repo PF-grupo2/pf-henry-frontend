@@ -23,17 +23,19 @@ function Users() {
         }
     }
 
-    const handleBan = async (id) => {
+    const handleBan = async (user) => {
         try {
-            await axios.put(`${URL}/delete/${id}`, { headers: { 'x-token': token } });
+            await axios.put(`${URL}/delete/${user.id}`, { headers: { 'x-token': token } });
+            if(user.status===true&&user.isAdmin===true) handleAdmin(user);
             fetchData();
         } catch (error) {
             console.error("Error banning user:", error);
         }
     }
-    const handleAdmin = async (id) => {
+    const handleAdmin = async (user) => {
         try {
-            await axios.put(`${URL}/admin/${id}`, { headers: { 'x-token': token } });
+            await axios.put(`${URL}/admin/${user.id}`, { headers: { 'x-token': token } });
+            if(user.status===false&&user.isAdmin===false) handleBan(user);
             fetchData();
         } catch (error) {
             console.error("Error changing user permisions:", error);
@@ -77,15 +79,16 @@ function Users() {
                                     <td>{user.name}</td>
                                     <td>{user.phone}</td>
                                     <td>{user.mail}</td>
-                                    <td>
-                                        <button onClick={() => handleBan(user.id)} className={user.status ? "btn btn-danger btn-sm me-2" : "btn btn-success btn-sm me-2"}>
-                                            {user.status ? "Desbanear" : "Banear"}
+                                    { user.mail !== "master@gmail.com" &&(<td>
+                                        <button onClick={() => handleBan(user)} className={!user.status ? "btn btn-danger btn-sm me-2" : "btn btn-success btn-sm me-2"}>
+                                            {!user.status ? "Desbanear" : "Banear"}
                                         </button>
-                                        <button onClick={() => handleAdmin(user.id)} className={user.isAdmin ? "btn btn-warning btn-sm me-2" : "btn btn-primary btn-sm me-2"}>
+                                        <button onClick={() => handleAdmin(user)} className={user.isAdmin ? "btn btn-warning btn-sm me-2" : "btn btn-primary btn-sm me-2"}>
                                             {user.isAdmin ? "Quitar admin" : "Dar admin"}
                                         </button>
                                         <button onClick={() => handleOpenForm(user)} className="btn btn-info btn-sm me-2">Editar</button>
-                                    </td>
+                                    </td>)}
+                                    {user.mail === "master@gmail.com" && (<td></td>)}
                                 </tr>
                             ))}
                         </tbody>
