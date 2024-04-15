@@ -60,7 +60,7 @@ function Users() {
                 <button onClick={()=> handleOpenForm(user)}>editar</button>
                 </div>)
             }
-            {editorOpen && <div>
+            {editorOpen && selectedUser && <div>
                     <button onClick={handleCloseForm}>X</button>
                     <EditUser user={selectedUser} token={token} URL={URL}/>
                 </div>
