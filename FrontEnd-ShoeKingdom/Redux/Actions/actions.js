@@ -18,7 +18,7 @@ export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
 export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
 export const LOGIN_SUCCESS="LOGIN_SUCCESS"
-
+export const SET_TOKEN = 'SET_TOKEN'
 
 
 export const updateItemQuantity = (itemId, newQuantity) => {
@@ -153,6 +153,13 @@ export const saveCart = async (cartItems) => {
 export const loginSuccess = (userData) => ({
   type: 'LOGIN_SUCCESS',
   payload: userData
+});
+
+
+// guarda el token al hacer login
+export const setToken = (token) => ({
+  type: SET_TOKEN,
+  payload: token,
 });
 
 
