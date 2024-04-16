@@ -16,10 +16,13 @@ import Products from "./Componentes/page/Products";
 import Users from "./Componentes/page/Users";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
+import { utilsStorage } from "./Componentes/utils";
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes("/admin");
+
+  const { isAdmin } = utilsStorage.getDataStorage("userSession");
 
   return (
     <>
@@ -37,11 +40,11 @@ function App() {
         <Route path="/register" element={<RegisterForm/>} />
         <Route path="/login" element={<LoginForm/>} />
 
-        <Route path="/admin" element={<Dashboard />}>
+        {isAdmin && (<Route path="/admin" element={<Dashboard />}>
           <Route index element={<User />} />
           <Route path="products" element={<Products />} />
           <Route path="users" element={<Users />} />
-        </Route>
+        </Route>)}
       </Routes>
       {!isAdminRoute && <Footer />}
     </>
