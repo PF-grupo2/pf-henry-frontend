@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { setToken } from '../../../Redux/Actions/actions'; // Importa la acción setToken
 import { utilsStorage } from '../utils';
 
-function LoginForm() { // <- sacamos {onLogin}
+function LoginForm() { 
   const [formData, setFormData] = useState({
     mail: '',
     password: ''
@@ -54,12 +54,12 @@ function LoginForm() { // <- sacamos {onLogin}
           name: user.name,
           email: user.mail,
           phone: user.phone,
-          // isAdmin: user.isAdmin
+          isAdmin: user.isAdmin
         };
         console.log("esto es lo que llega al log", loggedInUser)
         
         utilsStorage.saveDataStorage("userSession", loggedInUser)
-        // onLogin(loggedInUser);
+        
 
         navigate('/');
 
