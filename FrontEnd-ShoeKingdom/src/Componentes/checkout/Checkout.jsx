@@ -212,7 +212,8 @@ function Cheackout() {
 
     //let total = 0
   const [preferenceId, setPreferenceId] = useState(null)
-  initMercadoPago("APP_USR-bc93b94f-5412-4709-80c6-606421b3f3c8",{
+  initMercadoPago("TEST-292925ac-3601-49db-8eb5-5dbc8bfaeaea"
+  ,{
     locale: "es-AR",
   });
 
@@ -238,16 +239,23 @@ function Cheackout() {
 
   
 const createPreference = async ()=>{
-  console.log(orderData);
+  console.log("esto es lo q llega de order data",orderData);
   try {
+    //"http://localhost:3000/api/v1/mercadopago"
+    //https://pf-henry-backend.onrender.com/api/v1/mercadopago
+    //https://test-backend-u5ie.onrender.com/api/v1/mercadopago
+    //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
+
     const response = await axios.post("http://localhost:3000/api/v1/mercadopago",{
       items: orderData
+
     })
+    console.log("esta es la respuesta",response);
     const {id} = response.data
     return id
     
   } catch (error) {
-    console.log(error);
+    console.log("este es el:",error.message);
     
   }
 }
@@ -267,13 +275,11 @@ const createPreference = async ()=>{
 
   return (
 
-
     <div >
-   
             <button onClick={handleBuy}>Pagar</button>
             {preferenceId && <Wallet initialization={{preferenceId: preferenceId}}/>}
-            
     </div>
+
     
     
 
