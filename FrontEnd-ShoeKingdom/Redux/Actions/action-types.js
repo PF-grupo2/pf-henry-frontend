@@ -25,3 +25,9 @@ export const LOADING = 'LOADING';
 // login
 export const LOGIN_SUCCESS="LOGIN_SUCCESS"
 export const SET_TOKEN= "SET_TOKEN"
+
+// reviews
+export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const EDIT_REVIEW = 'EDIT_REVIEW';
+export const DELETE_REVIEW = 'DELETE_REVIEW';
