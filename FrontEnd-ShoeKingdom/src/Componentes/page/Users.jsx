@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import EditUser from "./editUserForm";
+import { utilsStorage } from '../utils';
 
 const PORT = 3000;
 const URL = `http://localhost:${PORT}/api/v1/users`;
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZjQzMGYzLTc3NzgtNGZiZC05MGNhLTJmMDIyY2JkMjgwZCIsImlhdCI6MTcxMzAzMzI5NSwiZXhwIjoxNzEzMDQ0MDk1fQ.XUyp6UfXD6eizo5fqG7UWQ3IsIytCzgvBDUaqY1O39Y"
-
-
 function Users() {
+
+    const token = utilsStorage.getDataStorage("token");
 
     const [users, setUsers] = useState([]);
     const [editorOpen, setEditorOpen] = useState(false);
@@ -59,7 +59,8 @@ function Users() {
 
 
                     {/* <a href="nuevo.html" className="btn btn-success">Agregar</a> */}
-
+                    {/* <span>el token es: {token}</span>
+                    <button onClick={()=>utilsStorage.removeDataStorage("token")}>borrar token</button> */}
                     <table className="table table-hover table-bordered my-3" aria-describedby="titulo">
                         <thead className="table-dark">
                             <tr>
