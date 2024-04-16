@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate desde react-router-dom
 import Swal from 'sweetalert2'; // Importa SweetAlert2
 import * as Yup from "yup"; //Importa Yup para validaciones del Form
@@ -51,7 +51,7 @@ const RegisterForm = () => {
       setErrors(newErrors);
     }
 
-    try{ const response = await fetch('https://pf-henry-backend-agsr.onrender.com/api/v1/users/register', {
+    try{ const response = await fetch('https://pf-henry-backend-agsr.onrender.com/api/v1/users/register', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
