@@ -7,10 +7,14 @@ import { NavLink,useNavigate  } from 'react-router-dom';
 import Cards from '../cards/Cards';
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
+import { utilsStorage } from '../utils';
 
 
 
 const Cart = () => {
+
+    const token = utilsStorage.getDataStorage("token");
+
     const Navigate = useNavigate()
     // const navigateToCheckout = () => {
     //     window.open('/checkout', '_blank', 'noopener');
@@ -105,7 +109,7 @@ const Cart = () => {
     };
     const checkoutButton = () => {
         const handleCheckout = () => {
-            if (isAuthenticated) {
+            if (token) {
                 // Si el usuario está logueado, redirigir a la página de checkout
                 Navigate('/checkout');
                 // navigateToCheckout();

@@ -7,12 +7,15 @@ import SearchBar from '../searchBar/SearchBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
 import './Header.css'
-
+import { utilsStorage } from '../utils';
 
 
 const Header = () => {
     const { isAuthenticated } = useAuth0();
     const [isMobile, setIsMobile] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
+
+    const { isAdmin, name } = utilsStorage.getDataStorage("userSession");
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,7 +28,13 @@ const Header = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [isLogged]);
+
+    const handleLogOut = ()=>{
+        utilsStorage.removeDataStorage("token");
+        utilsStorage.removeDataStorage("userSession");
+        setIsLogged(true);
+    }
 
     return (
         <>
@@ -62,11 +71,17 @@ const Header = () => {
 
                                     <CartBtn />
                                 </div>
+                                <div>
+                                    {name && (<button onClick={handleLogOut}>
+                                        <span>Cerrar Sesion</span>
+                                    </button>)}
+                                </div>
                             </div>
 
                             <button className="navbar-toggler m-2" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="fa fa-bars"></span>
                             </button>
+
 
                             <div className="collapse navbar-collapse" id="ftco-nav">
                                 <ul className="navbar-nav mb-3 mb-lg-0 ">
@@ -82,9 +97,9 @@ const Header = () => {
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/contact">Contactanos</NavLink>
                                     </li>
-                                    <li className="nav-item">
+                                    {isAdmin && (<li className="nav-item">
                                         <NavLink className="nav-link" to="/admin">admin</NavLink>
-                                    </li>
+                                    </li>)}
                                 </ul>
 
                             </div>

@@ -9,6 +9,7 @@ const URL = `http://localhost:${PORT}/api/v1/users`;
 function Users() {
 
     const token = utilsStorage.getDataStorage("token");
+    const { isAdmin } = utilsStorage.getDataStorage("userSession");
 
     const [users, setUsers] = useState([]);
     const [editorOpen, setEditorOpen] = useState(false);
@@ -50,6 +51,8 @@ function Users() {
     }
 
     useEffect(() => { fetchData() }, []);
+
+    if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
 
     return <div>
 

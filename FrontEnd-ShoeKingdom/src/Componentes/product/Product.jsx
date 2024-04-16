@@ -128,7 +128,7 @@ const Product = () => {
                 <select
                   onChange={handleFilter}
                   ref={brands}
-                  value={selectedBrand} // Reemplaza selectedBrand con la variable que indica la opción seleccionada
+                  defaultValue={selectedBrand} // Reemplaza selectedBrand con la variable que indica la opción seleccionada
                 >
                   <optgroup>
                     <option value="">All</option>
@@ -157,7 +157,7 @@ const Product = () => {
                 <select
                   onChange={handleFilter}
                   ref={sizes}
-                  value={selectedSize} // Reemplaza selectedSize con la variable que indica la opción seleccionada
+                  defaultValue={selectedSize} // Reemplaza selectedSize con la variable que indica la opción seleccionada
                 >
                   <optgroup>
                     <option value="">All</option>
@@ -195,7 +195,7 @@ const Product = () => {
                 <select
                   onChange={handleFilter}
                   ref={styles}
-                  value={selectedStyle} // Reemplaza selectedStyle con la variable que indica la opción seleccionada
+                  defaultValue={selectedStyle} // Reemplaza selectedStyle con la variable que indica la opción seleccionada
                 >
                   <optgroup>
                     <option value="">All</option>
@@ -219,7 +219,7 @@ const Product = () => {
                 <select
                   onChange={handleFilter}
                   ref={colors}
-                  value={selectedColor} // Reemplaza selectedColor con la variable que indica la opción seleccionada
+                  defaultValue={selectedColor} // Reemplaza selectedColor con la variable que indica la opción seleccionada
                 >
                   <optgroup>
                     <option value="">All</option>
