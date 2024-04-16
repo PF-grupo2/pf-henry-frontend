@@ -4,6 +4,7 @@ const saveDataStorage = (key, value) => {
 
 const getDataStorage = (key) => {
   const dataStorage = localStorage.getItem(key);
+  if(key==="token" && !dataStorage) return ""
   return dataStorage ? JSON.parse(dataStorage) : [];
 };
 

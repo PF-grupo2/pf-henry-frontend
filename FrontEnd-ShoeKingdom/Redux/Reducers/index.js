@@ -11,7 +11,12 @@ import {
   ADDITEM,
   DELITEM,
   UPDATE_ITEM_QUANTITY,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  SET_TOKEN,
+  GET_ALL_REVIEWS,
+  ADD_REVIEW,
+  EDIT_REVIEW, 
+  DELETE_REVIEW
 } from "../../Redux/Actions/actions";
 import { utilsStorage } from "../../src/Componentes/utils";
 
@@ -25,7 +30,9 @@ const initialState = {
   filters: [],
   items: [],
   addItem: [],
-  user: null
+  user: null,
+  token: '',
+  reviews: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -55,6 +62,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload
+      };
+
+
+      case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
       };
     
     
@@ -131,6 +145,29 @@ function rootReducer(state = initialState, action) {
         }),
       };
 
+      case GET_ALL_REVIEWS: 
+      return{
+        ...state,
+        reviews: action.payload
+      };
+
+      case ADD_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
+
+      case EDIT_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
+
+      case DELETE_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
     default:
       return state;
   }

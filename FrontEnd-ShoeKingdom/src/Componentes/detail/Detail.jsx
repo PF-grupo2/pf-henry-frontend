@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import Reviews from '../reviews/Reviews';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -100,7 +101,7 @@ function ProductDetail() {
     const saveCartToDatabase = async (cartItems, token) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/v1/shoppingCart",
+                "https://pf-henry-backend-agsr.onrender.com/api/v1/shoppingCart",
                 { items: cartItems },
                 {
                     headers: {
@@ -147,7 +148,14 @@ function ProductDetail() {
                     )}
                 </div>
             </div>
+            <div className="col-lg-6 m-auto">
+              <div>
+              <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
+              </div>
+            <Reviews productId={id}/>
+            </div>
         </div>
+        
     );
 }
 

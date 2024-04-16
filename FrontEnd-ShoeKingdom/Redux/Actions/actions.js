@@ -18,7 +18,11 @@ export const ADDITEM = 'ADDITEM';
 export const DELITEM = 'DELITEM';
 export const UPDATE_ITEM_QUANTITY='UPDATE_ITEM_QUANTITY';
 export const LOGIN_SUCCESS="LOGIN_SUCCESS"
-
+export const SET_TOKEN = 'SET_TOKEN'
+export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const EDIT_REVIEW = 'EDIT_REVIEW';
+export const DELETE_REVIEW = 'DELETE_REVIEW';
 
 
 export const updateItemQuantity = (itemId, newQuantity) => {
@@ -35,7 +39,7 @@ export const getGender = (nombre) => {
  
   return async function(dispatch){
   
-    const gender = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
+    const gender = await (await axios(`https://pf-henry-backend-agsr.onrender.com/api/v1/products/listProducts/all/1/filters?gender[]=${nombre}`)).data.products;
     // const filteredData = DATA.filter(item => item.brand === nombre);
     if(gender.length > 0){
       return dispatch({
@@ -54,7 +58,7 @@ export const getfilter = (nombre) => {
  
   return async function(dispatch){
   
-    const filteredData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/all/1/filters?brand[]=${nombre}`)).data.products;
+    const filteredData = await (await axios(`https://pf-henry-backend-agsr.onrender.com/api/v1/products/listProducts/all/1/filters?brand[]=${nombre}`)).data.products;
 
     // const filteredData = DATA.filter(item => item.brand === nombre);
    
@@ -71,8 +75,8 @@ export const getfilter = (nombre) => {
 
   export const getZapatilla = (filters, page=1) => {
     return async function (dispatch) {
-      let productData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/9/${page}/filters?`)).data
-      if(filters) productData = await (await axios(`https://pf-henry-backend.onrender.com/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
+      let productData = await (await axios(`https://pf-henry-backend-agsr.onrender.com/api/v1/products/listProducts/9/${page}/filters?`)).data
+      if(filters) productData = await (await axios(`https://pf-henry-backend-agsr.onrender.com/api/v1/products/listProducts/9/${page}/filters?`+filters)).data
 
       // const productData = DATA;
       return dispatch({
@@ -92,7 +96,7 @@ export const getfilter = (nombre) => {
   export function  getDetail (id) {
     return async function (dispatch) {
      try {
-       const zapatillaDetail = await axios.get(`https://pf-henry-backend.onrender.com/api/v1/products/detail/${id}`);
+       const zapatillaDetail = await axios.get(`https://pf-henry-backend-agsr.onrender.com/api/v1/products/detail/${id}`);
     
        return dispatch({
          type: GET_DETAIL,
@@ -135,7 +139,7 @@ export const getfilter = (nombre) => {
 
 export const saveCart = async (cartItems) => {
   try {
-    const response = await axios.post(`http://localhost:3000/api/v1/save`, {
+    const response = await axios.post(`https://pf-henry-backend-agsr.onrender.com/api/v1/save`, {
       //userId: userId,
       cartItems: cartItems.map(item => ({
         id: item.id,
@@ -153,6 +157,13 @@ export const saveCart = async (cartItems) => {
 export const loginSuccess = (userData) => ({
   type: 'LOGIN_SUCCESS',
   payload: userData
+});
+
+
+// guarda el token al hacer login
+export const setToken = (token) => ({
+  type: SET_TOKEN,
+  payload: token,
 });
 
 
@@ -175,3 +186,47 @@ export const delItem = (zapatillas) => {
         payload : zapatillas
     }
 }
+
+export const getAllReviews = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios (`https://pf-henry-backend-agsr.onrender.com/api/v1/review/review`);
+      return dispatch({ type: GET_ALL_REVIEWS, payload: data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+};
+
+export const addReview = () => {
+  return async (dispatch) => {
+    try {
+     const { data } = await axios (`https://pf-henry-backend-agsr.onrender.com/api/v1/review/review`);
+     return dispatch({ type: ADD_REVIEW, payload: data })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+export const editReview = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios (`https://pf-henry-backend-agsr.onrender.com/api/v1/review/review/${id}`);
+      return dispatch({ type: EDIT_REVIEW, payload: data })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+export const deleteReview = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios (`https://pf-henry-backend-agsr.onrender.com/api/v1/review/review/${id}`);
+      return dispatch ({ type: DELETE_REVIEW, payload: data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+};

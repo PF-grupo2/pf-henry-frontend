@@ -8,50 +8,39 @@ function Sidebar() {
             href="/"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
           >
-            {/* <svg className="bi pe-none me-2" width="40" height="32"><use xlinkHref="#bootstrap" /></svg> */}
-            <span className="fs-4">ShoeKingdom</span>
+            
+            <span className="logo1">ShoeKingdom</span>
           </a>
 
-          <ul className="nav nav-pills flex-column mb-auto">
+          <ul className="nav  flex-column mb-auto">
+
             <li className="nav-item">
-              <NavLink className=" nav-link p-2" to="/admin">
-                {" "}
-                <i className="fa fa-home" aria-hidden="true"></i> Home
+              <NavLink className="nav-link" activeClassName="active" exact to="/admin">
+                <i className="fa fa-home"></i> Home
               </NavLink>
             </li>
-            <li>
-              <NavLink className=" nav-link  p-2" to="/admin/users">
-                {" "}
-                <i className="fa fa-users" aria-hidden="true"></i> Usuarios
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active" to="/admin/users">
+                <i className="fa fa-users"></i> Usuarios
               </NavLink>
             </li>
-            <li>
-              <a href="#" className="nav-link link-body-emphasis p-2">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                Orden de compras
-              </a>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active" to="/admin/products">
+                <i className="fa fa-cubes"></i> Productos
+              </NavLink>
             </li>
-            <li>
-              <a href="#" className="nav-link link-body-emphasis p-2">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                Ventas
-              </a>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active" to="/admin/sales">
+                <i className="fa fa-shopping-cart"></i> Ventas
+              </NavLink>
             </li>
-            <li>
-              <li className="nav-item">
-                <NavLink className=" nav-link  p-2" to="/admin/products">
-                  {" "}
-                  <i className="fa fa-users" aria-hidden="true"></i> Productos
-                </NavLink>
-              </li>
-            </li>
-            <li>
-              <a href="#" className="nav-link link-body-emphasis p-2">
-                <i className="fa fa-comments-o" aria-hidden="true"></i>
-                Comentarios
-              </a>
+            <li className="nav-item">
+              <NavLink className="nav-link" activeClassName="active" to="/admin/comments">
+                <i className="fa fa-comments"></i> Comentarios
+              </NavLink>
             </li>
           </ul>
+
 
           <div className="dropdown">
             <a
