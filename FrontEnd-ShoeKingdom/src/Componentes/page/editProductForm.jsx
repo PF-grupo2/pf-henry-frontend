@@ -17,30 +17,40 @@ function EditProduct({ product, token, URL }) {
     console.log(formData);
   };
 
-  const handleSubmit = async() => {
-    await axios.put(`${URL}/update/${product.id}`,formData, {headers: {'x-token': token}});
+  const handleSubmit = async () => {
+    await axios.put(`${URL}/update/${product.id}`, formData, { headers: { 'x-token': token } });
   };
 
-  useEffect(()=>{setFormData({
-    name: product.name,
-    brand: product.brand,
-    price: product.price
-  })}, [product])
+  useEffect(() => {
+    setFormData({
+      name: product.name,
+      brand: product.brand,
+      price: product.price
+    });
+  }, [product]);
 
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <h2>Editar el Producto: {product.name}</h2>
-            <label htmlFor="name">Nombre:</label><br />
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required /><br />
-            <label htmlFor="brand">Marca:</label><br />
-            <input type="text" id="brand" name="brand" value={formData.brand} onChange={handleChange} required /><br />
-            <label htmlFor="price"> Precio:</label><br />
-            <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} /><br />
-            <label htmlFor="phone">Teléfono:</label><br />
-            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required /><br /><br />
-            <button type="submit">Actualizar</button>
-        </form>
+    <div className="container fondo_editar">
+      <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+        <h2 className="mb-4">Editar el Producto: {product.name}</h2>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Nombre:</label>
+          <input type="text" id="name" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="brand" className="form-label">Marca:</label>
+          <input type="text" id="brand" className="form-control" name="brand" value={formData.brand} onChange={handleChange} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="price" className="form-label">Precio:</label>
+          <input type="number" id="price" className="form-control" name="price" value={formData.price} onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">Teléfono:</label>
+          <input type="tel" id="phone" className="form-control" name="phone" value={formData.phone} onChange={handleChange} required />
+        </div>
+        <button type="submit" className="btn btn-primary">Actualizar</button>
+      </form>
     </div>
   );
 }

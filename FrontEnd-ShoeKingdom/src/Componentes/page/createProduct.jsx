@@ -79,83 +79,92 @@ const CreateProdForm = ({ POST_URI }) => {
   };
 
   return (
-    <div>
-      <h2>Create Product</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </label><br />
-        <label>
-          Description:
-          <input type="text" name="description" value={formData.description} onChange={handleChange} />
-        </label><br />
-        <label>
-          Images:
-          <input type="file" name="images" onChange={handleChange} multiple />
-          {formData.images && formData.images.map((image, index) => (
-            <img key={index} src={image.preview} alt={`Preview ${index}`} style={{ maxWidth: '100px', maxHeight: '100px', margin: '5px' }} />
+    <div className="container fondo_editar">
+    <h2>Create Product</h2>
+    <form onSubmit={handleSubmit} className="needs-validation">
+      <div className="mb-3">
+        <label htmlFor="productName" className="form-label">Name:</label>
+        <input type="text" id="productName" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
+        <div className="invalid-feedback">Please enter a product name.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productDescription" className="form-label">Description:</label>
+        <input type="text" id="productDescription" className="form-control" name="description" value={formData.description} onChange={handleChange} required />
+        <div className="invalid-feedback">Please enter a product description.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productImages" className="form-label">Images:</label>
+        <input type="file" id="productImages" className="form-control" name="images" onChange={handleChange} multiple />
+        {formData.images && formData.images.map((image, index) => (
+          <img key={index} src={image.preview} alt={`Preview ${index}`} className="img-thumbnail mx-2 my-2" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+        ))}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productStyle" className="form-label">Style:</label>
+        <select id="productStyle" className="form-select" name="style" value={formData.style} onChange={handleChange} required>
+          <option value="">Select Style</option>
+          {ENUMS.styles.map(style => (
+            <option key={style} value={style}>{style}</option>
           ))}
-        </label><br />
-        <label>
-          Style:
-          <select name="style" value={formData.style} onChange={handleChange}>
-            <option value="">Select Style</option>
-            {ENUMS.styles.map(style => (
-              <option key={style} value={style}>{style}</option>
-            ))}
-          </select>
-        </label><br />
-        <label>
-          Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange}>
-            {ENUMS.genders.map(gender => (
-              <option key={gender} value={gender}>{gender}</option>
-            ))}
-          </select>
-        </label><br />
-        <label>
-          Colors:
-          <select name="color" value={formData.color} onChange={handleChange}>
-            {ENUMS.colors.map(color => (
-              <option key={color} value={color}>{color}</option>
-            ))}
-          </select>
-        </label><br />
-        <label>
-          Sizes:
-          <input type="text" name="size" value={formData.size} onChange={handleChange} />
-        </label><br />
-        <label>
-          Brand:
-          <select name="brand" value={formData.brand} onChange={handleChange}>
-            {ENUMS.brands.map(brand => (
-              <option key={brand} value={brand}>{brand}</option>
-            ))}
-          </select>
-        </label><br />
-        <label>
-          Price:
-          <input type="number" name="price" value={formData.price} onChange={handleChange} />
-        </label><br />
-        <label>
-          Stock:
-          <input type="number" name="stock" value={formData.stock} onChange={handleChange} />
-        </label><br />
-        <label>
-          Offer:
-          <input type="number" name="offer" value={formData.offer} onChange={handleChange} />
-        </label><br />
-        <label>
-          Status:
-          <select name="status" value={formData.status} onChange={handleChange}>
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
-          </select>
-        </label><br />
-        <button type="submit">Create Product</button>
-      </form>
-    </div>
+        </select>
+        <div className="invalid-feedback">Please select a product style.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productGender" className="form-label">Gender:</label>
+        <select id="productGender" className="form-select" name="gender" value={formData.gender} onChange={handleChange} required>
+          {ENUMS.genders.map(gender => (
+            <option key={gender} value={gender}>{gender}</option>
+          ))}
+        </select>
+        <div className="invalid-feedback">Please select a product gender.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productColor" className="form-label">Colors:</label>
+        <select id="productColor" className="form-select" name="color" value={formData.color} onChange={handleChange} required>
+          {ENUMS.colors.map(color => (
+            <option key={color} value={color}>{color}</option>
+          ))}
+        </select>
+        <div className="invalid-feedback">Please select a product color.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productSize" className="form-label">Sizes:</label>
+        <input type="text" id="productSize" className="form-control" name="size" value={formData.size} onChange={handleChange} />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productBrand" className="form-label">Brand:</label>
+        <select id="productBrand" className="form-select" name="brand" value={formData.brand} onChange={handleChange} required>
+          {ENUMS.brands.map(brand => (
+            <option key={brand} value={brand}>{brand}</option>
+          ))}
+        </select>
+        <div className="invalid-feedback">Please select a product brand.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productPrice" className="form-label">Price:</label>
+        <input type="number" id="productPrice" className="form-control" name="price" value={formData.price} onChange={handleChange} required />
+        <div className="invalid-feedback">Please enter a valid product price.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productStock" className="form-label">Stock:</label>
+        <input type="number" id="productStock" className="form-control" name="stock" value={formData.stock} onChange={handleChange} required />
+        <div className="invalid-feedback">Please enter a valid product stock.</div>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productOffer" className="form-label">Offer:</label>
+        <input type="number" id="productOffer" className="form-control" name="offer" value={formData.offer} onChange={handleChange} />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="productStatus" className="form-label">Status:</label>
+        <select id="productStatus" className="form-select" name="status" value={formData.status} onChange={handleChange} required>
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+        <div className="invalid-feedback">Please select a product status.</div>
+      </div>
+      <button type="submit" className="btn btn-primary">Create Product</button>
+    </form>
+  </div>
   );
 };
 
