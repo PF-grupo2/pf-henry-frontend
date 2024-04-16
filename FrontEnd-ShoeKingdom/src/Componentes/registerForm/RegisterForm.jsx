@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Importa useNavigate desde rea
 import Swal from 'sweetalert2'; // Importa SweetAlert2
 import * as Yup from "yup"; //Importa Yup para validaciones del Form
 
+
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -67,6 +68,8 @@ const RegisterForm = () => {
           text: '¡Bienvenido! Su cuenta ha sido creada.'
         });
         // Redirigir al usuario a la página principal después de 2 segundos
+
+
         setTimeout(() => navigate('/'), 2000);
       } else {
         console.error('Error al registrar el usuario.');
