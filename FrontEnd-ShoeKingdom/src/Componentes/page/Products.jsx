@@ -2,95 +2,123 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import EditProduct from "./editProductForm";
 import CreateProdForm from "./createProduct";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const PORT = 3000;
 const URL = `http://localhost:${PORT}/api/v1/products/listProducts`;
 
 const POST_URI = `http://localhost:${PORT}/api/v1/products`
 
-
-
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZjQzMGYzLTc3NzgtNGZiZC05MGNhLTJmMDIyY2JkMjgwZCIsImlhdCI6MTcxMzAzMzI5NSwiZXhwIjoxNzEzMDQ0MDk1fQ.XUyp6UfXD6eizo5fqG7UWQ3IsIytCzgvBDUaqY1O39Y"
 
-
 function Products() {
-
     const [products, setProducts] = useState([]);
-    const [editorOpen, setEditorOpen] = useState(false);
-    const [creatorOpen, setCreatorOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState();
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showCreateModal, setShowCreateModal] = useState(false);
 
-    const fetchData = async()=> {
-        try{
-            const { data } = await axios.get(URL, {headers: {'x-token': token}});
+    const fetchData = async () => {
+        try {
+            const { data } = await axios.get(URL, { headers: { 'x-token': token } });
             if (data.products && Array.isArray(data.products)) {
-              setProducts(data.products);
+                setProducts(data.products);
             } else {
-              console.error("La respuesta de la API no contiene un array de productos")
+                console.error("La respuesta de la API no contiene un array de productos")
             }
-        } catch(error){
+        } catch (error) {
             console.error("Error getting products:", error);
         }
     }
 
-    const handleBan = async(id)=>{
-        try{
-            await axios.put(`${URL}/delete/${id}`, {headers: { 'x-token': token }});
+    const handleBan = async (id) => {
+        try {
+            await axios.put(`${URL}/delete/${id}`, { headers: { 'x-token': token } });
             fetchData();
-        }catch(error){
+        } catch (error) {
             console.error("Error banning product:", error);
         }
     }
-    // const handleAdmin = async(id)=>{
-    //     try{
-    //         await axios.put(`${URL}/admin/${id}`, {headers: { 'x-token': token }});
-    //         fetchData();
-    //     }catch(error){
-    //         console.error("Error changing user permisions:", error);
-    //     }
-    // }
-    const handleOpenForm = (product)=>{
-        setEditorOpen(true);
+
+    const handleAdmin = async (id) => {
+        try {
+            await axios.put(`${URL}/admin/${id}`, { headers: { 'x-token': token } });
+            fetchData();
+        } catch (error) {
+            console.error("Error changing user permissions:", error);
+        }
+    }
+
+    const handleOpenEditModal = (product) => {
         setSelectedProduct(product);
-    }
-    const handleCloseForm = ()=>{
-        setEditorOpen(false);
-    }
-    
-    const handleOpenCreator = () =>{
-        setCreatorOpen(true);
-    }
-    const handleCloseCreator = () =>{
-        setCreatorOpen(false)
+        setShowEditModal(true);
     }
 
-    useEffect(()=>{fetchData()}, []);
+    const handleCloseEditModal = () => {
+        setShowEditModal(false);
+    }
 
-    return <div>
-            <button onClick={handleOpenCreator}>Ingresar Nuevo Producto</button>
-            {products.map(product => <div key={product.id}>
-                <span>Nombre: {product.name}</span>
-                <span>Marca: {product.brand}</span>
-                <span>Precio: {product.brand}</span>
-                {/* <span>Imagen: {product.image}</span> */}
-                <button onClick={()=> handleBan(product.id)}>{product.status===true?"banear":"desbanear"}</button>
-                {/* <button onClick={()=> handleAdmin(user.id)}>{user.isAdmin===true?"quitar admin":"dar admin"}</button> */}
-                <button onClick={()=> handleOpenForm(product)}>editar</button>
-                </div>)
-            }
-            {editorOpen && <div>
-                    <button onClick={handleCloseForm}>X</button>
-                    <EditProduct product={selectedProduct} token={token} URL={URL}/>
-                </div>
-            }
-            {creatorOpen && <div>
-                    <button onClick={handleCloseCreator}>X</button>
+    const handleOpenCreateModal = () => {
+        setShowCreateModal(true);
+    }
+
+    const handleCloseCreateModal = () => {
+        setShowCreateModal(false);
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    return (
+        <div>
+            <div className="d-flex justify-content-end mb-3">
+                <Button variant="success" onClick={handleOpenCreateModal}>Ingresar Nuevo Producto</Button>
+            </div>
+            <table className="table table-hover table-bordered my-3" aria-describedby="titulo">
+                <thead className="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map(product => (
+                        <tr key={product.id}>
+                            <td>{product.id}</td>
+                            <td>{product.name}</td>
+                            <td>{product.brand}</td>
+                            <td>{product.price}</td>
+                            <td>
+                                <Button variant="info" onClick={() => handleOpenEditModal(product)}>Editar</Button>
+                                <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Desbanear" : "Banear"}</Button>
+                                <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <Modal show={showEditModal} onHide={handleCloseEditModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Editar Producto: {selectedProduct && selectedProduct.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <EditProduct product={selectedProduct} token={token} URL={URL} />
+                </Modal.Body>
+            </Modal>
+            <Modal show={showCreateModal} onHide={handleCloseCreateModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Ingresar Nuevo Producto</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <CreateProdForm POST_URI={POST_URI} />
-                </div>
-            }
-
+                </Modal.Body>
+            </Modal>
         </div>
-  }
+    );
+}
 
-  
-  export default Products;
+export default Products;
