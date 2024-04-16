@@ -21,8 +21,9 @@ const CreateProdForm = ({ POST_URI }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    // Si el nombre del campo es "images", no actualices el estado aquí
+    console.log("name", name)
+    console.log("value", value)
+     
     if (name === "images") {
       if( files.length > 0) {
         const images = Array.from(files).map(file => ({
@@ -38,15 +39,24 @@ const CreateProdForm = ({ POST_URI }) => {
           ...formData,
           [name]: []
         })
-      }
-      } else {
-        setFormData({
-          ...formData,
-          [name]: value
-        })
-      }
-      
+      } 
+    } else if (name === "color" || name === "size"){
+      setFormData({
+        ...formData,
+        [name]:[...formData[name], value]
+      });
+    // } else if (name === "size") {
+    //   setFormData({
+    //     ...formData,
+    //     size:[...formData.size, parseFloat(value)]
+    //   });
+    } else {   
+      setFormData({
+        ...formData,
+        [name]: name === 'price' || name === 'stock' ? parseFloat(value) : value
+      })
     }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,11 +74,12 @@ const CreateProdForm = ({ POST_URI }) => {
       const imageUrls = imageUploadResponse.data.imageUrls;
 
       // Ahora actualizamos el formData con las URL de las imágenes en lugar de los archivos
+
       const updatedFormData = { ...formData, images: imageUrls };
 
       // Enviar el resto de los datos del formulario al servidor para crear el producto
-      console.log(updatedFormData)
-      const productCreationResponse = await axios.post(POST_URI, updatedFormData);
+      console.log("Estoy aca:", updatedFormData)
+      const productCreationResponse = await axios.post("http://localhost:3000/api/v1/products", updatedFormData);
       
       console.log('Product created:', productCreationResponse.data);
       alert("Producto ingresado a nuestra base de datos")
@@ -80,7 +91,7 @@ const CreateProdForm = ({ POST_URI }) => {
 
   return (
     <div className="container fondo_editar">
-    <h2>Create Product</h2>
+    <h2>Ingresar Producto</h2>
     <form onSubmit={handleSubmit} className="needs-validation">
       <div className="mb-3">
         <label htmlFor="productName" className="form-label">Name:</label>
