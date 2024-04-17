@@ -41,52 +41,47 @@ function UserReviews({ id }) {
   if (!isAdmin) return <span>No tiene permisos para entrar aquí</span>;
   if (!reviews) return <span>El usuario no ha publicado reseñas</span>;
 
-  return (
-    <div>
-      <div className="d-flex flex-column h-100">
-        <main className="flex-shrink-0">
-          <div className="container">
-            <table
-              className="table table-hover table-bordered my-3"
-              aria-describedby="titulo"
-            >
-              <thead className="table-dark">
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">ID del producto</th>
-                  <th scope="col">producto</th>
-                  <th scope="col">puntuación</th>
-                  <th scope="col">comentario</th>
-                  <th scope="col">fecha de creación</th>
-                  <th scope="col">fecha de edición</th>
-                  <th scope="col">acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* <tr> */}
-                {reviews.map((review) => (
-                  <tr key={review.id}>
-                    <td>{review.id}</td>
-                    <td>{review.ProductId}</td>
-                    <td>
-                      <a href={`${URLfront}/${id}`}>{review.Product.name}</a>
-                    </td>
-                    <td>{review.score}</td>
-                    <td>{review.message}</td>
-                    <td>{review.createdAt}</td>
-                    <td>{review.updatedAt}</td>
-                    <td>
-                      <button onClick={() => handleHide(review)}>
-                        {review.status ? "ocultar" : "restaurar"}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </main>
-      </div>
+    if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
+    if(reviews.length===0) return <span>El usuario no ha publicado reseñas</span>
+
+    return <div>
+
+        <div className="d-flex flex-column h-100">
+            <main className="flex-shrink-0">
+                <div className="container">
+                    <table className="table table-hover table-bordered my-3" aria-describedby="titulo">
+                        <thead className="table-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">ID del producto</th>
+                                <th scope="col">producto</th>
+                                <th scope="col">puntuación</th>
+                                <th scope="col">comentario</th>
+                                <th scope="col">fecha de creación</th>
+                                <th scope="col">fecha de edición</th>
+                                <th scope="col">acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* <tr> */}
+                            {reviews.map(review => (
+                                <tr key={review.id}>
+                                    <td>{review.id}</td>
+                                    <td>{review.ProductId}</td>
+                                    <td><a href={`${URLfront}/${id}`}>{review.Product.name}</a></td>
+                                    <td>{review.score}</td>
+                                    <td>{review.message}</td>
+                                    <td>{review.createdAt}</td>
+                                    <td>{review.updatedAt}</td>
+                                    <td><button onClick={()=>handleHide(review)}>{review.status?"ocultar":"restaurar"}</button></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+
     </div>
   );
 }
