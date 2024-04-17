@@ -17,6 +17,7 @@ import Users from "./Componentes/page/Users";
 import Reviews from "./Componentes/page/Reviews";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
+import UserProfile from "./Componentes/userProfile/UserProfile";
 import { utilsStorage } from "./Componentes/utils";
 import AddReview from "./Componentes/addReview/AddReview";
 
@@ -40,15 +41,18 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<RegisterForm/>} />
-        <Route path="/login" element={<LoginForm/>} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/userprofile" element={<UserProfile/>} />
 
-        {isAdmin && (<Route path="/admin" element={<Dashboard />}>
-          <Route index element={<User />} />
-          <Route path="products" element={<Products />} />
-          <Route path="users" element={<Users />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>)}
+        {isAdmin && (
+          <Route path="/admin" element={<Dashboard />}>
+            <Route index element={<User />} />
+            <Route path="products" element={<Products />} />
+            <Route path="users" element={<Users />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        )}
       </Routes>
       {!isAdminRoute && <Footer />}
     </>

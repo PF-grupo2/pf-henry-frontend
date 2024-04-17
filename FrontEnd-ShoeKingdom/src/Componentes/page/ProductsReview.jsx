@@ -1,78 +1,89 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { utilsStorage } from '../utils';
+import { utilsStorage } from "../utils";
+import { BASE_URL, BASE_URL_FRONT } from "../../config";
 
-const PORT = 3000;
-const URL = `http://localhost:${PORT}/api/v1/review`;
-const URLfront = `http://localhost:5173/product`;
+const URL = `${BASE_URL}/review`;
+const URLfront = `${BASE_URL_FRONT}/product`;
 
 function prodReview({ id }) {
+  const token = utilsStorage.getDataStorage("token");
+  const { isAdmin } = utilsStorage.getDataStorage("reviewSession");
 
-    const token = utilsStorage.getDataStorage("token");
-    const { isAdmin } = utilsStorage.getDataStorage("reviewSession");
-    
-    const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-    const fetchData = async () => {
-        try {
-            console.log("el id es: ",id);
-            const { data } = await axios.get(`${URL}/product/${id}`, { headers: { 'x-token': token } });
-            setReviews(data);
-        } catch (error) {
-            console.error("Error getting reviews:", error);
-        }
+  const fetchData = async () => {
+    try {
+      console.log("el id es: ", id);
+      const { data } = await axios.get(`${URL}/product/${id}`, {
+        headers: { "x-token": token },
+      });
+      setReviews(data);
+    } catch (error) {
+      console.error("Error getting reviews:", error);
     }
+  };
 
-    const handleHide = async (review) => {
-        try {
-            await axios.delete(`${URL}/review/${review.id}`, { headers: { 'x-token': token } });
-            fetchData();
-        } catch (error) {
-            console.error("Error hiding review:", error);
-        }
+  const handleHide = async (review) => {
+    try {
+      await axios.delete(`${URL}/review/${review.id}`, {
+        headers: { "x-token": token },
+      });
+      fetchData();
+    } catch (error) {
+      console.error("Error hiding review:", error);
     }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    useEffect(() => { fetchData() }, []);
+  //if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
 
-    //if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
-
-    return <div>
-
-        <div className="d-flex flex-column h-100">
-            <main className="flex-shrink-0">
-                <div className="container">
-
-
-                    {/* <a href="nuevo.html" className="btn btn-success">Agregar</a> */}
-                    {/* <span>el token es: {token}</span>
+  return (
+    <div>
+      <div className="d-flex flex-column h-100">
+        <main className="flex-shrink-0">
+          <div className="container">
+            {/* <a href="nuevo.html" className="btn btn-success">Agregar</a> */}
+            {/* <span>el token es: {token}</span>
                     <button onClick={()=>utilsStorage.removeDataStorage("token")}>borrar token</button> */}
-                    <table className="table table-hover table-bordered my-3" aria-describedby="titulo">
-                        <thead className="table-dark">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">ID del Usuario</th>
-                                <th scope="col">producto</th>
-                                <th scope="col">puntuación</th>
-                                <th scope="col">comentario</th>
-                                <th scope="col">fecha de creación</th>
-                                <th scope="col">fecha de edición</th>
-                                <th scope="col">acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* <tr> */}
-                            {reviews.map(review => (
-                                <tr key={review.id}>
-                                    <td>{review.id}</td>
-                                    <td>{review.ProductId}</td>
-                                    <td><a href={`${URLfront}/${id}`}>{review.User.name}</a></td>
-                                    <td>{review.score}</td>
-                                    <td>{review.message}</td>
-                                    <td>{review.createdAt}</td>
-                                    <td>{review.updatedAt}</td>
-                                    <td><button onClick={()=>handleHide(review)}>{review.status?"ocultar":"restaurar"}</button></td>
-                                    {/* <td>{review.name}</td>
+            <table
+              className="table table-hover table-bordered my-3"
+              aria-describedby="titulo"
+            >
+              <thead className="table-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">ID del Usuario</th>
+                  <th scope="col">usuario</th>
+                  <th scope="col">puntuación</th>
+                  <th scope="col">comentario</th>
+                  <th scope="col">fecha de creación</th>
+                  <th scope="col">fecha de edición</th>
+                  <th scope="col">acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* <tr> */}
+                {reviews.map((review) => (
+                  <tr key={review.id}>
+                    <td>{review.id}</td>
+                    <td>{review.ProductId}</td>
+                    <td>
+                      <a href={`${URLfront}/${id}`}>{review.User.name}</a>
+                    </td>
+                    <td>{review.score}</td>
+                    <td>{review.message}</td>
+                    <td>{review.createdAt}</td>
+                    <td>{review.updatedAt}</td>
+                    <td>
+                      <button onClick={() => handleHide(review)}>
+                        {review.status ? "ocultar" : "restaurar"}
+                      </button>
+                    </td>
+                    {/* <td>{review.name}</td>
                                     <td>{review.phone}</td>
                                     <td>{review.mail}</td>
                                     { review.mail !== "master@gmail.com" &&(<td>
@@ -85,15 +96,15 @@ function prodReview({ id }) {
                                         <button onClick={() => handleOpenForm(review)} className="btn btn-info btn-sm me-2">Editar</button>
                                     </td>)}
                                     {review.mail === "master@gmail.com" && (<td></td>)} */}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-        </div>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
     </div>
+  );
 }
-
 
 export default prodReview;

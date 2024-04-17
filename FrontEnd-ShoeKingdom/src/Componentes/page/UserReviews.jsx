@@ -1,38 +1,45 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { utilsStorage } from '../utils';
+import { utilsStorage } from "../utils";
+import { BASE_URL, BASE_URL_FRONT } from "../../config";
 
-const PORT = 3000;
-const URL = `http://localhost:${PORT}/api/v1/review`;
-const URLfront = `http://localhost:5173/product`;
+const URL = `${BASE_URL}/review`;
+const URLfront = `${BASE_URL_FRONT}/product`;
 
 function UserReviews({ id }) {
+  const token = utilsStorage.getDataStorage("token");
+  const { isAdmin } = utilsStorage.getDataStorage("userSession");
 
-    const token = utilsStorage.getDataStorage("token");
-    const { isAdmin } = utilsStorage.getDataStorage("userSession");
-    
-    const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-    const fetchData = async () => {
-        try {
-            const { data } = await axios.get(`${URL}/user/${id}`, { headers: { 'x-token': token } });
-            setReviews(data);
-        } catch (error) {
-            console.error("Error getting reviews:", error);
-        }
+  const fetchData = async () => {
+    try {
+      const { data } = await axios.get(`${URL}/user/${id}`, {
+        headers: { "x-token": token },
+      });
+      setReviews(data);
+    } catch (error) {
+      console.error("Error getting reviews:", error);
     }
+  };
 
-    const handleHide = async (review) => {
-        try {
-            await axios.delete(`${URL}/review/${review.id}`, { headers: { 'x-token': token } });
-            fetchData();
-        } catch (error) {
-            console.error("Error hiding review:", error);
-        }
+  const handleHide = async (review) => {
+    try {
+      await axios.delete(`${URL}/review/${review.id}`, {
+        headers: { "x-token": token },
+      });
+      fetchData();
+    } catch (error) {
+      console.error("Error hiding review:", error);
     }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, [id]);
 
-    useEffect(() => { fetchData() }, [id]);
+  if (!isAdmin) return <span>No tiene permisos para entrar aquí</span>;
+  if (!reviews) return <span>El usuario no ha publicado reseñas</span>;
 
     if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
     if(reviews.length===0) return <span>El usuario no ha publicado reseñas</span>
@@ -74,8 +81,9 @@ function UserReviews({ id }) {
                 </div>
             </main>
         </div>
-    </div>
-}
 
+    </div>
+  );
+}
 
 export default UserReviews;

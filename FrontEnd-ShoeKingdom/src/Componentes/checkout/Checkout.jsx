@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +8,14 @@ import axios from "axios";
 import { utilsStorage } from "../utils";
 import './Checkout.css';
 import { NavLink } from "react-router-dom";
+import { BASE_URL } from "../../config";
+
 
 function Cheackout() {
-
   const token = utilsStorage.getDataStorage("token");
 
   //let total = 0
+
   const [preferenceId, setPreferenceId] = useState(null)
   initMercadoPago("TEST-292925ac-3601-49db-8eb5-5dbc8bfaeaea"
     , {
@@ -22,11 +25,12 @@ function Cheackout() {
 
 
 
+
   // const zapasCheckout = useSelector((state) => state.addItem);
   const zapasCheckout = Object.values(utilsStorage.getCart());
   console.log("este el estado global de addItem:", zapasCheckout);
 
-  const orderData = zapasCheckout.map(shoe => {
+  const orderData = zapasCheckout.map((shoe) => {
     return {
       id: shoe.id,
       title: `${shoe.name} || Color: ${shoe.selectedColor}, Talle: ${shoe.selectedSize}`,
@@ -46,7 +50,7 @@ function Cheackout() {
       //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
 
 
-      const response = await axios.post("http://localhost:3000/api/v1/mercadopago", {
+      const response = await axios.post(${BASE_URL}/mercadopago, {
         items: orderData
 
       })
@@ -67,9 +71,12 @@ function Cheackout() {
     // }
     console.log("handlebuy: ", idPreference);
     if (idPreference) {
+
       setPreferenceId(idPreference)
+
+
     }
-  }
+  };
 
   return (
     // <div className="containerpagar">
@@ -83,8 +90,6 @@ function Cheackout() {
         {preferenceId && <Wallet class="mt-3" initialization={{ preferenceId: preferenceId }} />}
       </div>
     </div>
-
-
 
   );
 }
