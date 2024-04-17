@@ -122,6 +122,10 @@ function ProductDetail() {
         }
     };
 
+    const handleClick2 = () => {
+            navigate("/addReview"); 
+    };
+
     return (
         <div className="container my-5 py-3">
             <div className="row">
@@ -142,7 +146,7 @@ function ProductDetail() {
                                 <button onClick={handleCart} className="btn btn-outline-primary mx-3">
                                     {cartBtn}
                                 </button>
-                                <button onClick={handleClick} className="btn btn-outline-secondary">Back to Store</button>
+                                <button  className="btn btn-outline-secondary">Back to Store</button>
                             </div>
                         </>
                     )}
@@ -153,6 +157,7 @@ function ProductDetail() {
               <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
               </div>
             <Reviews productId={id}/>
+            <button onClick={handleClick2} className="btn btn-outline-primary mx-2">Agregar comentario</button>
             </div>
         </div>
         

@@ -6,7 +6,7 @@ import Review from '../review/Review';
 const Reviews = ({ productId }) => {
     const dispatch = useDispatch();
     const { reviews } = useSelector((state) => state);
-    console.log(reviews, productId)
+    console.log()
 
     useEffect(() => {
         dispatch(getAllReviews());

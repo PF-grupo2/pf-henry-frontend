@@ -1,0 +1,10 @@
+.star{
+    font-size: 37px;
+    color: gray;
+    transition: color 0.3;
+    cursor: pointer;
+}
+
+.starInput[type=radio] {
+    display: none;
+}

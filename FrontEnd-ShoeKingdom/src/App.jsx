@@ -17,6 +17,7 @@ import Users from "./Componentes/page/Users";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
 import { utilsStorage } from "./Componentes/utils";
+import AddReview from "./Componentes/addReview/AddReview";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
     <>
       {!isAdminRoute && <Header />}
       <Routes>
+        <Route path="/addReview" element={<AddReview />} />
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
