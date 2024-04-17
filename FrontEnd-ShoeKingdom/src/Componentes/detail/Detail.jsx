@@ -52,9 +52,9 @@ function ProductDetail() {
         if (zapatillas) {
 
             const item = zapatillas;
-            item.quantity=1;
-            item.selectedColor=zapatillas.color[0];
-            item.selectedSize=zapatillas.size[0];
+            item.quantity = 1;
+            item.selectedColor = zapatillas.color[0];
+            item.selectedSize = zapatillas.size[0];
             utilsStorage.saveCartItem(item.id, item);
 
             const itemInCart = cartItems?.find(item => item.id === zapatillas?.id);
@@ -126,8 +126,12 @@ function ProductDetail() {
     const handleClick = () => {
         if (!isAuthenticated) {
             dispatch(clearDetail());
-            navigate("/"); 
+            navigate("/");
         }
+    };
+
+    const handleClick2 = () => {
+        navigate("/addReview");
     };
 
     return (
@@ -141,29 +145,29 @@ function ProductDetail() {
                 <div className="col-md-7 d-flex flex-column justify-content-center">
                     {zapatillas && (
                         <>
-                            <h1 className="display-5 fw-bold">Name: {zapatillas.name}</h1>
-                            <h2 className="my-4">Price: {zapatillas.price}</h2>
-                            <p className="lead">Description: {zapatillas.description}</p>
+                            <h1 className="display-5 fw-bold">{zapatillas.name}</h1>
+                            <h2 className="my-4">$ {zapatillas.price}</h2>
+                            <p className="lead">Descripción: {zapatillas.description}</p>
                             <p className="lead">Stock: {zapatillas.stock}</p>
-                            <p className="lead">Brand: {zapatillas.brand}</p>
+                            <p className="lead">Marca: {zapatillas.brand}</p>
                             <div>
                                 <button onClick={handleCart} className="btn btn-outline-primary mx-3">
                                     {cartBtn}
                                 </button>
-                                <button onClick={handleClick} className="btn btn-outline-secondary">Back to Store</button>
+                                <button className="btn btn-outline-secondary">Back to Store</button>
                             </div>
                         </>
                     )}
                 </div>
             </div>
-            <div className="col-lg-6 m-auto">
-              <div>
-              <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
-              </div>
-            <Reviews productId={id}/>
+            <div className="container my-5 py-3 col-lg-6 m-auto">
+                <div>
+                    <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
+                <Reviews productId={id} />
+                <button onClick={handleClick2} className="btn btn-outline-primary mx-2 col-lg-6 m-4">Agregar comentario</button>
+                </div>
             </div>
         </div>
-        
     );
 }
 

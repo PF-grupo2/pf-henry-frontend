@@ -1,5 +1,6 @@
 // import './Review.css';
 import { useState, useEffect } from 'react';
+import './Review.css';
 
 const Review = ({ score, message, show }) => {
 
@@ -20,18 +21,18 @@ const Review = ({ score, message, show }) => {
     return show ? (
         <>
 
-           <div>
-           <ul className="list-unstyled d-flex justify-content-between">
-                <li>
-                    {scoreArray.map(() => (
-                        <i className="text-warning fa fa-star"></i>
-                    )
-                    )}
-                </li>
-            </ul>
-           </div>
-            <div>
-                <p>{message}</p>
+            <div className='review'>
+                <div className='starDiv'>
+                    <ul className="list-unstyled d-flex justify-content-between">
+                        <li>
+                            {scoreArray.map(() => (
+                                <i className="text-warning fa fa-star"></i>
+                            )
+                            )}
+                        </li>
+                    </ul>
+                </div>
+                <p className='p'>{message}</p>
             </div>
 
         </>
