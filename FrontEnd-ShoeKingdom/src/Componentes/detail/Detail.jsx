@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import Reviews from '../reviews/Reviews';
+import { utilsStorage } from '../utils';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -49,6 +50,13 @@ function ProductDetail() {
 
     const handleCart = async () => {
         if (zapatillas) {
+
+            const item = zapatillas;
+            item.quantity=1;
+            item.selectedColor=zapatillas.color[0];
+            item.selectedSize=zapatillas.size[0];
+            utilsStorage.saveCartItem(item.id, item);
+
             const itemInCart = cartItems?.find(item => item.id === zapatillas?.id);
             if (itemInCart) {
                 dispatch(updateItemQuantity(zapatillas?.id, itemInCart?.quantity + 1));

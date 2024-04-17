@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Favorito from "../buttons/Favorito";
 import { addItem } from "../../../Redux/Actions/actions";
 import React from "react";
+import { utilsStorage } from "../utils";
 
 import "./Card.css";
 
@@ -19,6 +20,12 @@ function Card({ zapatilla }) {
 
   const handleCart = () => {
     const itemInCart = cartItems.find((item) => item.id === id);
+    
+    const item = zapatilla;
+    item.quantity=1;
+    item.selectedColor=zapatilla.color[0];
+    item.selectedSize=zapatilla.size[0];
+    utilsStorage.saveCartItem(item.id, item);
 
     if (itemInCart) {
       dispatch(id, itemInCart.quantity + 1);
@@ -38,7 +45,7 @@ function Card({ zapatilla }) {
               ></span>
             </Link>
             {/* Agregamos el onClick en el icono de carrito para manejar la lógica de agregar al carrito */}
-            <span className="fa fa-heart me-1"></span>
+            {/* <span className="fa fa-heart me-1"></span> */}
           </div>
           <img className="imagen" src={images[0]} alt={name} />
           <p>Nombre: {name} </p>
