@@ -13,15 +13,24 @@ import Contact from "./Componentes/contact/Contact";
 import Dashboard from "./Componentes/dashboard/Dashboard";
 import User from "./Componentes/page/User";
 import Products from "./Componentes/page/Products";
+import Users from "./Componentes/page/Users";
+import Reviews from "./Componentes/page/Reviews";
+import RegisterForm from "./Componentes/registerForm/RegisterForm";
+import LoginForm from "./Componentes/login/Login";
+import { utilsStorage } from "./Componentes/utils";
+import AddReview from "./Componentes/addReview/AddReview";
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes("/admin");
 
+  const { isAdmin } = utilsStorage.getDataStorage("userSession");
+
   return (
     <>
       {!isAdminRoute && <Header />}
       <Routes>
+        <Route path="/addReview" element={<AddReview />} />
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
@@ -31,11 +40,17 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
 
-        <Route path="/admin" element={<Dashboard />}>
-          <Route index element={<User />} />
-          <Route path="products" element={<Products />} />
-        </Route>
+        {isAdmin && (
+          <Route path="/admin" element={<Dashboard />}>
+            <Route index element={<User />} />
+            <Route path="products" element={<Products />} />
+            <Route path="users" element={<Users />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        )}
       </Routes>
       {!isAdminRoute && <Footer />}
     </>

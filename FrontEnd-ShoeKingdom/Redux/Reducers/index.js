@@ -1,5 +1,24 @@
 import { Form } from "react-router-dom";
-import {  GET_ZAPATILLAS,FILTER,GET_PRODUCT_BY_NAME,LOADING,GET_DETAIL,CLEAR_DETAIL,GET_GENDER,GET_FILTERS_ARRAY,ADDITEM, DELITEM, UPDATE_ITEM_QUANTITY,} from "../../Redux/Actions/actions";
+import {
+  GET_ZAPATILLAS,
+  FILTER,
+  GET_PRODUCT_BY_NAME,
+  LOADING,
+  GET_DETAIL,
+  CLEAR_DETAIL,
+  GET_GENDER,
+  GET_FILTERS_ARRAY,
+  ADDITEM,
+  DELITEM,
+  UPDATE_ITEM_QUANTITY,
+  LOGIN_SUCCESS,
+  SET_TOKEN,
+  GET_ALL_REVIEWS,
+  ADD_REVIEW,
+  EDIT_REVIEW, 
+  DELETE_REVIEW
+} from "../../Redux/Actions/actions";
+import { utilsStorage } from "../../src/Componentes/utils";
 
 const initialState = {
   allZapatillas: [],
@@ -11,6 +30,9 @@ const initialState = {
   filters: [],
   items: [],
   addItem: [],
+  user: null,
+  token: '',
+  reviews: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -36,12 +58,27 @@ function rootReducer(state = initialState, action) {
         };
       }
 
-    case GET_FILTERS_ARRAY:
+     case LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: action.payload
+      };
+
+
+      case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
+      };
+    
+    
+       case GET_FILTERS_ARRAY:
       // console.log(payload);
       return {
         ...state,
-        payload,
+        payload: action.payload,
       };
+
 
     case FILTER:
       // console.log("reducer entro", action.payload)
@@ -108,6 +145,29 @@ function rootReducer(state = initialState, action) {
         }),
       };
 
+      case GET_ALL_REVIEWS: 
+      return{
+        ...state,
+        reviews: action.payload
+      };
+
+      case ADD_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
+
+      case EDIT_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
+
+      case DELETE_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+        }
     default:
       return state;
   }
