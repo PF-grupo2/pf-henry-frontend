@@ -20,7 +20,7 @@ function Products() {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(URL, { headers: { "x-token": token } });
+      const { data } = await axios.get( `${BASE_URL}/products/listProducts` , { headers: { "x-token": token } });
       if (data.products && Array.isArray(data.products)) {
         setProducts(data.products);
       } else {

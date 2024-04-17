@@ -57,7 +57,7 @@ function prodReview({ id }) {
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">ID del Usuario</th>
-                  <th scope="col">producto</th>
+                  <th scope="col">usuario</th>
                   <th scope="col">puntuación</th>
                   <th scope="col">comentario</th>
                   <th scope="col">fecha de creación</th>
