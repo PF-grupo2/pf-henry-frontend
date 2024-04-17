@@ -80,7 +80,7 @@ const CreateProdForm = ({ POST_URI }) => {
 
   return (
     <div className="container fondo_editar">
-    <h2>Create Product</h2>
+ 
     <form onSubmit={handleSubmit} className="needs-validation">
       <div className="mb-3">
         <label htmlFor="productName" className="form-label">Name:</label>

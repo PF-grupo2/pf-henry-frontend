@@ -32,7 +32,7 @@ function EditProduct({ product, token, URL }) {
   return (
     <div className="container fondo_editar">
       <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-        <h2 className="mb-4">Editar el Producto: {product.name}</h2>
+      
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Nombre:</label>
           <input type="text" id="name" className="form-control" name="name" value={formData.name} onChange={handleChange} required />

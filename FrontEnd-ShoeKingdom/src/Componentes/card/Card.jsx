@@ -30,6 +30,9 @@ function Card({ zapatilla }) {
     <>
       <div className="card card-body d-flex align-items-center justify-content-between">
         <div className="card_hover card-body text-center">
+          <img className="imagen" src={images[0]} alt={name} />
+          <p>Nombre: {name} </p>
+          <p>Precio: $ {price} </p>
           <div className="d-flex align-items-center justify-content-between">
             <Link to="/cart">
               <span
@@ -37,16 +40,13 @@ function Card({ zapatilla }) {
                 onClick={handleCart}
               ></span>
             </Link>
-            {/* Agregamos el onClick en el icono de carrito para manejar la lógica de agregar al carrito */}
-            <span className="fa fa-heart me-1"></span>
+            {/* Más detalles si es necesario */}
+            <NavLink to={`/product/${id}`} className="btn btn-outline-primary">
+              Ver detalles
+            </NavLink>
+
           </div>
-          <img className="imagen" src={images[0]} alt={name} />
-          <p>Nombre: {name} </p>
-          <p>Precio: $ {price} </p>
-          {/* Más detalles si es necesario */}
-          <NavLink to={`/product/${id}`} className="btn btn-outline-primary">
-            Ver detalles
-          </NavLink>
+
         </div>
       </div>
     </>

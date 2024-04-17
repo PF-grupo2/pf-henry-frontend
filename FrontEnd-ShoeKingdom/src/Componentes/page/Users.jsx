@@ -56,8 +56,8 @@ function Users() {
 
     return <div>
 
-        <div className="d-flex flex-column h-100">
-            <main className="flex-shrink-0">
+        <div>
+            <main>
                 <div className="container">
 
 
