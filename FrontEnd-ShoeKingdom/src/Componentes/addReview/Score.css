@@ -1,4 +1,5 @@
 .star{
+    display: flex;
     font-size: 37px;
     color: gray;
     transition: color 0.3;
@@ -7,4 +8,14 @@
 
 .starInput[type=radio] {
     display: none;
+}
+
+.containerReview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    height: 60vh;
 }

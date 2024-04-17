@@ -25,7 +25,7 @@ const About = () => {
                     <div className="container">
                         <div className="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
                             <div className="col-lg-12  justify-content-center">
-                                <p className="mb-5 parrafo  text-black text-center justify-content-center">El equipo que union conocimiento y tiempo para realizar este proyecto
+                                <p className="mb-5 parrafo  text-black text-center justify-content-center">El equipo que unio conocimiento y tiempo para realizar este proyecto
                                  tan enriquecedor para todos nosotros</p>
                             </div>
                         </div>
@@ -94,15 +94,6 @@ const About = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-1 col-md-12 portfolio-item first">
-                                <div className="portfolio-img rounded overflow-hidden">
-                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
-                                    <div className="portfolio-btn align-items-center">
-                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                  
                         </div>
                     </div>
                 </section>

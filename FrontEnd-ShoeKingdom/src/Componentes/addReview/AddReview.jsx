@@ -45,10 +45,10 @@ const AddReview = ({ ProductId }) => {
 
 
     return (
-        <div className="modal-body modal-style">
-            <form className="modal-body modal-style" onSubmit={hanldeSubmit}>
-                <div class="mb-3">
+            <form className="container text-center" onSubmit={hanldeSubmit}>
+                <div className='containerReview py'>
                     <h5 className="fw-bold mb-4 h5">Contanos que te pareció tu producto</h5>
+                    <div>
                     {[...Array(5)].map((star, i) => {
                         const currentScore = i + 1;
                         return (
@@ -71,12 +71,13 @@ const AddReview = ({ ProductId }) => {
                             </label>
                         );
                     })}
+                    </div>
+                   
                     <p>Tu calificación es {scoreNum}</p>
-                    <input className="form-control" id="exampleFormControlTextarea1" name="message" rows="7" placeholder='Mi producto me pareció...' onChange={handleChange} />
-                    <button type='submit' className="btn btn-outline-primary mx-2">Guardar</button>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" name="message" rows="2" placeholder='Mi producto me pareció...' onChange={handleChange}></textarea> 
+                    <button type='submit' className="btn btn-outline-primary mx-2 col-lg-3 m-4">Guardar</button>
                 </div>
             </form>
-        </div>
     )
 }
 
