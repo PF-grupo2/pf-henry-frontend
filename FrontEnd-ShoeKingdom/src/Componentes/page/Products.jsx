@@ -4,18 +4,25 @@ import EditProduct from "./editProductForm";
 import CreateProdForm from "./createProduct";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { utilsStorage } from "../utils";
+import  ProductsReview  from "./ProductsReview"
 
 const PORT = 3000;
 const URL = `http://localhost:${PORT}/api/v1/products/listProducts`;
 
 const POST_URI = `http://localhost:${PORT}/api/v1/products`
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZjQzMGYzLTc3NzgtNGZiZC05MGNhLTJmMDIyY2JkMjgwZCIsImlhdCI6MTcxMzAzMzI5NSwiZXhwIjoxNzEzMDQ0MDk1fQ.XUyp6UfXD6eizo5fqG7UWQ3IsIytCzgvBDUaqY1O39Y"
+
 
 function Products() {
+
+    const token = utilsStorage.getDataStorage("token");
+    const { isAdmin } = utilsStorage.getDataStorage("userSession")
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
+    const [tabOpen, setTabOpen] = useState(false);
+    const [selectedTab, setSelectedTab] = useState("")
     const [showCreateModal, setShowCreateModal] = useState(false);
 
     const fetchData = async () => {
@@ -40,15 +47,6 @@ function Products() {
         }
     }
 
-    const handleAdmin = async (id) => {
-        try {
-            await axios.put(`${URL}/admin/${id}`, { headers: { 'x-token': token } });
-            fetchData();
-        } catch (error) {
-            console.error("Error changing user permissions:", error);
-        }
-    }
-
     const handleOpenEditModal = (product) => {
         setSelectedProduct(product);
         setShowEditModal(true);
@@ -65,6 +63,26 @@ function Products() {
     const handleCloseCreateModal = () => {
         setShowCreateModal(false);
     }
+
+    const handleOpenTab = (product, tabName) => {
+        setSelectedTab(tabName);
+        setTabOpen(true);
+        setSelectedProduct(product);
+    }
+
+    const handleCloseTab = () => {
+        setSelectedTab("")
+        setTabOpen(false);
+    }
+
+
+    const conditionalTab = () => (
+        <div>
+            <button onClick={handleCloseTab} className="btn btn-danger">X</button>
+            <ProductsReview id={selectedProduct.id}/>
+        </div>
+    );
+    
 
     useEffect(() => {
         fetchData();
@@ -95,12 +113,14 @@ function Products() {
                             <td>
                                 <Button variant="info" onClick={() => handleOpenEditModal(product)}>Editar</Button>
                                 <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Desbanear" : "Banear"}</Button>
-                                <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button>
+                                <button onClick={() => handleOpenTab(product, "reviews")} className="btn btn-info btn-sm me-2">Reseñas</button>
+                                {/* <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button> */}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+                {tabOpen && conditionalTab()}
             <Modal show={showEditModal} onHide={handleCloseEditModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Editar Producto: {selectedProduct && selectedProduct.name}</Modal.Title>
