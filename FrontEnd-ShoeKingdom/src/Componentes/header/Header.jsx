@@ -97,9 +97,22 @@ const Header = () => {
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/contact">Contactanos</NavLink>
                                     </li>
-                                    {isAdmin && (<li className="nav-item">
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/register">Registro</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/login">Ingresar</NavLink>
+                                    </li>
+                        
+                                    {name && (<li className='nav-item'>
+                                        <NavLink className="nav-link" to="/userprofile">Perfil</NavLink>
+                                    </li>)}
+                                    
+                                    
+                                     {isAdmin && (<li className="nav-item">
                                         <NavLink className="nav-link" to="/admin">admin</NavLink>
                                     </li>)}
+
                                 </ul>
 
                             </div>
