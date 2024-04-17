@@ -204,11 +204,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import axios from "axios";
+import { utilsStorage } from "../utils";
 
 
 
 
 function Cheackout() {
+
+  const token = utilsStorage.getDataStorage("token");
 
     //let total = 0
   const [preferenceId, setPreferenceId] = useState(null)
@@ -220,13 +223,14 @@ function Cheackout() {
 
   
 
-  const zapasCheckout = useSelector((state) => state.addItem);
+  // const zapasCheckout = useSelector((state) => state.addItem);
+  const zapasCheckout = Object.values(utilsStorage.getCart());
   console.log("este el estado global de addItem:", zapasCheckout);
 
   const orderData = zapasCheckout.map(shoe => {
     return {
         id: shoe.id,
-        title: shoe.name,
+        title: `${shoe.name} || Color: ${shoe.selectedColor}, Talle: ${shoe.selectedSize}`,
         description: shoe.description,
         picture_url: shoe.images[0],
         quantity: shoe.quantity,
@@ -247,7 +251,7 @@ const createPreference = async ()=>{
     //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
 
 
-    const response = await axios.post("https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago",{
+    const response = await axios.post("http://localhost:3000/api/v1/mercadopago",{
       items: orderData
 
     })
@@ -269,6 +273,9 @@ const createPreference = async ()=>{
 
   const handleBuy = async()=>{
     const idPreference = await createPreference()
+    // for (let i = 0; i < zapasCheckout.length; i++) {
+    //   await axios.put(`http://localhost:3000/api/v1/products/stock/${zapasCheckout[i].id}/${zapasCheckout[i].quantity}`, { headers: { 'x-token': token } })
+    // }
     console.log("handlebuy: ",idPreference);
     if(idPreference){
       setPreferenceId(idPreference)
