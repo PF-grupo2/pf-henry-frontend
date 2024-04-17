@@ -35,7 +35,7 @@ function UserReviews({ id }) {
     useEffect(() => { fetchData() }, [id]);
 
     if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
-    if(!reviews) return <span>El usuario no ha publicado reseñas</span>
+    if(reviews.length===0) return <span>El usuario no ha publicado reseñas</span>
 
     return <div>
 
