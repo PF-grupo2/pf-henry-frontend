@@ -167,7 +167,7 @@ export const setToken = (token) => ({
 });
 
 
-export const addItem = (zapatillas) => {
+export const addItem = (zapatillas, color, size) => {
   // console.log("entro en addItem", zapatillas)
     return {
       

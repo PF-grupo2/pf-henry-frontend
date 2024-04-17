@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
 import { NavLink,useNavigate  } from 'react-router-dom';
@@ -15,16 +15,28 @@ const Cart = () => {
 
     const token = utilsStorage.getDataStorage("token");
 
+    const color = useRef();
+    const size = useRef();
+
+
     const Navigate = useNavigate()
     // const navigateToCheckout = () => {
     //     window.open('/checkout', '_blank', 'noopener');
     // };
 
-    const cartItems = useSelector((state) => state.addItem);
+    //const cartItems = useSelector((state) => state.addItem);
+    const cartItems = Object.values(utilsStorage.getCart());
+    function total(){
+        let price = 0;
+        for (let i = 0; i < cartItems.length; i++) {
+            price += (cartItems[i].price * cartItems[i].quantity);
+        }
+        return Math.ceil(price);
+    }
     const dispatch = useDispatch();
 
     const [itemQuantities, setItemQuantities] = useState({});
-    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(total());
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está logueado
 
 
@@ -35,13 +47,13 @@ const Cart = () => {
         setIsLoggedIn(false); // Cambiar a `true` si el usuario está logueado
     }, []);
 
-    useEffect(() => {
-        const newQuantities = {};
-        cartItems.forEach(item => {
-            newQuantities[item.id] = item.quantity;
-        });
-        setItemQuantities(newQuantities);
-    }, [cartItems]);
+    // useEffect(() => {
+    //     const newQuantities = {};
+    //     cartItems.forEach(item => {
+    //         newQuantities[item.id] = item.quantity;
+    //     });
+    //     setItemQuantities(newQuantities);
+    // }, [cartItems]);
 
     useEffect(() => {
         const newTotalPrice = cartItems.reduce((total, item) => {
@@ -52,10 +64,16 @@ const Cart = () => {
     }, [cartItems, itemQuantities]);
 
     const handleClose = (item) => {
+        utilsStorage.cleanCart(item.id);
         dispatch(delItem(item));
     };
 
     const handleIncreaseQuantity = (itemId) => {
+
+        const item = utilsStorage.getCart(itemId);
+        item.quantity+=1;
+        utilsStorage.saveCartItem(itemId, item);
+
         const currentQuantity = itemQuantities[itemId] || 0;
         const updatedQuantity = currentQuantity + 1;
         setItemQuantities({ ...itemQuantities, [itemId]: updatedQuantity });
@@ -63,15 +81,28 @@ const Cart = () => {
     };
 
     const handleDecreaseQuantity = (itemId) => {
+
+        const item = utilsStorage.getCart(itemId);
+        if(item.quantity>1) item.quantity-=1;
+        utilsStorage.saveCartItem(itemId, item);
+
         const currentQuantity = itemQuantities[itemId] || 0;
-        if (currentQuantity > 1) {
+        if (currentQuantity) {
             const updatedQuantity = currentQuantity - 1;
             setItemQuantities({ ...itemQuantities, [itemId]: updatedQuantity });
             dispatch(updateItemQuantity(itemId, updatedQuantity));
         }
     };
 
+    const handlePreference = (itemId)=>{
+        const item = utilsStorage.getCart(itemId);
+        if(color)item.selectedColor = color.current.value;
+        if(size)item.selectedSize = size.current.value;
+        utilsStorage.saveCartItem(itemId, item);
+    }
+
     const cartItemComponent = (item) => {
+        const getItem = utilsStorage.getCart(item.id);
         return (
             <div className='px-4 my-5 bg-light rounded-3' key={item.id}>
                 <div className='container py-4'>
@@ -85,9 +116,26 @@ const Cart = () => {
                             <p className='lead fw-bold'>${item.price}</p>
                             <div className='d-flex align-items-center'>
                                 <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-outline-primary me-2'>-</button>
-                                <span>{itemQuantities[item.id] || 0}</span>
+                                <span>{getItem.quantity}</span>
                                 <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-outline-primary ms-2'>+</button>
                             </div>
+                            <div>
+                            <label>Color</label>
+                            {item.color && (<select ref={color} onChange={()=>handlePreference(item.id)} defaultValue={item.color[0]}>
+                                <optgroup>
+                                    {item.color.map((color) => {return <option key={color} value={color}>{color}</option>})}
+                                </optgroup>
+                            </select>)}
+                            </div>
+                            <div>
+                            <label>Talle</label>
+                            {item.size && (<select ref={size} onChange={()=>handlePreference(item.id)} defaultValue={item.size[0]}>
+                                <optgroup>
+                                    {item.size.map((size) => {return <option key={size} value={size}>{size}</option>})}
+                                </optgroup>
+                            </select>)}
+                            </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +174,7 @@ const Cart = () => {
         return (
             <div className='container'>
                 <div className='row'>
-                    <h1>Total: ${totalPrice.toFixed(0)}</h1>
+                    <h1>Total: ${total()}</h1>
                     <button onClick={handleCheckout} className='btn btn-outline-primary mb-5 w-25 mx-auto'>Realizar pago</button>
                 </div>
             </div>

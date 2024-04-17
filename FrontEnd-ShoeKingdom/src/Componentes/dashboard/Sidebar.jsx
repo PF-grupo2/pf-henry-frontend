@@ -35,8 +35,8 @@ function Sidebar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/admin/comments">
-                <i className="fa fa-comments"></i> Comentarios
+              <NavLink className="nav-link" activeclassname="active" to="/admin/reviews">
+                <i className="fa fa-comments"></i> Reseñas
               </NavLink>
             </li>
           </ul>

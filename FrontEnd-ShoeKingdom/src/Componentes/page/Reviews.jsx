@@ -4,9 +4,9 @@ import { utilsStorage } from '../utils';
 
 const PORT = 3000;
 const URL = `http://localhost:${PORT}/api/v1/review`;
-const URLfront = `http://localhost:5173/product`;
+const URLfront = `http://localhost:5173`;
 
-function UserReviews({ id }) {
+function Reviews() {
 
     const token = utilsStorage.getDataStorage("token");
     const { isAdmin } = utilsStorage.getDataStorage("userSession");
@@ -15,7 +15,8 @@ function UserReviews({ id }) {
 
     const fetchData = async () => {
         try {
-            const { data } = await axios.get(`${URL}/user/${id}`, { headers: { 'x-token': token } });
+            const { data } = await axios.get(`${URL}/review`, { headers: { 'x-token': token } });
+            console.log(data);
             setReviews(data);
         } catch (error) {
             console.error("Error getting reviews:", error);
@@ -32,10 +33,10 @@ function UserReviews({ id }) {
     }
 
 
-    useEffect(() => { fetchData() }, [id]);
+    useEffect(() => { fetchData() }, []);
 
     if(!isAdmin) return <span>No tiene permisos para entrar aquí</span>
-    if(!reviews) return <span>El usuario no ha publicado reseñas</span>
+    if(!reviews) return <span>No se han publicado reseñas</span>
 
     return <div>
 
@@ -48,6 +49,8 @@ function UserReviews({ id }) {
                                 <th scope="col">ID</th>
                                 <th scope="col">ID del producto</th>
                                 <th scope="col">producto</th>
+                                <th scope="col">ID del usuario</th>
+                                <th scope="col">usuario</th>
                                 <th scope="col">puntuación</th>
                                 <th scope="col">comentario</th>
                                 <th scope="col">fecha de creación</th>
@@ -61,7 +64,9 @@ function UserReviews({ id }) {
                                 <tr key={review.id}>
                                     <td>{review.id}</td>
                                     <td>{review.ProductId}</td>
-                                    <td><a href={`${URLfront}/${id}`}>{review.Product.name}</a></td>
+                                    <td><a href={`${URLfront}/${review.id}`}>{review.Product.name}</a></td>
+                                    <td>{review.UserId}</td>
+                                    <td>{review.User.name}</td>
                                     <td>{review.score}</td>
                                     <td>{review.message}</td>
                                     <td>{review.createdAt}</td>
@@ -78,4 +83,4 @@ function UserReviews({ id }) {
 }
 
 
-export default UserReviews;
+export default Reviews;
