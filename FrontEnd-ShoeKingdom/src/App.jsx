@@ -40,15 +40,17 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<RegisterForm/>} />
-        <Route path="/login" element={<LoginForm/>} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
 
-        {isAdmin && (<Route path="/admin" element={<Dashboard />}>
-          <Route index element={<User />} />
-          <Route path="products" element={<Products />} />
-          <Route path="users" element={<Users />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>)}
+        {isAdmin && (
+          <Route path="/admin" element={<Dashboard />}>
+            <Route index element={<User />} />
+            <Route path="products" element={<Products />} />
+            <Route path="users" element={<Users />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        )}
       </Routes>
       {!isAdminRoute && <Footer />}
     </>

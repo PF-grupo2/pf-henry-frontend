@@ -3,7 +3,6 @@
 
 // const Checkout = () => {
 
-
 //     return (
 //         <>
 //        <div className="container my-5">
@@ -14,7 +13,6 @@
 //                             <span className="badge bg-primary rounded-pill">{0}</span>
 //                         </h4>
 //                         <ul className="list-group mb-3">
-                       
 
 //                             <li className="list-group-item d-flex justify-content-between">
 //                                 <span>Total (USD)</span>
@@ -180,9 +178,6 @@
 
 //                             <hr className="my-4" />
 
-
-                            
-
 //                             <button className="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
 //                         </form>
 //                     </div>
@@ -194,104 +189,80 @@
 
 // export default Checkout;
 
-
-
-
-
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import { useState } from "react";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { utilsStorage } from "../utils";
-
-
-
+import { BASE_URL } from "../../config";
 
 function Cheackout() {
-
   const token = utilsStorage.getDataStorage("token");
 
-    //let total = 0
-  const [preferenceId, setPreferenceId] = useState(null)
-  initMercadoPago("TEST-292925ac-3601-49db-8eb5-5dbc8bfaeaea"
-  ,{
+  //let total = 0
+  const [preferenceId, setPreferenceId] = useState(null);
+  initMercadoPago("TEST-292925ac-3601-49db-8eb5-5dbc8bfaeaea", {
     locale: "es-AR",
   });
-
-
-  
 
   // const zapasCheckout = useSelector((state) => state.addItem);
   const zapasCheckout = Object.values(utilsStorage.getCart());
   console.log("este el estado global de addItem:", zapasCheckout);
 
-  const orderData = zapasCheckout.map(shoe => {
+  const orderData = zapasCheckout.map((shoe) => {
     return {
-        id: shoe.id,
-        title: `${shoe.name} || Color: ${shoe.selectedColor}, Talle: ${shoe.selectedSize}`,
-        description: shoe.description,
-        picture_url: shoe.images[0],
-        quantity: shoe.quantity,
-        unit_price: shoe.price
+      id: shoe.id,
+      title: `${shoe.name} || Color: ${shoe.selectedColor}, Talle: ${shoe.selectedSize}`,
+      description: shoe.description,
+      picture_url: shoe.images[0],
+      quantity: shoe.quantity,
+      unit_price: shoe.price,
+    };
+  });
+
+  const createPreference = async () => {
+    console.log("esto es lo q llega de order data", orderData);
+    try {
+      //"http://localhost:3000/api/v1/mercadopago"
+      //https://pf-henry-backend.onrender.com/api/v1/mercadopago
+      //https://test-backend-u5ie.onrender.com/api/v1/mercadopago
+      //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
+
+      const response = await axios.post(
+        `${BASE_URL}/mercadopago`,
+        {
+          items: orderData,
+        },
+        {
+          headers: {
+            "x-token": token,
+          },
+        }
+      );
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log("este es el:", error.message);
     }
-})
+  };
 
-
-
-
-  
-const createPreference = async ()=>{
-  console.log("esto es lo q llega de order data",orderData);
-  try {
-    //"http://localhost:3000/api/v1/mercadopago"
-    //https://pf-henry-backend.onrender.com/api/v1/mercadopago
-    //https://test-backend-u5ie.onrender.com/api/v1/mercadopago
-    //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
-
-
-    const response = await axios.post("http://localhost:3000/api/v1/mercadopago",{
-      items: orderData
-
-    })
-    console.log("esta es la respuesta",response);
-    const {id} = response.data
-    return id
-    
-  } catch (error) {
-    console.log("este es el:",error.message);
-    
-  }
-}
-
-  
-  
-
-  
-
-
-  const handleBuy = async()=>{
-    const idPreference = await createPreference()
+  const handleBuy = async () => {
+    const idPreference = await createPreference();
     // for (let i = 0; i < zapasCheckout.length; i++) {
     //   await axios.put(`http://localhost:3000/api/v1/products/stock/${zapasCheckout[i].id}/${zapasCheckout[i].quantity}`, { headers: { 'x-token': token } })
     // }
-    console.log("handlebuy: ",idPreference);
-    if(idPreference){
-      setPreferenceId(idPreference)
+    console.log("handlebuy: ", idPreference);
+    if (idPreference) {
+      setPreferenceId(idPreference);
     }
-  }
+  };
 
   return (
-
-    <div >
-            <button onClick={handleBuy}>Pagar</button>
-            {preferenceId && <Wallet initialization={{preferenceId: preferenceId}}/>}
+    <div>
+      <button onClick={handleBuy}>Pagar</button>
+      {preferenceId && (
+        <Wallet initialization={{ preferenceId: preferenceId }} />
+      )}
     </div>
-
-    
-    
-
   );
 }
 
