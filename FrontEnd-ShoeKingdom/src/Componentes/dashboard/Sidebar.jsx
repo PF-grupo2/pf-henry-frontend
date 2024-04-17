@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { utilsStorage } from '../utils';
 function Sidebar() {
+  const user = utilsStorage.getDataStorage("userSession");
   return (
     <div className="Sidebar">
       <main className="d-flex flex-nowrap">
@@ -15,28 +17,30 @@ function Sidebar() {
           <ul className="nav  flex-column mb-auto">
 
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" exact to="/admin">
+              <NavLink className="nav-link text-black" activeclassname="active" exact to="/admin">
                 <i className="fa fa-home"></i> Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/admin/users">
+              <NavLink className="nav-link text-black" activeclassname="active" to="/admin/users">
                 <i className="fa fa-users"></i> Usuarios
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/admin/products">
+              <NavLink className="nav-link text-black" activeclassname="active" to="/admin/products">
                 <i className="fa fa-cubes"></i> Productos
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/admin/sales">
+              <NavLink className="nav-link text-black" activeclassname="active" to="/admin/sales">
                 <i className="fa fa-shopping-cart"></i> Ventas
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" activeclassname="active" to="/admin/reviews">
-                <i className="fa fa-comments"></i> Reseñas
+
+              <NavLink className="nav-link text-black" activeclassname="active" to="/admin/comments">
+                <i className="fa fa-comments"></i> Comentarios
+
               </NavLink>
             </li>
           </ul>
@@ -56,7 +60,7 @@ function Sidebar() {
                 height="32"
                 className="rounded-circle me-2"
               />
-              <strong>Carlos</strong>
+              <strong>{user.name } </strong>
             </a>
             <ul className="dropdown-menu text-small shadow">
               <li>
