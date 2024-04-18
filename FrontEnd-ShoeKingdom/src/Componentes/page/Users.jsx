@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import EditUser from "./editUserForm";
 import UserReviews from "./UserReviews";
+import UserSales from "./UserSales";
 import { utilsStorage } from "../utils";
 import { BASE_URL } from "../../config";
 
@@ -73,10 +74,21 @@ function Users() {
       case "reviews":
         return (
           <div>
+            <h1>Compras de {selectedUser.name}</h1>
             <button onClick={handleCloseTab} className="btn btn-danger">
               X
             </button>
             <UserReviews id={selectedUser.id} />
+          </div>
+        );
+        case "sales":
+        return (
+          <div>
+            <h1>Compras de {selectedUser.name}</h1>
+            <button onClick={handleCloseTab} className="btn btn-danger">
+              X
+            </button>
+            <UserSales user={selectedUser} />
           </div>
         );
     }
@@ -151,6 +163,12 @@ function Users() {
                           className="btn btn-info btn-sm me-2"
                         >
                           Reseñas
+                        </button>
+                        <button
+                          onClick={() => handleOpenTab(user, "sales")}
+                          className="btn btn-info btn-sm me-2"
+                        >
+                          Compras
                         </button>
                       </td>
                     )}
