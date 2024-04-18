@@ -1,7 +1,30 @@
 import { NavLink } from "react-router-dom";
 import { utilsStorage } from '../utils';
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 function Sidebar() {
   const user = utilsStorage.getDataStorage("userSession");
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: "Estás a punto de cerrar sesión.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí, cerrar sesión',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            utilsStorage.removeDataStorage("token");
+            utilsStorage.removeDataStorage("userSession");
+            navigate("/");
+          }
+        });
+      }
   return (
     <div className="Sidebar">
       <main className="d-flex flex-nowrap">
@@ -64,7 +87,7 @@ function Sidebar() {
             </a>
             <ul className="dropdown-menu text-small shadow">
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="#" onClick={handleLogOut}>
                   Cerrar sesión
                 </a>
               </li>

@@ -7,6 +7,10 @@ const Reviews = ({ productId }) => {
 
     const dispatch = useDispatch();
     const { reviews } = useSelector((state) => state);
+    
+    let filteredReviews = []
+    if(reviews) filteredReviews = reviews.filter(review => review.status)
+    
 
     useEffect(() => {
         dispatch(getAllReviews());
@@ -16,7 +20,7 @@ const Reviews = ({ productId }) => {
     return (
         <div>
             {
-                reviews?.map((review) => {
+                filteredReviews?.map((review) => {
                     return (
                         <Review 
                         key = {review?.id}
