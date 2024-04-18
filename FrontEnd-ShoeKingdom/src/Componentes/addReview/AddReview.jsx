@@ -1,5 +1,6 @@
 import "./Score.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { utilsStorage } from "../utils";
 import { useSelector } from "react-redux";
@@ -39,13 +40,18 @@ const AddReview = () => {
         `${BASE_URL}/review/review`,
         formData
       );
-      alert("Tu opinión fue enviada", createReview.data);
+      Swal.fire({
+        icon: "success",
+        title: "Tu opinión se envió correctamente",
+    }, createReview);
       navigate(`/product/${zapatillas.id}`);
     } catch (error) {
       console.error("No se puedo enviar la opinión", error);
-      alert(
-        "Hubo un error al enviar tu opinión. Por favor, inténtalo de nuevo"
-      );
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al enviar tu opinión",
+        text: "Por favor inténtalo de nuevo",
+    });
     }
   };
 

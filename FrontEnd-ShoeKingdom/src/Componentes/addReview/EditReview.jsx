@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from "../../config";
+import Swal from "sweetalert2";
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -36,14 +37,21 @@ const EditReview = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         try {
             const editReview = await axios.put(`${BASE_URL}/review/review/${id}`, formData);
-            alert("Opinión actualizada correctamente", editReview);
+            Swal.fire({
+                icon: "success",
+                title: "Tu opinión fue actualizada",
+            }, editReview);
             navigate(`/product/${zapatillas.id}`);
         } catch (error) {
             console.error("No se pudo actualizar tu opinión", error);
-            alert("Hubo un error al actualizar tu opinión. Por favor inténtalo de nuevo")
+            Swal.fire({
+                icon: "error",
+                title: "Hubo un error al actualizar tu opinión",
+                text: "Por favor inténtalo de nuevo",
+            });
         }
     };
 
