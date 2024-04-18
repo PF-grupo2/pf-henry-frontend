@@ -235,8 +235,8 @@ const Product = () => {
                   </optgroup>
                 </select>
               </div>
-              <div className="col-lg-1 custom-select">
-                <button onClick={resetFilters}>Limpiar</button>
+              <div className="col-lg-1 custom-select ">
+                <button className="btn btn-light" onClick={resetFilters}><i class="fa fa-undo" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
