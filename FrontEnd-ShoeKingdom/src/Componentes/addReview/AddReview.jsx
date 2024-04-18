@@ -1,5 +1,6 @@
 import "./Score.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { utilsStorage } from "../utils";
 import { useSelector } from "react-redux";
@@ -7,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { BASE_URL } from "../../config";
 
-const AddReview = ({ ProductId }) => {
+const AddReview = () => {
   const navigate = useNavigate();
 
   const [scoreNum, setScoreNum] = useState(null);
@@ -29,27 +30,33 @@ const AddReview = ({ ProductId }) => {
       ...formData,
       [event.target.name]: event.target.value,
     });
+
   };
 
-  const hanldeSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const createReview = await axios.post(
         `${BASE_URL}/review/review`,
         formData
       );
-      alert("Tu opinión fue enviada", createReview.data);
+      Swal.fire({
+        icon: "success",
+        title: "Tu opinión se envió correctamente",
+    }, createReview);
       navigate(`/product/${zapatillas.id}`);
     } catch (error) {
       console.error("No se puedo enviar la opinión", error);
-      alert(
-        "Hubo un error al enviar tu opinión. Por favor, inténtalo de nuevo"
-      );
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al enviar tu opinión",
+        text: "Por favor inténtalo de nuevo",
+    });
     }
   };
 
   return (
-    <form className="container text-center" onSubmit={hanldeSubmit}>
+    <form className="container text-center" onSubmit={handleSubmit}>
       <div className="containerReview py">
         <h5 className="fw-bold mb-4 h5">Contanos que te pareció tu producto</h5>
         <div>

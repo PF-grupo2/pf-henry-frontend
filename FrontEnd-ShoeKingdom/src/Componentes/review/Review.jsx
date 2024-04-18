@@ -1,8 +1,14 @@
 // import './Review.css';
 import { useState, useEffect } from 'react';
+import { BsPencilSquare } from "react-icons/bs";
+import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Review.css';
 
-const Review = ({ score, message, show }) => {
+const Review = ({id, score, message, show }) => {
+   
+
+    const navigate = useNavigate();
 
     const [scoreArray, setScoreArray] = useState([]);
 
@@ -18,6 +24,10 @@ const Review = ({ score, message, show }) => {
         scoreBucle();
     }, []);
 
+    const handleClick = () => {
+        navigate('/editReview')
+    }
+
     return show ? (
         <>
 
@@ -31,6 +41,9 @@ const Review = ({ score, message, show }) => {
                             )}
                         </li>
                     </ul>
+                </div>
+                <div>
+                <NavLink to={`/editReview/${id}`}><BsPencilSquare id={id} className='editReview' onClick={handleClick}/></NavLink>
                 </div>
                 <p className='p'>{message}</p>
             </div>
