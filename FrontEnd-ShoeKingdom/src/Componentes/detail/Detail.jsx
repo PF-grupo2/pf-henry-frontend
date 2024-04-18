@@ -33,7 +33,7 @@ function ProductDetail() {
 
   useEffect(() => {
     if (cartItems.find((item) => item?.id === zapatillas?.id)) {
-      setCartBtn("Item in Cart");
+      setCartBtn("Ya existe en el carrito");
     } else {
       setCartBtn("Agregar al carrito");
     }
@@ -131,9 +131,13 @@ function ProductDetail() {
   const handleClick = () => {
     if (!isAuthenticated) {
       dispatch(clearDetail());
-      navigate("/");
+      navigate("/product");
     }
   };
+
+  const handleClick3 = () => {
+
+  }
 
   const handleClick2 = () => {
     navigate("/addReview");
@@ -167,7 +171,7 @@ function ProductDetail() {
                 >
                   {cartBtn}
                 </button>
-                <button className="btn btn-outline-secondary">
+                <button className="btn btn-outline-secondary" onClick={handleClick}>
                   Volver a la Tienda
                 </button>
               </div>
