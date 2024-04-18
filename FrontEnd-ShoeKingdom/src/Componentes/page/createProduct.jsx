@@ -11,7 +11,7 @@ const CreateProdForm = () => {
     description: "",
     style: ENUMS.styles[0],
     gender: ENUMS.genders[2],
-    color: ENUMS.colors[0],
+    color: [ENUMS.colors[0]],
     size: [],
     brand: ENUMS.brands[0],
     price: 0,
@@ -42,16 +42,16 @@ const CreateProdForm = () => {
           [name]: [],
         });
       }
-    } else if (name === "color" || name === "size") {
+    } else if (name === "color") {
       setFormData({
         ...formData,
         [name]: [...formData[name], value],
       });
-      // } else if (name === "size") {
-      //   setFormData({
-      //     ...formData,
-      //     size:[...formData.size, parseFloat(value)]
-      //   });
+      } else if (name === "size") {
+        setFormData({
+          ...formData,
+          size:[parseFloat(value)]
+        });
     } else {
       setFormData({
         ...formData,
