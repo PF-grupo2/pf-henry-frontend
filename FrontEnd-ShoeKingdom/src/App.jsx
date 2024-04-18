@@ -17,6 +17,7 @@ import Users from "./Componentes/page/Users";
 import Reviews from "./Componentes/page/Reviews";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
+import UserProfile from "./Componentes/userProfile/UserProfile";
 import { utilsStorage } from "./Componentes/utils";
 import AddReview from "./Componentes/addReview/AddReview";
 import EditReview from "./Componentes/addReview/EditReview";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/userprofile" element={<UserProfile/>} />
 
         {isAdmin && (
           <Route path="/admin" element={<Dashboard />}>

@@ -1,0 +1,31 @@
+.containerpagar{
+    background-image: linear-gradient(to top, rgba(3, 17, 22, 0.363) 0%, rgba(11, 11, 11, 0.238) 100%), url("https://m5s7j2f7.rocketcdn.me/wp-content/uploads/2020/06/5-elegir-pasarela-pago.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    height: 56vh;
+    background-size: cover;
+}
+
+.procesar-pago {
+    background-color: #ffffff60;
+    width: 40%;
+    height: 200px;
+    text-align: center;
+    border-radius: 30px;
+    justify-content: right;
+    align-items: right;
+    padding-top: 5px;
+  
+  }
+  
+  .procesar-pago > h1{
+    color:#060606;
+    font-size: 50px;
+  }
+  
+
+
