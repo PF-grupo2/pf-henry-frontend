@@ -1,4 +1,5 @@
 import { Form } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   GET_ZAPATILLAS,
   FILTER,
@@ -43,7 +44,9 @@ function rootReducer(state = initialState, action) {
       console.log("reducer entro", action.payload);
       const todosfiltros = action.payload.products;
       if (todosfiltros.length === 0) {
-        alert("no hay zapatillas con ese filtrado");
+        Swal.fire({
+          title: "No se encontraron resultados para ese filtro",
+      });
         return {
           ...state,
           allZapatillas: action.payload, //se elimina .products del payload 31/3 20h

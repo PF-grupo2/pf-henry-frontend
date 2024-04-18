@@ -38,8 +38,8 @@ function Card({ zapatilla }) {
       <div className="card card-body d-flex align-items-center justify-content-between">
         <div className="card_hover card-body text-center">
           <img className="imagen" src={images[0]} alt={name} />
-          <p>Nombre: {name} </p>
-          <p>Precio: $ {price} </p>
+          <h4>{name}</h4>
+          <h5>$ {price} </h5>
           <div className="d-flex align-items-center justify-content-between">
             <Link to="/cart">
               <span

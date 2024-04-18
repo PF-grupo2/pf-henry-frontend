@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ENUMS } from "./enums";
 import { BASE_URL } from "../../config";
+import Swal from "sweetalert2";
 
 //* se quito POST_URI POR QUE NO SE USABA, SI ROMPE MIRAR POR AQUI E IR AL COMPONENTE DE PRODUCTS
 const CreateProdForm = () => {
@@ -10,7 +11,7 @@ const CreateProdForm = () => {
     description: "",
     style: ENUMS.styles[0],
     gender: ENUMS.genders[2],
-    color: [ENUMS.colors[0]],
+    color: ENUMS.colors[0],
     size: [],
     brand: ENUMS.brands[0],
     price: 0,
@@ -90,12 +91,21 @@ const CreateProdForm = () => {
       );
 
       console.log("Product created:", productCreationResponse.data);
-      alert("Producto ingresado a nuestra base de datos");
+      // alert("Producto ingresado a nuestra base de datos");
+      Swal.fire({
+        icon: "success",
+        title: "Producto ingresado a nuestra base de datos",
+    });
     } catch (error) {
       console.error("Error creating product:", error);
-      alert(
-        "Hubo un error al ingresar el producto. Por favor, intentalo de nuevo. "
-      );
+      // alert(
+      //   "Hubo un error al ingresar el producto. Por favor, intentalo de nuevo. "
+      // );
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al ingresar el producto",
+        text: "Por favor inténtalo de nuevo",
+    });
     }
   };
 
