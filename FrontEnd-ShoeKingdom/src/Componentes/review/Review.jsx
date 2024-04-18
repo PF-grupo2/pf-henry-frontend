@@ -5,7 +5,6 @@ import { BsPencilSquare } from "react-icons/bs";
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Review.css';
-import { utilsStorage } from '../utils';
 
 const Review = ({ id, score, message, userId, show, user }) => {
 
