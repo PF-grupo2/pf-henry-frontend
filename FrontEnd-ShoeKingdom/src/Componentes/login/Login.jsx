@@ -5,6 +5,7 @@ import { setToken } from "../../../Redux/Actions/actions"; // Importa la acción
 import { utilsStorage } from "../utils";
 import { useState } from "react";
 import { BASE_URL } from "../../config";
+import './Login.css'
 
 function LoginForm() {
   const [formData, setFormData] = useState({
@@ -87,33 +88,76 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar Sesión</h2>
-      <label htmlFor="loginMail">Correo electrónico:</label>
-      <br />
-      <input
-        type="email"
-        id="loginMail"
-        name="mail"
-        value={formData.mail}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <label htmlFor="loginPassword">Contraseña:</label>
-      <br />
-      <input
-        type="password"
-        id="loginPassword"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <br />
-      <button type="submit">Iniciar Sesión</button>
-    </form>
+
+
+    // <form onSubmit={handleSubmit}>
+    //   <h2>Iniciar Sesión</h2>
+    //   <label htmlFor="loginMail">Correo electrónico:</label>
+    //   <br />
+    //   <input
+    //     type="email"
+    //     id="loginMail"
+    //     name="mail"
+    //     value={formData.mail}
+    //     onChange={handleChange}
+    //     required
+    //   />
+    //   <br />
+    //   <label htmlFor="loginPassword">Contraseña:</label>
+    //   <br />
+    //   <input
+    //     type="password"
+    //     id="loginPassword"
+    //     name="password"
+    //     value={formData.password}
+    //     onChange={handleChange}
+    //     required
+    //   />
+    //   <br />
+    //   <br />
+    //   <button type="submit">Iniciar Sesión</button>
+    // </form>
+
+     <div className="container-login">
+      <div className="row login p-3">
+        <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <form className="form-login" onSubmit={handleSubmit}>
+            <h2 className="mb-4">Iniciar Sesión</h2>
+            <div className="form-group mb-3">
+              <label htmlFor="loginMail" className="mb-1">Correo electrónico:</label>
+              <input
+                type="email"
+                id="loginMail"
+                name="mail"
+                value={formData.mail}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="loginPassword" className="mb-1">Contraseña:</label>
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <button className="btn btn-dark btn-lg btn-block" type="submit">Iniciar Sesión</button>
+          </form>
+        </div>
+        <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <img className="login-img" src="/assets/login.png" alt="Contact Us" />
+        </div>
+      </div>
+    </div>
+
+
+
   );
 }
 
