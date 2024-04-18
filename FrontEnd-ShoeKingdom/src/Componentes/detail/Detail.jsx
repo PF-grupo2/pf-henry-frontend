@@ -29,13 +29,13 @@ function ProductDetail() {
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
-  const [cartBtn, setCartBtn] = useState("Add to Cart");
+  const [cartBtn, setCartBtn] = useState("Agregar al carrito");
 
   useEffect(() => {
     if (cartItems.find((item) => item?.id === zapatillas?.id)) {
-      setCartBtn("Item in Cart");
+      setCartBtn("Ya existe en el carrito");
     } else {
-      setCartBtn("Add to Cart");
+      setCartBtn("Agregar al carrito");
     }
   }, [cartItems, zapatillas]);
 
@@ -76,7 +76,7 @@ function ProductDetail() {
               Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Product added!",
+                title: "Producto agregado!",
                 showConfirmButton: true,
                 timer: 2500,
               });
@@ -86,7 +86,7 @@ function ProductDetail() {
               Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "There was an error adding the product to the cart and saving it to the database. Please try again.",
+                text: "Hubo un error al agregar el producto al carrito y guardarlo en la base de datos. Inténtalo de nuevo.",
               });
             }
           }
@@ -95,7 +95,7 @@ function ProductDetail() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Product added!",
+            title: "Se agregó el producto!",
             showConfirmButton: true,
             timer: 2500,
           });
@@ -106,7 +106,7 @@ function ProductDetail() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Failed to add product to cart. Please try again.",
+        text: "No se pudo agregar el producto al carrito. Inténtalo de nuevo.",
       });
     }
   };
@@ -131,9 +131,13 @@ function ProductDetail() {
   const handleClick = () => {
     if (!isAuthenticated) {
       dispatch(clearDetail());
-      navigate("/");
+      navigate("/product");
     }
   };
+
+  const handleClick3 = () => {
+
+  }
 
   const handleClick2 = () => {
     navigate("/addReview");
@@ -167,8 +171,8 @@ function ProductDetail() {
                 >
                   {cartBtn}
                 </button>
-                <button className="btn btn-outline-secondary">
-                  Back to Store
+                <button className="btn btn-outline-secondary" onClick={handleClick}>
+                  Volver a la Tienda
                 </button>
               </div>
             </>

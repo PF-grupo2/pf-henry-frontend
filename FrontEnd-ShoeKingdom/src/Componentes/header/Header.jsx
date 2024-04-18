@@ -110,7 +110,7 @@ const Header = () => {
                                     
                                     
                                      {isAdmin && (<li className="nav-item">
-                                        <NavLink className="nav-link" to="/admin">admin</NavLink>
+                                        <NavLink className="nav-link" to="/admin">Admin</NavLink>
                                     </li>)}
 
                                 </ul>

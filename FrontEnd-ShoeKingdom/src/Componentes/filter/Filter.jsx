@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import DATA from '../../Data';
-
 
 import {
     getfilter
@@ -35,18 +33,7 @@ function Filter() {
                         Estilo
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-                    {/* <ul id="collapseTwo" className="collapse list-unstyled pl-3">
-                        <li><a className="text-decoration-none" href="#">Basquet</a></li>
-                        <li><a className="text-decoration-none" href="#">Futbol</a></li>
-                        <li><a className="text-decoration-none" href="#">Hockey</a></li>
-                        <li><a className="text-decoration-none" href="#">Motorsport</a></li>
-                        <li><a className="text-decoration-none" href="#">Natacion</a></li>
-                        <li><a className="text-decoration-none" href="#">Outdoor</a></li>
-                        <li><a className="text-decoration-none" href="#">Running</a></li>
-                        <li><a className="text-decoration-none" href="#">Tenis</a></li>
-                        <li><a className="text-decoration-none" href="#">Training</a></li>
-                    </ul> */}
-
+                    
                     <ul id="collapseTwo" className="collapse list-unstyled pl-3">
                         <li>
                             <input type="checkbox" id="basquet" />
@@ -111,13 +98,6 @@ function Filter() {
                         Talla
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-                    {/* <ul id="collapseFour" className="collapse list-unstyled pl-3">
-                        <li><a className="text-decoration-none" href="#">40-41</a></li>
-                        <li><a className="text-decoration-none" href="#">41-42</a></li>
-                        <li><a className="text-decoration-none" href="#">42-43</a></li>
-                        <li><a className="text-decoration-none" href="#">43-44</a></li>
-                        <li><a className="text-decoration-none" href="#">44-45</a></li>
-                    </ul> */}
                     <ul id="collapseFour" className="collapse list-unstyled pl-3">
 
                     <li>
@@ -160,16 +140,6 @@ function Filter() {
                         Color
                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                     </a>
-                    {/* <ul id="collapseSix" className="collapse list-unstyled pl-3">
-                        <li><a className="text-decoration-none blanco" href="#"> <i className="fa fa-circle blanco" aria-hidden="true"></i> Blanco</a></li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle negro" aria-hidden="true"></i>   Negro</a></li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle azul" aria-hidden="true"></i>  </a>Azul</li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle amarillo" aria-hidden="true"></i> Amarillo</a></li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle gris" aria-hidden="true"></i> Gris</a></li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle verde" aria-hidden="true"></i> Verde</a></li>
-                        <li><a className="text-decoration-none" href="#"><i className="fa fa-circle rojo" aria-hidden="true"></i> Rojo</a></li>
-                        <li><a className="text-decoration-none" href="#"> <i className="fa fa-circle rosado" aria-hidden="true"></i> Rosado</a></li>
-                    </ul> */}
 
                     <ul id="collapseSix" className="collapse list-unstyled pl-3">
                         <li>
@@ -206,14 +176,9 @@ function Filter() {
                         </li>
                     </ul>
 
-
-
                 </li>
 
             </ul>
-
-
-
         </>
     )
 }
