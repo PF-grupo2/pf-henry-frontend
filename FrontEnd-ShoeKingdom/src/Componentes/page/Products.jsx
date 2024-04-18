@@ -33,7 +33,11 @@ function Products() {
 
   const handleBan = async (id) => {
     try {
-      await axios.put(`${BASE_URL}/delete/${id}`, {}, { headers: { "x-token": token } });
+
+      await axios.delete(`${BASE_URL}/products/delete/${id}`, {
+        headers: { "x-token": token }, 
+      });
+
       fetchData();
     } catch (error) {
       console.error("Error banning product:", error);
@@ -69,7 +73,7 @@ function Products() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); 
 
   return (
     <div>
@@ -94,9 +98,11 @@ function Products() {
               <td>{product.brand}</td>
               <td>{product.price}</td>
               <td>
+
                 <Button variant="info" onClick={() => handleOpenEditModal(product)}>Editar</Button>
                 <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Desbanear" : "Banear"}</Button>
                 <Button variant="info" onClick={() => handleOpenReviewModal(product.id)}>Reseñas</Button>
+
                 {/* <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button> */}
               </td>
             </tr>

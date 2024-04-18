@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
 import { NavLink,useNavigate  } from 'react-router-dom';
 import Cards from '../cards/Cards';
-import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
 import { utilsStorage } from '../utils';
 
@@ -38,9 +37,8 @@ const Cart = () => {
     const [itemQuantities, setItemQuantities] = useState({});
     const [totalPrice, setTotalPrice] = useState(total());
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está logueado
+    const [update, setUpdate] = useState(true);
 
-
-    const { isAuthenticated } = useAuth0();
     useEffect(() => {
         // Simular el inicio de sesión del usuario
         // Aquí deberías implementar tu lógica real para verificar si el usuario está logueado o no
@@ -61,17 +59,18 @@ const Cart = () => {
             return total + (quantity * item.price);
         }, 0);
         setTotalPrice(newTotalPrice);
-    }, [cartItems, itemQuantities]);
+    }, [cartItems, itemQuantities, update]);
 
     const handleClose = (item) => {
         utilsStorage.cleanCart(item.id);
         dispatch(delItem(item));
+        setUpdate(!update);
     };
 
     const handleIncreaseQuantity = (itemId) => {
 
         const item = utilsStorage.getCart(itemId);
-        item.quantity+=1;
+        if(item && item.quantity!==item.stock) item.quantity+=1;
         utilsStorage.saveCartItem(itemId, item);
 
         const currentQuantity = itemQuantities[itemId] || 0;
@@ -115,9 +114,9 @@ const Cart = () => {
                             <h3>{item.name}</h3>
                             <p className='lead fw-bold'>${item.price}</p>
                             <div className='d-flex align-items-center'>
-                                <button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-outline-primary me-2'>-</button>
+                                {item.quantity>1 && (<button onClick={() => handleDecreaseQuantity(item.id)} className='btn btn-outline-primary me-2'>-</button>)}
                                 <span>{getItem.quantity}</span>
-                                <button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-outline-primary ms-2'>+</button>
+                                {item.stock>item.quantity && (<button onClick={() => handleIncreaseQuantity(item.id)} className='btn btn-outline-primary ms-2'>+</button>)}
                             </div>
                             <div>
                             <label>Color</label>

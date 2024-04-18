@@ -15,11 +15,13 @@ import User from "./Componentes/page/User";
 import Products from "./Componentes/page/Products";
 import Users from "./Componentes/page/Users";
 import Reviews from "./Componentes/page/Reviews";
+import Sales from "./Componentes/page/Sales";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
 import UserProfile from "./Componentes/userProfile/UserProfile";
 import { utilsStorage } from "./Componentes/utils";
 import AddReview from "./Componentes/addReview/AddReview";
+import EditReview from "./Componentes/addReview/EditReview";
 
 function App() {
   const location = useLocation();
@@ -31,6 +33,7 @@ function App() {
     <>
       {!isAdminRoute && <Header />}
       <Routes>
+        <Route path="/editReview/:id" element={<EditReview />} />
         <Route path="/addReview" element={<AddReview />} />
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
@@ -51,6 +54,7 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="users" element={<Users />} />
             <Route path="reviews" element={<Reviews />} />
+            <Route path="sales" element={<Sales />} />
           </Route>
         )}
       </Routes>

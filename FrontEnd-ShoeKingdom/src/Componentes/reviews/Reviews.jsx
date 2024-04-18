@@ -4,13 +4,14 @@ import { getAllReviews } from '../../../Redux/Actions/actions';
 import Review from '../review/Review';
 
 const Reviews = ({ productId }) => {
+
     const dispatch = useDispatch();
     const { reviews } = useSelector((state) => state);
-    console.log()
 
     useEffect(() => {
         dispatch(getAllReviews());
     }, [dispatch])
+
 
     return (
         <div>
@@ -19,8 +20,11 @@ const Reviews = ({ productId }) => {
                     return (
                         <Review 
                         key = {review?.id}
+                        user = {review?.User}
+                        id = {review?.id}
                         score = {review?.score}
                         message = {review?.message}
+                        userId = {review?.UserId}
                         show = {review?.ProductId == productId}
                          />
                     )

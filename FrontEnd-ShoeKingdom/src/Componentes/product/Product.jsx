@@ -131,7 +131,7 @@ const Product = () => {
                   defaultValue={selectedBrand} // Reemplaza selectedBrand con la variable que indica la opción seleccionada
                 >
                   <optgroup>
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                     <option value="brand[]=Nike">Nike</option>
                     <option value="brand[]=Puma">Puma</option>
                     <option value="brand[]=Adidas">Adidas</option>
@@ -160,7 +160,7 @@ const Product = () => {
                   defaultValue={selectedSize} // Reemplaza selectedSize con la variable que indica la opción seleccionada
                 >
                   <optgroup>
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                     <option value="size[]=37">37</option>
                     <option value="size[]=38">38</option>
                     <option value="size[]=39">39</option>
@@ -182,7 +182,7 @@ const Product = () => {
                   defaultValue={selectedGender} // Utiliza defaultValue en lugar de selected
                 >
                   <optgroup>
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                     <option value="gender[]=Hombre">Masculino</option>
                     <option value="gender[]=Mujer">Femenino</option>
                     <option value="gender[]=Unisex">Unisex</option>
@@ -198,7 +198,7 @@ const Product = () => {
                   defaultValue={selectedStyle} // Reemplaza selectedStyle con la variable que indica la opción seleccionada
                 >
                   <optgroup>
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                     <option value="style[]=Outdoor">outdoor</option>
                     <option value="style[]=Tenis">tenis</option>
                     <option value="style[]=Basquet">Basquet</option>
@@ -222,7 +222,7 @@ const Product = () => {
                   defaultValue={selectedColor} // Reemplaza selectedColor con la variable que indica la opción seleccionada
                 >
                   <optgroup>
-                    <option value="">All</option>
+                    <option value="">Todos</option>
                     <option value="color[]=Blanco">Blanco</option>
                     <option value="color[]=Negro">Negro</option>
                     <option value="color[]=Azul">Azul</option>
@@ -236,7 +236,7 @@ const Product = () => {
                 </select>
               </div>
               <div className="col-lg-1 custom-select">
-                <button onClick={resetFilters}>Reset</button>
+                <button onClick={resetFilters}>Limpiar</button>
               </div>
             </div>
           </div>

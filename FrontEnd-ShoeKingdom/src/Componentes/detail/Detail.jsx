@@ -29,13 +29,15 @@ function ProductDetail() {
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
-  const [cartBtn, setCartBtn] = useState("Add to Cart");
+  const [cartBtn, setCartBtn] = useState("Agregar al carrito");
 
   useEffect(() => {
-    if (cartItems.find((item) => item?.id === zapatillas?.id)) {
-      setCartBtn("Item in Cart");
+    if(zapatillas && zapatillas.stock === 0){
+      setCartBtn("No hay unidades disponibles");
+    }else if(cartItems.find((item) => item?.id === zapatillas?.id)) {
+      setCartBtn("Ya existe en el carrito");
     } else {
-      setCartBtn("Add to Cart");
+      setCartBtn("Agregar al carrito");
     }
   }, [cartItems, zapatillas]);
 
@@ -55,6 +57,7 @@ function ProductDetail() {
   }, [isAuthenticated, getAccessTokenSilently]);
 
   const handleCart = async () => {
+    if(zapatillas && cartBtn !== "Agregar al carrito") return
     if (zapatillas) {
       const item = zapatillas;
       item.quantity = 1;
@@ -76,7 +79,7 @@ function ProductDetail() {
               Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Product added!",
+                title: "Producto agregado!",
                 showConfirmButton: true,
                 timer: 2500,
               });
@@ -86,7 +89,7 @@ function ProductDetail() {
               Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "There was an error adding the product to the cart and saving it to the database. Please try again.",
+                text: "Hubo un error al agregar el producto al carrito y guardarlo en la base de datos. Inténtalo de nuevo.",
               });
             }
           }
@@ -95,7 +98,7 @@ function ProductDetail() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Product added!",
+            title: "Se agregó el producto!",
             showConfirmButton: true,
             timer: 2500,
           });
@@ -106,7 +109,7 @@ function ProductDetail() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Failed to add product to cart. Please try again.",
+        text: "No se pudo agregar el producto al carrito. Inténtalo de nuevo.",
       });
     }
   };
@@ -131,9 +134,13 @@ function ProductDetail() {
   const handleClick = () => {
     if (!isAuthenticated) {
       dispatch(clearDetail());
-      navigate("/");
+      navigate("/product");
     }
   };
+
+  const handleClick3 = () => {
+
+  }
 
   const handleClick2 = () => {
     navigate("/addReview");
@@ -167,8 +174,8 @@ function ProductDetail() {
                 >
                   {cartBtn}
                 </button>
-                <button className="btn btn-outline-secondary">
-                  Back to Store
+                <button className="btn btn-outline-secondary" onClick={handleClick}>
+                  Volver a la Tienda
                 </button>
               </div>
             </>
@@ -179,12 +186,13 @@ function ProductDetail() {
         <div>
           <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
           <Reviews productId={id} />
-          <button
+          {(utilsStorage.getDataStorage("token")) ? <button
             onClick={handleClick2}
             className="btn btn-outline-primary mx-2 col-lg-6 m-4"
           >
             Agregar comentario
-          </button>
+          </button> : null}
+          
         </div>
       </div>
     </div>

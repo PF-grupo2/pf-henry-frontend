@@ -11,7 +11,7 @@ const About = () => {
                             ShoeKingdom es una Zapatería especializada en zapatillas de alta calidad
                             y estilo variado. Ofrecemos una amplia gama de marcas reconocidas
                             y diseños exclusivos para satisfacer todos los gustos y necesidades.
-                            Nuestro compromiso es brindar comodidad, durabilidad y moda en cada paso que des. ¡Encuentra tu par perfecto hoy mismo!
+                            Nuestro compromiso es brindar comodidad, durabilidad y moda en cada paso que des. ¡Encuentra tu par perfecto hoy mismo!.
                         </p>
                         <NavLink to="/contact" className="btn btn-outline-primary px-3">Contactanos</NavLink>
                     </div>
@@ -25,8 +25,8 @@ const About = () => {
                     <div className="container">
                         <div className="row g-5 mb-1  justify-content-center align-items-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
                             <div className="col-lg-12  justify-content-center">
-                                <p className="mb-5 parrafo  text-black text-center justify-content-center">El equipo que unio conocimiento y tiempo para realizar este proyecto
-                                 tan enriquecedor para todos nosotros</p>
+                                <p className="mb-5 parrafo  text-black text-center justify-content-center">El equipo que unió conocimiento y tiempo para realizar este proyecto
+                                 tan enriquecedor para todos nosotros.</p>
                             </div>
                         </div>
                         <div className="row g-2 justify-content-center align-items-center portfolio-container wow fadeInUp align-items-center text-center" data-wow-delay="0.1s">
