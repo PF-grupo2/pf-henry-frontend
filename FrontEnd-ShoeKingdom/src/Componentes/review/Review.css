@@ -19,3 +19,7 @@
 .editReview{
     margin-left: 590px;
 }
+.editReviewDisabled{
+    margin-left: 590px;
+    color: rgb(189, 189, 189);
+}

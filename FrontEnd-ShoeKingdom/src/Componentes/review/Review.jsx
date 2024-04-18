@@ -1,17 +1,19 @@
 // import './Review.css';
 import { useState, useEffect } from 'react';
+import { utilsStorage } from "../utils";
 import { BsPencilSquare } from "react-icons/bs";
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Review.css';
 import { utilsStorage } from '../utils';
 
-const Review = ({id, score, message, show, user }) => {
-   
+const Review = ({ id, score, message, userId, show, user }) => {
+
 
     const navigate = useNavigate();
 
     const [scoreArray, setScoreArray] = useState([]);
+    let idUser = utilsStorage.getDataStorage("userSession").id;
 
     const currentUser = utilsStorage.getDataStorage("userSession");
 
@@ -45,9 +47,11 @@ const Review = ({id, score, message, show, user }) => {
                         </li>
                     </ul>
                 </div>
-                <div>
-                {currentUser.id === user.id && (<NavLink to={`/editReview/${id}`}><BsPencilSquare id={id} className='editReview' onClick={handleClick}/></NavLink>)}
-                </div>
+                {userId == idUser ?
+                        <NavLink to={`/editReview/${id}`}>
+                            <BsPencilSquare id={id} className='editReview' onClick={handleClick} />
+                        </NavLink>
+                    :   <BsPencilSquare id={id} className='editReviewDisabled' />}
                 <p className='p'>{`${user.name}: ${message}`}</p>
             </div>
 

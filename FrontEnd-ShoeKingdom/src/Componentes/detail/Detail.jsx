@@ -186,12 +186,13 @@ function ProductDetail() {
         <div>
           <h3 className="fw-bold mb-4 h3">Opiniones del producto</h3>
           <Reviews productId={id} />
-          <button
+          {(utilsStorage.getDataStorage("token")) ? <button
             onClick={handleClick2}
             className="btn btn-outline-primary mx-2 col-lg-6 m-4"
           >
             Agregar comentario
-          </button>
+          </button> : null}
+          
         </div>
       </div>
     </div>
