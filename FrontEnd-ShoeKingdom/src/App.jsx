@@ -19,6 +19,7 @@ import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
 import { utilsStorage } from "./Componentes/utils";
 import AddReview from "./Componentes/addReview/AddReview";
+import EditReview from "./Componentes/addReview/EditReview";
 
 function App() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
     <>
       {!isAdminRoute && <Header />}
       <Routes>
+        <Route path="/editReview/:id" element={<EditReview />} />
         <Route path="/addReview" element={<AddReview />} />
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />

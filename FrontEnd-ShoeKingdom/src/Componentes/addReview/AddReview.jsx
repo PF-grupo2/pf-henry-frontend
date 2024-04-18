@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { BASE_URL } from "../../config";
 
-const AddReview = ({ ProductId }) => {
+const AddReview = () => {
   const navigate = useNavigate();
 
   const [scoreNum, setScoreNum] = useState(null);
@@ -29,9 +29,10 @@ const AddReview = ({ ProductId }) => {
       ...formData,
       [event.target.name]: event.target.value,
     });
+
   };
 
-  const hanldeSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const createReview = await axios.post(
@@ -49,7 +50,7 @@ const AddReview = ({ ProductId }) => {
   };
 
   return (
-    <form className="container text-center" onSubmit={hanldeSubmit}>
+    <form className="container text-center" onSubmit={handleSubmit}>
       <div className="containerReview py">
         <h5 className="fw-bold mb-4 h5">Contanos que te pareció tu producto</h5>
         <div>
