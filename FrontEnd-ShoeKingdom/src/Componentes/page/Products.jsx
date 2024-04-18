@@ -35,7 +35,7 @@ function Products() {
 
   const handleBan = async (id) => {
     try {
-      await axios.put(`${BASE_URL}/delete/${id}`, {
+      await axios.delete(`${BASE_URL}/products/delete/${id}`, {
         headers: { "x-token": token },
       });
       fetchData();
@@ -83,7 +83,7 @@ function Products() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); 
 
   return (
     <div>
@@ -123,8 +123,8 @@ function Products() {
                   variant={!product.status ? "danger" : "success"}
                   onClick={() => handleBan(product.id)}
                 >
-                  {!product.status ? "Desbanear" : "Banear"}
-                </Button>
+                  {!product.status ? "Mostrar" : "Ocultar"}
+                </Button> 
                 <button
                   onClick={() => handleOpenTab(product, "reviews")}
                   className="btn btn-info btn-sm me-2"
