@@ -4,9 +4,9 @@ import EditProduct from "./editProductForm";
 import CreateProdForm from "./createProduct";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { utilsStorage } from "../utils";
 import ProductsReview from "./ProductsReview";
 import { BASE_URL } from "../../config";
+import { utilsStorage } from "../utils";
 
 function Products() {
   const token = utilsStorage.getDataStorage("token");
@@ -14,19 +14,17 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState();
   const [showEditModal, setShowEditModal] = useState(false);
-  const [tabOpen, setTabOpen] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("");
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [reviewProductId, setReviewProductId] = useState(null);
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get( `${BASE_URL}/products/listProducts` , { headers: { "x-token": token } });
+      const { data } = await axios.get(`${BASE_URL}/products/listProducts`, { headers: { "x-token": token } });
       if (data.products && Array.isArray(data.products)) {
         setProducts(data.products);
       } else {
-        console.error(
-          "La respuesta de la API no contiene un array de productos"
-        );
+        console.error("La respuesta de la API no contiene un array de productos");
       }
     } catch (error) {
       console.error("Error getting products:", error);
@@ -35,9 +33,11 @@ function Products() {
 
   const handleBan = async (id) => {
     try {
+
       await axios.delete(`${BASE_URL}/products/delete/${id}`, {
-        headers: { "x-token": token },
+        headers: { "x-token": token }, 
       });
+
       fetchData();
     } catch (error) {
       console.error("Error banning product:", error);
@@ -61,25 +61,15 @@ function Products() {
     setShowCreateModal(false);
   };
 
-  const handleOpenTab = (product, tabName) => {
-    setSelectedTab(tabName);
-    setTabOpen(true);
-    setSelectedProduct(product);
+  const handleOpenReviewModal = (productId) => {
+    setReviewProductId(productId);
+    setShowReviewModal(true);
   };
 
-  const handleCloseTab = () => {
-    setSelectedTab("");
-    setTabOpen(false);
+  const handleCloseReviewModal = () => {
+    setReviewProductId(null);
+    setShowReviewModal(false);
   };
-
-  const conditionalTab = () => (
-    <div>
-      <button onClick={handleCloseTab} className="btn btn-danger">
-        X
-      </button>
-      <ProductsReview id={selectedProduct.id} />
-    </div>
-  );
 
   useEffect(() => {
     fetchData();
@@ -88,14 +78,9 @@ function Products() {
   return (
     <div>
       <div className="d-flex justify-content-end mb-3">
-        <Button variant="success" onClick={handleOpenCreateModal}>
-          Ingresar Nuevo Producto
-        </Button>
+        <Button variant="success" onClick={handleOpenCreateModal}>Ingresar Nuevo Producto</Button>
       </div>
-      <table
-        className="table table-hover table-bordered my-3"
-        aria-describedby="titulo"
-      >
+      <table className="table table-hover table-bordered my-3" aria-describedby="titulo">
         <thead className="table-dark">
           <tr>
             <th scope="col">ID</th>
@@ -113,36 +98,20 @@ function Products() {
               <td>{product.brand}</td>
               <td>{product.price}</td>
               <td>
-                <Button
-                  variant="info"
-                  onClick={() => handleOpenEditModal(product)}
-                >
-                  Editar
-                </Button>
-                <Button
-                  variant={!product.status ? "danger" : "success"}
-                  onClick={() => handleBan(product.id)}
-                >
-                  {!product.status ? "Mostrar" : "Ocultar"}
-                </Button> 
-                <button
-                  onClick={() => handleOpenTab(product, "reviews")}
-                  className="btn btn-info btn-sm me-2"
-                >
-                  Reseñas
-                </button>
+
+                <Button variant="info" onClick={() => handleOpenEditModal(product)}>Editar</Button>
+                <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Desbanear" : "Banear"}</Button>
+                <Button variant="info" onClick={() => handleOpenReviewModal(product.id)}>Reseñas</Button>
+
                 {/* <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button> */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {tabOpen && conditionalTab()}
       <Modal show={showEditModal} onHide={handleCloseEditModal}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            Editar Producto: {selectedProduct && selectedProduct.name}
-          </Modal.Title>
+          <Modal.Title>Editar Producto: {selectedProduct && selectedProduct.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <EditProduct product={selectedProduct} token={token} />
@@ -154,6 +123,14 @@ function Products() {
         </Modal.Header>
         <Modal.Body>
           <CreateProdForm />
+        </Modal.Body>
+      </Modal>
+      <Modal show={showReviewModal} onHide={handleCloseReviewModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Reseñas del Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ProductsReview id={reviewProductId} />
         </Modal.Body>
       </Modal>
     </div>
