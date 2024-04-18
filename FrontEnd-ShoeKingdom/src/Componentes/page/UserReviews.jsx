@@ -83,7 +83,6 @@ function UserReviews({ id }) {
         </div>
 
     </div>
-  );
 }
 
 export default UserReviews;

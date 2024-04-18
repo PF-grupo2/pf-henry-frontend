@@ -50,7 +50,7 @@ function Cheackout() {
       //https://pf-henry-backend-agsr.onrender.com/api/v1/mercadopago
 
 
-      const response = await axios.post(${BASE_URL}/mercadopago, {
+      const response = await axios.post(`${BASE_URL}/mercadopago`, {
         items: orderData
 
       })
