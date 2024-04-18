@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { delItem, updateItemQuantity } from '../../../Redux/Actions/actions';
 import { NavLink,useNavigate  } from 'react-router-dom';
 import Cards from '../cards/Cards';
-import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
 import { utilsStorage } from '../utils';
 
@@ -39,8 +38,6 @@ const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(total());
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar si el usuario está logueado
 
-
-    const { isAuthenticated } = useAuth0();
     useEffect(() => {
         // Simular el inicio de sesión del usuario
         // Aquí deberías implementar tu lógica real para verificar si el usuario está logueado o no
