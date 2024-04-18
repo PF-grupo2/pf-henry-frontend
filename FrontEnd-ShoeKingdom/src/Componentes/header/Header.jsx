@@ -1,8 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import Login from '../buttons/Login';
-import Profile from '../buttons/Profile';
 import CartBtn from '../buttons/CartBtn';
-import Favorito from '../buttons/Favorito';
 import SearchBar from '../searchBar/SearchBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
@@ -77,22 +74,9 @@ const Header = () => {
                             <div className="social-media order-lg-last">
                                 <div className="  d-flex">
                                     {!isMobile && <SearchBar />}
-                                    {isAuthenticated ? <div>
-                                        <Profile />
-                                    </div> : <div>
-                                        <Login />
-                                    </div>}
-                                    {/* <div>
-                                     <Favorito />   
-                                    </div> */}
-
                                     <CartBtn />
                                 </div>
-                                <div>
-                                    {token && (<button onClick={handleLogOut}>
-                                        <span>Cerrar Sesion</span>
-                                    </button>)}
-                                </div>
+                               
                             </div>
 
                             <button className="navbar-toggler m-2" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,9 +86,6 @@ const Header = () => {
 
                             <div className="collapse navbar-collapse" id="ftco-nav">
                                 <ul className="navbar-nav mb-3 mb-lg-0 ">
-                                    {/* <li className="nav-item">
-                                        <NavLink className="nav-link" to="/">Inicio</NavLink>
-                                    </li> */}
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/about">Acerca</NavLink>
                                     </li>
@@ -131,6 +112,9 @@ const Header = () => {
                                     </li>)}
 
                                 </ul>
+                                <div>
+                                    {token && (<button className="btn btn-outline-primary mx-2" onClick={handleLogOut}>Cerrar sesión</button>)}
+                                </div>
 
                             </div>
                         </div>
