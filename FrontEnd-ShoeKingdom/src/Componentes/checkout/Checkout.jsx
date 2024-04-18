@@ -66,9 +66,9 @@ function Cheackout() {
 
   const handleBuy = async () => {
     const idPreference = await createPreference()
-    // for (let i = 0; i < zapasCheckout.length; i++) {
-    //   await axios.put(`http://localhost:3000/api/v1/products/stock/${zapasCheckout[i].id}/${zapasCheckout[i].quantity}`, { headers: { 'x-token': token } })
-    // }
+    for (let i = 0; i < zapasCheckout.length; i++) {
+      await axios.put(`http://localhost:3000/api/v1/products/stock/${zapasCheckout[i].id}/${zapasCheckout[i].quantity}`, { headers: { 'x-token': token } })
+    }
     console.log("handlebuy: ", idPreference);
     if (idPreference) {
 
@@ -76,6 +76,7 @@ function Cheackout() {
 
 
     }
+    utilsStorage.cleanCart();
   };
 
   return (

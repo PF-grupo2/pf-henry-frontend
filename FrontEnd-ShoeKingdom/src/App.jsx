@@ -15,6 +15,7 @@ import User from "./Componentes/page/User";
 import Products from "./Componentes/page/Products";
 import Users from "./Componentes/page/Users";
 import Reviews from "./Componentes/page/Reviews";
+import Sales from "./Componentes/page/Sales";
 import RegisterForm from "./Componentes/registerForm/RegisterForm";
 import LoginForm from "./Componentes/login/Login";
 import UserProfile from "./Componentes/userProfile/UserProfile";
@@ -53,6 +54,7 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="users" element={<Users />} />
             <Route path="reviews" element={<Reviews />} />
+            <Route path="sales" element={<Sales />} />
           </Route>
         )}
       </Routes>

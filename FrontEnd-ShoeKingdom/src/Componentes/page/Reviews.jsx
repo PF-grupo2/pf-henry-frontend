@@ -69,7 +69,7 @@ function Reviews() {
                                 <tr key={review.id}>
                                     <td>{review.id}</td>
                                     <td>{review.ProductId}</td>
-                                    <td><a href={`${URLfront}/${review.id}`}>{review.Product.name}</a></td>
+                                    <td><a href={`${BASE_URL_FRONT}/product/${review.id}`}>{review.Product.name}</a></td>
                                     <td>{review.UserId}</td>
                                     <td>{review.User.name}</td>
                                     <td>{review.score}</td>
