@@ -12,6 +12,7 @@ const Reviews = ({ productId }) => {
         dispatch(getAllReviews());
     }, [dispatch])
 
+
     return (
         <div>
             {
@@ -19,6 +20,7 @@ const Reviews = ({ productId }) => {
                     return (
                         <Review 
                         key = {review?.id}
+                        user = {review?.User}
                         id = {review?.id}
                         score = {review?.score}
                         message = {review?.message}

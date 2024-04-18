@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Login from '../buttons/Login';
 import Profile from '../buttons/Profile';
 import CartBtn from '../buttons/CartBtn';
@@ -8,6 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
 import './Header.css'
 import { utilsStorage } from '../utils';
+import Swal from 'sweetalert2';
 
 
 const Header = () => {
@@ -15,8 +16,10 @@ const Header = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
 
-    const { isAdmin, name } = utilsStorage.getDataStorage("userSession");
+    const navigate = useNavigate();
 
+    const { isAdmin, name } = utilsStorage.getDataStorage("userSession");
+    const token = utilsStorage.getDataStorage("token");
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768); // Adjust the threshold according to your needs
@@ -30,11 +33,25 @@ const Header = () => {
         };
     }, [isLogged]);
 
-    const handleLogOut = ()=>{
-        utilsStorage.removeDataStorage("token");
-        utilsStorage.removeDataStorage("userSession");
-        setIsLogged(true);
-    }
+    const handleLogOut = () => {
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: "Estás a punto de cerrar sesión.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí, cerrar sesión',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            utilsStorage.removeDataStorage("token");
+            utilsStorage.removeDataStorage("userSession");
+            setIsLogged(false);
+            navigate("/");
+          }
+        });
+      }
 
     return (
         <>
@@ -72,7 +89,7 @@ const Header = () => {
                                     <CartBtn />
                                 </div>
                                 <div>
-                                    {name && (<button onClick={handleLogOut}>
+                                    {token && (<button onClick={handleLogOut}>
                                         <span>Cerrar Sesion</span>
                                     </button>)}
                                 </div>
@@ -97,14 +114,14 @@ const Header = () => {
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/contact">Contactanos</NavLink>
                                     </li>
-                                    <li className="nav-item">
+                                    {!token && (<li className="nav-item">
                                         <NavLink className="nav-link" to="/register">Registro</NavLink>
-                                    </li>
-                                    <li className="nav-item">
+                                    </li>)}
+                                    {!token && (<li className="nav-item">
                                         <NavLink className="nav-link" to="/login">Ingresar</NavLink>
-                                    </li>
+                                    </li>)}
                         
-                                    {name && (<li className='nav-item'>
+                                    {token && (<li className='nav-item'>
                                         <NavLink className="nav-link" to="/userprofile">Perfil</NavLink>
                                     </li>)}
                                     

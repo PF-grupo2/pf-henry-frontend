@@ -5,14 +5,17 @@ import { BsPencilSquare } from "react-icons/bs";
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Review.css';
+import { utilsStorage } from '../utils';
 
-const Review = ({ id, score, message, userId, show }) => {
-    console.log("UserId", userId)
+const Review = ({ id, score, message, userId, show, user }) => {
+
 
     const navigate = useNavigate();
 
     const [scoreArray, setScoreArray] = useState([]);
     let idUser = utilsStorage.getDataStorage("userSession").id;
+
+    const currentUser = utilsStorage.getDataStorage("userSession");
 
     const scoreBucle = () => {
         const scoreArray = [];
@@ -49,7 +52,7 @@ const Review = ({ id, score, message, userId, show }) => {
                             <BsPencilSquare id={id} className='editReview' onClick={handleClick} />
                         </NavLink>
                     :   <BsPencilSquare id={id} className='editReviewDisabled' />}
-                <p className='p'>{message}</p>
+                <p className='p'>{`${user.name}: ${message}`}</p>
             </div>
 
         </>
