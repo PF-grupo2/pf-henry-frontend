@@ -100,7 +100,7 @@ function Products() {
               <td>
 
                 <Button variant="info" onClick={() => handleOpenEditModal(product)}>Editar</Button>
-                <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Desbanear" : "Banear"}</Button>
+                <Button variant={!product.status ? "danger" : "success"} onClick={() => handleBan(product.id)}>{!product.status ? "Visible" : "Ocultar"}</Button>
                 <Button variant="info" onClick={() => handleOpenReviewModal(product.id)}>Reseñas</Button>
 
                 {/* <Button variant={product.isAdmin ? "warning" : "primary"} onClick={() => handleAdmin(product.id)}>{product.isAdmin ? "Quitar admin" : "Dar admin"}</Button> */}

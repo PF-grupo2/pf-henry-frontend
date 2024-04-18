@@ -4,9 +4,10 @@ import { BASE_URL } from "../../config";
 
 function EditProduct({ product, token }) {
   const [formData, setFormData] = useState({
-    name: product && product.name,
-    brand: product && product.brand,
-    price: product && product.price,
+    name: product.name,
+    brand: product.brand,
+    price: product.price,
+    description: product.description
   });
 
   const handleChange = (e) => {
@@ -18,9 +19,11 @@ function EditProduct({ product, token }) {
     console.log(formData);
   };
 
-  const handleSubmit = async () => {
-    await axios.put(`${BASE_URL}/edit/${product.id}`, formData, {
-      headers: { "x-token": token },
+  const handleSubmit = async () => { 
+    const Response = await axios.put(`${BASE_URL}/products/edit/${product.id}`, formData, {
+      headers: { 
+        "x-token": token,
+      },  
     });
   };
 
@@ -29,8 +32,13 @@ function EditProduct({ product, token }) {
       name: product.name,
       brand: product.brand,
       price: product.price,
+      description: product.description
     });
   }, [product]);
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]); 
 
   return (
     <div className="container fondo_editar">
@@ -78,14 +86,14 @@ function EditProduct({ product, token }) {
         </div>
         <div className="mb-3">
           <label htmlFor="phone" className="form-label">
-            Teléfono:
+            Descripcion:
           </label>
           <input
-            type="tel"
-            id="phone"
+            type="text"
+            id="description"
             className="form-control"
-            name="phone"
-            value={formData.phone}
+            name="description"
+            value={formData.description}
             onChange={handleChange}
             required
           />

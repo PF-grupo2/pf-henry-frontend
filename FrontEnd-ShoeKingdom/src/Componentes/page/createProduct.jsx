@@ -11,7 +11,7 @@ const CreateProdForm = () => {
     description: "",
     style: ENUMS.styles[0],
     gender: ENUMS.genders[2],
-    color: [ENUMS.colors[0]],
+    color: ENUMS.colors[0],
     size: [],
     brand: ENUMS.brands[0],
     price: 0,
