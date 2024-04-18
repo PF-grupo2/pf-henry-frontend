@@ -3,18 +3,16 @@ import { useState, useEffect } from "react";
 import { utilsStorage } from "../utils";
 import { BASE_URL } from "../../config";
 
-const URL = `${BASE_URL}/sale`;
-
 function UserSales({ user }) {
   const token = utilsStorage.getDataStorage("token");
 
-  const { id } = user
+  const { id } = user;
 
   const [sales, setSales] = useState([]);
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/api/v1/sale/users/${id}`, {
+      const { data } = await axios.get(`${BASE_URL}/sale/users/${id}`, {
         headers: { "x-token": token },
       });
       setSales(data);
@@ -27,7 +25,7 @@ function UserSales({ user }) {
     fetchData();
   }, [id]);
 
-  if (sales.length===0) return <h2>El usuario no ha realizado compras</h2>;
+  if (sales.length === 0) return <h2>El usuario no ha realizado compras</h2>;
 
   return (
     <div>
@@ -40,9 +38,9 @@ function UserSales({ user }) {
             >
               <thead className="table-dark">
                 <tr>
-                    <th scope="col">fecha</th>
-                    <th scope="col">productos</th>
-                    <th scope="col">total</th>
+                  <th scope="col">fecha</th>
+                  <th scope="col">productos</th>
+                  <th scope="col">total</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,7 +48,12 @@ function UserSales({ user }) {
                 {sales.map((review) => (
                   <tr key={review.id}>
                     <td>{review.date}</td>
-                    <td>{review.SaleDetails.map(detail=>`Producto: (${detail.amount}(unidades) ${detail.title}) `)}</td>
+                    <td>
+                      {review.SaleDetails.map(
+                        (detail) =>
+                          `Producto: (${detail.amount}(unidades) ${detail.title}) `
+                      )}
+                    </td>
                     <td>{review.total}</td>
                   </tr>
                 ))}

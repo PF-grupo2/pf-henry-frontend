@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { utilsStorage } from "../utils";
-import { BASE_URL, BASE_URL_FRONT } from "../../config";
-
-const URL = `${BASE_URL}/sale`;
-const URLfront = `${BASE_URL_FRONT}/product`;
+import { BASE_URL } from "../../config";
 
 function Sales() {
   const token = utilsStorage.getDataStorage("token");
@@ -14,7 +11,7 @@ function Sales() {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/api/v1/sale/list`, {
+      const { data } = await axios.get(`${BASE_URL}/sale/list`, {
         headers: { "x-token": token },
       });
       setSales(data);
@@ -28,7 +25,7 @@ function Sales() {
   }, []);
 
   if (!isAdmin) return <span>No tiene permisos para entrar aquí</span>;
-  if (sales.length===0) return <h2>No se han realizado compras</h2>;
+  if (sales.length === 0) return <h2>No se han realizado compras</h2>;
 
   return (
     <div>
@@ -41,10 +38,10 @@ function Sales() {
             >
               <thead className="table-dark">
                 <tr>
-                    <th scope="col">usuario</th>
-                    <th scope="col">fecha</th>
-                    <th scope="col">productos</th>
-                    <th scope="col">total</th>
+                  <th scope="col">usuario</th>
+                  <th scope="col">fecha</th>
+                  <th scope="col">productos</th>
+                  <th scope="col">total</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,7 +50,12 @@ function Sales() {
                   <tr key={review.id}>
                     <td>{review.User.name}</td>
                     <td>{review.date}</td>
-                    <td>{review.SaleDetails.map(detail=>`Producto: (${detail.amount}(unidades) ${detail.title}) `)}</td>
+                    <td>
+                      {review.SaleDetails.map(
+                        (detail) =>
+                          `Producto: (${detail.amount}(unidades) ${detail.title}) `
+                      )}
+                    </td>
                     <td>{review.total}</td>
                   </tr>
                 ))}
