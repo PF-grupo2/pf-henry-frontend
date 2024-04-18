@@ -32,7 +32,9 @@ function ProductDetail() {
   const [cartBtn, setCartBtn] = useState("Agregar al carrito");
 
   useEffect(() => {
-    if (cartItems.find((item) => item?.id === zapatillas?.id)) {
+    if(zapatillas && zapatillas.stock === 0){
+      setCartBtn("No hay unidades disponibles");
+    }else if(cartItems.find((item) => item?.id === zapatillas?.id)) {
       setCartBtn("Ya existe en el carrito");
     } else {
       setCartBtn("Agregar al carrito");
@@ -55,6 +57,7 @@ function ProductDetail() {
   }, [isAuthenticated, getAccessTokenSilently]);
 
   const handleCart = async () => {
+    if(zapatillas && cartBtn !== "Agregar al carrito") return
     if (zapatillas) {
       const item = zapatillas;
       item.quantity = 1;
