@@ -72,12 +72,12 @@ export const getfilter = (nombre) => {
 export const getZapatilla = (filters, page = 1) => {
   return async function (dispatch) {
     let productData = await (
-      await axios(`${BASE_URL}/products/listProducts/9/${page}/filters?status[]=true`) 
+      await axios(`${BASE_URL}/products/listProducts/9/${page}/filters?status[]=true&`) 
     ).data;
     if (filters)
       productData = await (
         await axios(
-          `${BASE_URL}/products/listProducts/9/${page}/filters?status[]=true` + filters
+          `${BASE_URL}/products/listProducts/9/${page}/filters?status[]=true&` + filters
         )
       ).data;
 

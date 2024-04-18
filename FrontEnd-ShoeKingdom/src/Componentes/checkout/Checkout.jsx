@@ -53,6 +53,8 @@ function Cheackout() {
       const response = await axios.post(`${BASE_URL}/mercadopago`, {
         items: orderData
 
+      },{
+        headers: { "x-token": token },
       })
       console.log("esta es la respuesta", response);
       const { id } = response.data
