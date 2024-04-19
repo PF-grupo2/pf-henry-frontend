@@ -65,9 +65,9 @@ const About = () => {
                             </div>  
                              <div className="col-lg-1 col-md-12 portfolio-item first">
                                 <div className="portfolio-img rounded overflow-hidden">
-                                    <img className="img-fluid rounded-circle" src="/assets/perfil.png" alt="" />
+                                    <img className="img-fluid rounded-circle" src="/assets/Enzo.jpg" alt="" />
                                     <div className="portfolio-btn align-items-center">
-                                        <a className="btn btn-lg-square btn-outline-primary"  href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        <a className="btn btn-lg-square btn-outline-primary"  href="https://www.linkedin.com/in/enzo-caceres-5aa944269/"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
